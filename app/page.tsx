@@ -488,10 +488,10 @@ export default function Home() {
                   <div>
                     <p className="text-sm text-zinc-400">Email</p>
                     <a
-                      href="mailto:contato@exemplo.com"
+                      href="mailto:rafaelsfcarvalho@outlook.com"
                       className="text-cyan-400 hover:underline"
                     >
-                      contato@exemplo.com
+                      rafaelsfcarvalho@outlook.com
                     </a>
                   </div>
                 </div>
@@ -515,10 +515,10 @@ export default function Home() {
                   <div>
                     <p className="text-sm text-zinc-400">Telefone</p>
                     <a
-                      href="tel:+5511999999999"
+                      href="whatsapp://send?phone=+5521979674045"
                       className="text-cyan-400 hover:underline"
                     >
-                      +55 (11) 99999-9999
+                      +55 (21) 97967-4045
                     </a>
                   </div>
                 </div>
@@ -574,29 +574,6 @@ export default function Home() {
                     <circle cx="4" cy="4" r="2"></circle>
                   </svg>
                   LinkedIn
-                </a>
-
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-zinc-800 rounded-md hover:bg-zinc-700 transition-colors"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-cyan-400"
-                  >
-                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                  </svg>
-                  Twitter
                 </a>
               </div>
             </div>

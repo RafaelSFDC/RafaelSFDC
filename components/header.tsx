@@ -7,7 +7,6 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
 const menuItems = [
-  { name: "Home", href: "#" },
   { name: "Sobre", href: "#sobre" },
   { name: "Habilidades", href: "#habilidades" },
   { name: "Projetos", href: "#projetos" },
@@ -106,7 +105,7 @@ const HeroHeader = () => {
                   size="sm"
                   className={cn(
                     "border-cyan-500 text-cyan-400 hover:bg-cyan-500/20",
-                    isScrolled && "lg:hidden"
+                    isScrolled && "hidden"
                   )}
                 >
                   <Link href="#contato">

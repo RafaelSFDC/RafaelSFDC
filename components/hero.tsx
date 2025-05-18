@@ -73,8 +73,8 @@ const Hero5 = () => {
               programar por conta da minha paixão pela programação.
             </p>
           </div>
-          <div className="flex flex-row gap-3">
-            <Link href="#contact">
+          <div className="flex justify-center gap-3 flex-wrap">
+            <Link href="#contato">
               <Button size="lg" className="gap-4">
                 Entre em contato <PhoneCall className="h-4 w-4" />
               </Button>
