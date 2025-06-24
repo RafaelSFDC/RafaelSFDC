@@ -68,4 +68,40 @@ export const projects: ProjectDetails[] = [
     year: 2024,
     category: "Business Intelligence",
   },
+  {
+    id: "link-tree-nextjs",
+    title: "Link Tree NextJS",
+    description: "Uma aplicação moderna de link tree construída com Next.js para centralizar todos os seus links importantes.",
+    longDescription:
+      "Link Tree NextJS é uma aplicação web moderna que permite aos usuários criar uma página personalizada com todos os seus links importantes em um só lugar. Desenvolvida com Next.js, TypeScript e Tailwind CSS, a aplicação oferece múltiplos templates, customização de temas, analytics de cliques e uma interface administrativa completa. Ideal para influenciadores, criadores de conteúdo e profissionais que precisam compartilhar múltiplos links de forma organizada.",
+    image: "/placeholder.svg?height=400&width=600",
+    status: "public",
+    technologies: [
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "Tailwind CSS" },
+      { name: "Prisma" },
+      { name: "PostgreSQL" }
+    ],
+    demoUrl: "https://example.com/link-tree-demo",
+    codeUrl: "https://github.com/example/link-tree-nextjs",
+    features: [
+      "Múltiplos templates de design (Minimal, Modern, Vibrant, Professional, Creative)",
+      "Customização completa de cores e temas",
+      "Dashboard administrativo para gerenciar links",
+      "Analytics de cliques em tempo real",
+      "Interface responsiva para todos os dispositivos",
+      "Sistema de autenticação seguro",
+      "URLs personalizadas para cada usuário",
+      "Preview em tempo real das mudanças"
+    ],
+    challenges: [
+      "Implementação de sistema de templates dinâmicos",
+      "Otimização de performance para carregamento rápido",
+      "Desenvolvimento de analytics precisos de cliques",
+      "Criação de interface intuitiva para customização de temas"
+    ],
+    year: 2025,
+    category: "Web Development",
+  },
 ]
