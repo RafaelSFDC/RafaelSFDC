@@ -17,6 +17,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const [showDetails, setShowDetails] = useState(false)
 
   const isPrivate = project.status === "private"
+  const isDemoOnly = project.status === "demo-only"
+  const isPublic = project.status === "public"
 
   return (
     <>
@@ -39,6 +41,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <div className="flex items-center gap-2">
             <CardTitle className="text-xl text-white">{project.title}</CardTitle>
             {isPrivate && <Badge className="bg-zinc-700 text-zinc-300">Privado</Badge>}
+            {isDemoOnly && <Badge className="bg-amber-600/20 text-amber-400 border-amber-500/30">Demo</Badge>}
           </div>
           <CardDescription className="text-zinc-400">{project.description}</CardDescription>
         </CardHeader>
@@ -85,7 +88,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 </Button>
               )}
 
-              {project.codeUrl && (
+              {/* Só mostra o código fonte se for público (não demo-only) */}
+              {project.codeUrl && isPublic && (
                 <Button
                   variant="outline"
                   className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20 hover:bg-cyan-500/20"

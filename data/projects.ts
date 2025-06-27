@@ -2,78 +2,11 @@ import type { ProjectDetails } from "@/types/project"
 
 export const projects: ProjectDetails[] = [
   {
-    id: "hoobank",
-    title: "Hoobank",
-    description: "Um projeto simples que visa criar uma landingpage de um site de banco.",
-    longDescription:
-      "Hoobank é uma landing page moderna para um banco digital fictício. O projeto foi desenvolvido com foco em UI/UX, utilizando React e Tailwind CSS para criar uma interface responsiva e atraente. A página apresenta seções de recursos, benefícios, depoimentos e chamadas para ação.",
-    image: "/placeholder.svg?height=400&width=600",
-    status: "public",
-    technologies: [{ name: "React" }, { name: "Tailwind" }, { name: "JavaScript" }],
-    demoUrl: "https://example.com/hoobank",
-    codeUrl: "https://github.com/example/hoobank",
-    features: [
-      "Design responsivo para todos os dispositivos",
-      "Animações suaves de scroll",
-      "Formulário de contato funcional",
-      "Integração com API de pagamentos",
-    ],
-    challenges: ["Otimização de performance para dispositivos móveis", "Implementação de acessibilidade WCAG 2.1"],
-    year: 2023,
-    category: "Web Development",
-  },
-  {
-    id: "hilink",
-    title: "Hilink",
-    description: "Uma landingpage sobre um aplicativo de viagens.",
-    longDescription:
-      "Hilink é uma landing page para um aplicativo de viagens que conecta viajantes com guias locais. O projeto foi desenvolvido com Next.js e Tailwind CSS, focando em performance e SEO. A página apresenta recursos do aplicativo, destinos populares e depoimentos de usuários.",
-    image: "/placeholder.svg?height=400&width=600",
-    status: "public",
-    technologies: [{ name: "Next.js" }, { name: "Tailwind" }, { name: "TypeScript" }],
-    demoUrl: "https://example.com/hilink",
-    codeUrl: "https://github.com/example/hilink",
-    features: [
-      "Otimização de imagens com Next.js",
-      "Internacionalização para 3 idiomas",
-      "Modo escuro/claro",
-      "Integração com API de mapas",
-    ],
-    challenges: ["Implementação de rotas dinâmicas para destinos", "Otimização de SEO para múltiplos idiomas"],
-    year: 2024,
-    category: "Web Development",
-  },
-  {
-    id: "dashboard",
-    title: "Dashboard Corporativo",
-    description: "Dashboard analítico para empresa de e-commerce com métricas de vendas e comportamento de usuários.",
-    longDescription:
-      "Este dashboard corporativo foi desenvolvido para uma empresa de e-commerce, oferecendo análises detalhadas sobre vendas, comportamento de usuários e inventário. O projeto utiliza React para o frontend, Node.js para o backend e MongoDB para armazenamento de dados. Inclui gráficos interativos, relatórios exportáveis e alertas em tempo real.",
-    image: "/placeholder.svg?height=400&width=600",
-    status: "private",
-    technologies: [{ name: "React" }, { name: "Node.js" }, { name: "MongoDB" }],
-    demoUrl: "https://example.com/dashboard-demo",
-    features: [
-      "Painéis personalizáveis por usuário",
-      "Análise de dados em tempo real",
-      "Exportação de relatórios em múltiplos formatos",
-      "Sistema de alertas configurável",
-      "Integração com APIs de pagamento e logística",
-    ],
-    challenges: [
-      "Implementação de autenticação multi-fator",
-      "Otimização de consultas para grandes volumes de dados",
-      "Desenvolvimento de visualizações de dados complexas",
-    ],
-    year: 2024,
-    category: "Business Intelligence",
-  },
-  {
-    id: "link-tree-nextjs",
-    title: "Link Tree NextJS",
+    id: "Unilink",
+    title: "Unilink",
     description: "Uma aplicação moderna de link tree construída com Next.js para centralizar todos os seus links importantes.",
     longDescription:
-      "Link Tree NextJS é uma aplicação web moderna que permite aos usuários criar uma página personalizada com todos os seus links importantes em um só lugar. Desenvolvida com Next.js, TypeScript e Tailwind CSS, a aplicação oferece múltiplos templates, customização de temas, analytics de cliques e uma interface administrativa completa. Ideal para influenciadores, criadores de conteúdo e profissionais que precisam compartilhar múltiplos links de forma organizada.",
+      "Unilink é uma aplicação web moderna que permite aos usuários criar uma página personalizada com todos os seus links importantes em um só lugar. Desenvolvida com Next.js, TypeScript e Tailwind CSS, a aplicação oferece múltiplos templates, customização de temas, analytics de cliques e uma interface administrativa completa. Ideal para influenciadores, criadores de conteúdo e profissionais que precisam compartilhar múltiplos links de forma organizada.",
     image: "/placeholder.svg?height=400&width=600",
     status: "public",
     technologies: [
@@ -83,8 +16,8 @@ export const projects: ProjectDetails[] = [
       { name: "Prisma" },
       { name: "PostgreSQL" }
     ],
-    demoUrl: "https://example.com/link-tree-demo",
-    codeUrl: "https://github.com/example/link-tree-nextjs",
+    demoUrl: "https://unilink-ruddy.vercel.app/",
+    codeUrl: "https://github.com/RafaelSFDC/Unilink",
     features: [
       "Múltiplos templates de design (Minimal, Modern, Vibrant, Professional, Creative)",
       "Customização completa de cores e temas",
@@ -103,5 +36,72 @@ export const projects: ProjectDetails[] = [
     ],
     year: 2025,
     category: "Web Development",
+  },
+  {
+    id: "ecommerce-demo",
+    title: "E-commerce Platform",
+    description: "Plataforma de e-commerce completa com painel administrativo e sistema de pagamentos.",
+    longDescription:
+      "Uma plataforma de e-commerce moderna desenvolvida para um cliente corporativo. Inclui catálogo de produtos, carrinho de compras, sistema de pagamentos integrado, painel administrativo completo e dashboard de analytics. A aplicação foi desenvolvida com foco em performance e experiência do usuário.",
+    image: "/placeholder.svg?height=400&width=600",
+    status: "demo-only",
+    technologies: [
+      { name: "React" },
+      { name: "Node.js" },
+      { name: "Express" },
+      { name: "MongoDB" },
+      { name: "Stripe" }
+    ],
+    demoUrl: "https://ecommerce-demo.vercel.app/",
+    features: [
+      "Catálogo de produtos com filtros avançados",
+      "Carrinho de compras persistente",
+      "Sistema de pagamentos com Stripe",
+      "Painel administrativo completo",
+      "Dashboard de analytics em tempo real",
+      "Sistema de avaliações e comentários",
+      "Notificações por email automatizadas"
+    ],
+    challenges: [
+      "Integração complexa com gateway de pagamento",
+      "Otimização de consultas no banco de dados",
+      "Implementação de sistema de cache eficiente",
+      "Desenvolvimento de interface administrativa intuitiva"
+    ],
+    year: 2024,
+    category: "E-commerce",
+  },
+  {
+    id: "banking-app",
+    title: "Banking Mobile App",
+    description: "Aplicativo bancário móvel com funcionalidades completas de gestão financeira.",
+    longDescription:
+      "Aplicativo bancário desenvolvido para uma instituição financeira. Inclui todas as funcionalidades essenciais como transferências, pagamentos, investimentos e controle de gastos. O projeto foi desenvolvido com foco máximo em segurança e usabilidade.",
+    image: "/placeholder.svg?height=400&width=600",
+    status: "private",
+    technologies: [
+      { name: "React Native" },
+      { name: "TypeScript" },
+      { name: "Node.js" },
+      { name: "PostgreSQL" },
+      { name: "Redis" }
+    ],
+    features: [
+      "Transferências e pagamentos instantâneos",
+      "Controle de gastos com categorização automática",
+      "Investimentos com acompanhamento em tempo real",
+      "Cartão virtual com controles de segurança",
+      "Biometria e autenticação em duas etapas",
+      "Notificações push personalizadas",
+      "Relatórios financeiros detalhados"
+    ],
+    challenges: [
+      "Implementação de protocolos de segurança bancária",
+      "Otimização para diferentes dispositivos móveis",
+      "Integração com sistemas bancários legados",
+      "Desenvolvimento de interface intuitiva para todas as idades"
+    ],
+    year: 2024,
+    category: "Mobile Development",
   },
 ]

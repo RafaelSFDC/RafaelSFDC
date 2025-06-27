@@ -20,6 +20,8 @@ interface ProjectDetailsModalProps {
 
 export function ProjectDetailsModal({ project, open, onOpenChange }: ProjectDetailsModalProps) {
   const isPrivate = project.status === "private"
+  const isDemoOnly = project.status === "demo-only"
+  const isPublic = project.status === "public"
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -28,6 +30,7 @@ export function ProjectDetailsModal({ project, open, onOpenChange }: ProjectDeta
           <div className="flex items-center gap-3 flex-wrap">
             <DialogTitle className="text-2xl">{project.title}</DialogTitle>
             {isPrivate && <Badge className="bg-zinc-700 text-zinc-300">Privado</Badge>}
+            {isDemoOnly && <Badge className="bg-amber-600/20 text-amber-400 border-amber-500/30">Demo</Badge>}
           </div>
           <DialogDescription className="text-zinc-400">{project.description}</DialogDescription>
         </DialogHeader>
@@ -127,7 +130,8 @@ export function ProjectDetailsModal({ project, open, onOpenChange }: ProjectDeta
                 </Button>
               )}
 
-              {project.codeUrl && (
+              {/* Só mostra o código fonte se for público (não demo-only) */}
+              {project.codeUrl && isPublic && (
                 <Button
                   variant="outline"
                   className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20 hover:bg-cyan-500/20"

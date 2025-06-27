@@ -1,6 +1,6 @@
 import type { LucideIcon } from "lucide-react"
 
-export type ProjectStatus = "public" | "private" | "demo"
+export type ProjectStatus = "public" | "demo-only" | "private"
 
 export interface Technology {
   name: string
