@@ -72,36 +72,41 @@ export const projects: ProjectDetails[] = [
     category: "E-commerce",
   },
   {
-    id: "banking-app",
-    title: "Banking Mobile App",
-    description: "Aplicativo bancário móvel com funcionalidades completas de gestão financeira.",
+    id: "venda-facil",
+    title: "Venda Fácil",
+    description: "Sistema completo de gestão de vendas com dashboard intuitivo para controle de clientes, produtos e relatórios.",
     longDescription:
-      "Aplicativo bancário desenvolvido para uma instituição financeira. Inclui todas as funcionalidades essenciais como transferências, pagamentos, investimentos e controle de gastos. O projeto foi desenvolvido com foco máximo em segurança e usabilidade.",
+      "Venda Fácil é um sistema completo de gestão de vendas desenvolvido com Next.js e TypeScript. A aplicação oferece um dashboard intuitivo para gerenciamento de clientes, vendas, produtos, parcelamentos customizáveis, processamento manual de pagamentos com datas, detalhes e comprovantes, além de geração de relatórios detalhados. O sistema conta com fluxo de autenticação completo e interface responsiva otimizada para dispositivos móveis.",
     image: "/placeholder.svg?height=400&width=600",
-    status: "private",
+    status: "demo-only",
     technologies: [
-      { name: "React Native" },
+      { name: "Next.js" },
       { name: "TypeScript" },
-      { name: "Node.js" },
-      { name: "PostgreSQL" },
-      { name: "Redis" }
+      { name: "Tailwind CSS" },
+      { name: "Shadcn/ui" },
+      { name: "Prisma" },
+      { name: "PostgreSQL" }
     ],
+    demoUrl: "https://vendafacil.onrender.com",
     features: [
-      "Transferências e pagamentos instantâneos",
-      "Controle de gastos com categorização automática",
-      "Investimentos com acompanhamento em tempo real",
-      "Cartão virtual com controles de segurança",
-      "Biometria e autenticação em duas etapas",
-      "Notificações push personalizadas",
-      "Relatórios financeiros detalhados"
+      "Dashboard completo de gestão de vendas",
+      "Gerenciamento de clientes e produtos",
+      "Sistema de parcelamentos customizáveis",
+      "Processamento manual de pagamentos com comprovantes",
+      "Geração de relatórios detalhados",
+      "Interface responsiva e mobile-friendly",
+      "Sistema de autenticação em português",
+      "Carrinho de compras inteligente",
+      "Edição flexível de parcelas individuais"
     ],
     challenges: [
-      "Implementação de protocolos de segurança bancária",
-      "Otimização para diferentes dispositivos móveis",
-      "Integração com sistemas bancários legados",
-      "Desenvolvimento de interface intuitiva para todas as idades"
+      "Implementação de sistema de parcelamentos flexível",
+      "Desenvolvimento de interface mobile-friendly para carrinho e parcelas",
+      "Criação de sistema de relatórios dinâmicos",
+      "Otimização da experiência do usuário em dispositivos móveis",
+      "Integração de componentes Shadcn/ui de forma consistente"
     ],
-    year: 2024,
-    category: "Mobile Development",
+    year: 2025,
+    category: "Business Management",
   },
 ]
