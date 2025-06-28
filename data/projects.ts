@@ -109,4 +109,50 @@ export const projects: ProjectDetails[] = [
     year: 2025,
     category: "Business Management",
   },
+  {
+    id: "forum-app",
+    title: "Forum App",
+    description: "Aplicação de fórum moderna inspirada no Reddit, construída com Laravel e React usando Inertia.js.",
+    longDescription:
+      "Forum App é uma aplicação web moderna de fórum desenvolvida com Laravel 12 e React 19, utilizando Inertia.js como bridge entre backend e frontend. A aplicação oferece uma experiência similar ao Reddit com funcionalidades completas de fórum, incluindo sistema de posts, comentários, votação, categorias, autenticação segura e interface responsiva. Desenvolvida com foco em performance através de Server-Side Rendering (SSR) e uma arquitetura moderna que combina o melhor do PHP e JavaScript.",
+    image: "/placeholder.svg?height=400&width=600",
+    status: "public",
+    demoUrl: "https://forum-laravel-app.onrender.com",
+    codeUrl: "https://github.com/RafaelSFDC/forum-app-laravel",
+    technologies: [
+      { name: "Laravel 12" },
+      { name: "React 19" },
+      { name: "TypeScript" },
+      { name: "Inertia.js" },
+      { name: "Tailwind CSS" },
+      { name: "Shadcn/ui" },
+      { name: "SQLite" },
+      { name: "Vite" }
+    ],
+    features: [
+      "Sistema completo de posts e comentários",
+      "Votação (upvote/downvote) em posts e comentários",
+      "Categorias e tags para organização de conteúdo",
+      "Sistema de autenticação e perfis de usuário",
+      "Interface responsiva inspirada no Reddit",
+      "Tema claro/escuro com persistência",
+      "Server-Side Rendering (SSR) para performance otimizada",
+      "Componentes Shadcn/ui para consistência visual",
+      "Sistema de busca e filtros avançados",
+      "Notificações em tempo real",
+      "Moderação de conteúdo",
+      "Acessibilidade completa (WCAG)"
+    ],
+    challenges: [
+      "Implementação de SSR com Inertia.js para performance otimizada",
+      "Desenvolvimento de sistema de votação em tempo real",
+      "Criação de interface responsiva complexa inspirada no Reddit",
+      "Integração seamless entre Laravel backend e React frontend",
+      "Implementação de sistema de notificações eficiente",
+      "Otimização de consultas de banco de dados para threads complexas",
+      "Desenvolvimento de sistema de moderação flexível"
+    ],
+    year: 2025,
+    category: "Forum/Community",
+  },
 ]
