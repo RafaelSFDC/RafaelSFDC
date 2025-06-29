@@ -7,7 +7,7 @@ export const projects: ProjectDetails[] = [
     description: "Uma aplicação moderna de link tree construída com Next.js para centralizar todos os seus links importantes.",
     longDescription:
       "Unilink é uma aplicação web moderna que permite aos usuários criar uma página personalizada com todos os seus links importantes em um só lugar. Desenvolvida com Next.js, TypeScript e Tailwind CSS, a aplicação oferece múltiplos templates, customização de temas, analytics de cliques e uma interface administrativa completa. Ideal para influenciadores, criadores de conteúdo e profissionais que precisam compartilhar múltiplos links de forma organizada.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/unilink-home.png",
     status: "public",
     technologies: [
       { name: "Next.js" },
@@ -38,46 +38,12 @@ export const projects: ProjectDetails[] = [
     category: "Web Development",
   },
   {
-    id: "ecommerce-demo",
-    title: "E-commerce Platform",
-    description: "Plataforma de e-commerce completa com painel administrativo e sistema de pagamentos.",
-    longDescription:
-      "Uma plataforma de e-commerce moderna desenvolvida para um cliente corporativo. Inclui catálogo de produtos, carrinho de compras, sistema de pagamentos integrado, painel administrativo completo e dashboard de analytics. A aplicação foi desenvolvida com foco em performance e experiência do usuário.",
-    image: "/placeholder.svg?height=400&width=600",
-    status: "demo-only",
-    technologies: [
-      { name: "React" },
-      { name: "Node.js" },
-      { name: "Express" },
-      { name: "MongoDB" },
-      { name: "Stripe" }
-    ],
-    demoUrl: "https://ecommerce-demo.vercel.app/",
-    features: [
-      "Catálogo de produtos com filtros avançados",
-      "Carrinho de compras persistente",
-      "Sistema de pagamentos com Stripe",
-      "Painel administrativo completo",
-      "Dashboard de analytics em tempo real",
-      "Sistema de avaliações e comentários",
-      "Notificações por email automatizadas"
-    ],
-    challenges: [
-      "Integração complexa com gateway de pagamento",
-      "Otimização de consultas no banco de dados",
-      "Implementação de sistema de cache eficiente",
-      "Desenvolvimento de interface administrativa intuitiva"
-    ],
-    year: 2024,
-    category: "E-commerce",
-  },
-  {
     id: "venda-facil",
     title: "Venda Fácil",
     description: "Sistema completo de gestão de vendas com dashboard intuitivo para controle de clientes, produtos e relatórios.",
     longDescription:
       "Venda Fácil é um sistema completo de gestão de vendas desenvolvido com Next.js e TypeScript. A aplicação oferece um dashboard intuitivo para gerenciamento de clientes, vendas, produtos, parcelamentos customizáveis, processamento manual de pagamentos com datas, detalhes e comprovantes, além de geração de relatórios detalhados. O sistema conta com fluxo de autenticação completo e interface responsiva otimizada para dispositivos móveis.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/venda-facil-home.png",
     status: "demo-only",
     technologies: [
       { name: "Next.js" },
@@ -109,50 +75,50 @@ export const projects: ProjectDetails[] = [
     year: 2025,
     category: "Business Management",
   },
-  {
-    id: "forum-app",
-    title: "Forum App",
-    description: "Aplicação de fórum moderna inspirada no Reddit, construída com Laravel e React usando Inertia.js.",
-    longDescription:
-      "Forum App é uma aplicação web moderna de fórum desenvolvida com Laravel 12 e React 19, utilizando Inertia.js como bridge entre backend e frontend. A aplicação oferece uma experiência similar ao Reddit com funcionalidades completas de fórum, incluindo sistema de posts, comentários, votação, categorias, autenticação segura e interface responsiva. Desenvolvida com foco em performance através de Server-Side Rendering (SSR) e uma arquitetura moderna que combina o melhor do PHP e JavaScript.",
-    image: "/placeholder.svg?height=400&width=600",
-    status: "public",
-    demoUrl: "https://forum-laravel-app.onrender.com",
-    codeUrl: "https://github.com/RafaelSFDC/forum-app-laravel",
-    technologies: [
-      { name: "Laravel 12" },
-      { name: "React 19" },
-      { name: "TypeScript" },
-      { name: "Inertia.js" },
-      { name: "Tailwind CSS" },
-      { name: "Shadcn/ui" },
-      { name: "SQLite" },
-      { name: "Vite" }
-    ],
-    features: [
-      "Sistema completo de posts e comentários",
-      "Votação (upvote/downvote) em posts e comentários",
-      "Categorias e tags para organização de conteúdo",
-      "Sistema de autenticação e perfis de usuário",
-      "Interface responsiva inspirada no Reddit",
-      "Tema claro/escuro com persistência",
-      "Server-Side Rendering (SSR) para performance otimizada",
-      "Componentes Shadcn/ui para consistência visual",
-      "Sistema de busca e filtros avançados",
-      "Notificações em tempo real",
-      "Moderação de conteúdo",
-      "Acessibilidade completa (WCAG)"
-    ],
-    challenges: [
-      "Implementação de SSR com Inertia.js para performance otimizada",
-      "Desenvolvimento de sistema de votação em tempo real",
-      "Criação de interface responsiva complexa inspirada no Reddit",
-      "Integração seamless entre Laravel backend e React frontend",
-      "Implementação de sistema de notificações eficiente",
-      "Otimização de consultas de banco de dados para threads complexas",
-      "Desenvolvimento de sistema de moderação flexível"
-    ],
-    year: 2025,
-    category: "Forum/Community",
-  },
+  // {
+  //   id: "forum-app",
+  //   title: "Forum App",
+  //   description: "Aplicação de fórum moderna inspirada no Reddit, construída com Laravel e React usando Inertia.js.",
+  //   longDescription:
+  //     "Forum App é uma aplicação web moderna de fórum desenvolvida com Laravel 12 e React 19, utilizando Inertia.js como bridge entre backend e frontend. A aplicação oferece uma experiência similar ao Reddit com funcionalidades completas de fórum, incluindo sistema de posts, comentários, votação, categorias, autenticação segura e interface responsiva. Desenvolvida com foco em performance através de Server-Side Rendering (SSR) e uma arquitetura moderna que combina o melhor do PHP e JavaScript.",
+  //   image: "/placeholder.svg?height=400&width=600",
+  //   status: "public",
+  //   demoUrl: "https://forum-laravel-app.onrender.com",
+  //   codeUrl: "https://github.com/RafaelSFDC/forum-app-laravel",
+  //   technologies: [
+  //     { name: "Laravel 12" },
+  //     { name: "React 19" },
+  //     { name: "TypeScript" },
+  //     { name: "Inertia.js" },
+  //     { name: "Tailwind CSS" },
+  //     { name: "Shadcn/ui" },
+  //     { name: "SQLite" },
+  //     { name: "Vite" }
+  //   ],
+  //   features: [
+  //     "Sistema completo de posts e comentários",
+  //     "Votação (upvote/downvote) em posts e comentários",
+  //     "Categorias e tags para organização de conteúdo",
+  //     "Sistema de autenticação e perfis de usuário",
+  //     "Interface responsiva inspirada no Reddit",
+  //     "Tema claro/escuro com persistência",
+  //     "Server-Side Rendering (SSR) para performance otimizada",
+  //     "Componentes Shadcn/ui para consistência visual",
+  //     "Sistema de busca e filtros avançados",
+  //     "Notificações em tempo real",
+  //     "Moderação de conteúdo",
+  //     "Acessibilidade completa (WCAG)"
+  //   ],
+  //   challenges: [
+  //     "Implementação de SSR com Inertia.js para performance otimizada",
+  //     "Desenvolvimento de sistema de votação em tempo real",
+  //     "Criação de interface responsiva complexa inspirada no Reddit",
+  //     "Integração seamless entre Laravel backend e React frontend",
+  //     "Implementação de sistema de notificações eficiente",
+  //     "Otimização de consultas de banco de dados para threads complexas",
+  //     "Desenvolvimento de sistema de moderação flexível"
+  //   ],
+  //   year: 2025,
+  //   category: "Forum/Community",
+  // },
 ]

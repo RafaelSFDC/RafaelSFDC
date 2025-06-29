@@ -23,7 +23,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <>
       <Card className="bg-zinc-900 border-zinc-800 overflow-hidden group hover:border-cyan-500/30 transition-all duration-300">
-        <div className="relative h-48 overflow-hidden">
+        <div className="relative h-[250px] lg:h-[400px] overflow-hidden">
           {isPrivate && (
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/30 z-10 flex items-center justify-center">
               <Lock className="h-12 w-12 text-cyan-400/50" />
@@ -57,7 +57,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </div>
           </div>
         </CardContent>
-        <CardFooter className="flex gap-2">
+        <CardFooter className="flex gap-2 flex-wrap">
           <Button
             variant="outline"
             className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20 hover:bg-cyan-500/20"

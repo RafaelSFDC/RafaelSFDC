@@ -80,7 +80,7 @@ const Hero5 = () => {
               </Button>
             </Link>
             <Link href="#projetos">
-              <Button size="lg" className="gap-4" variant="outline">
+              <Button size="lg" className="gap-4 text-cyan-400" variant="outline">
                 Ver meus projetos <MoveRight className="h-4 w-4" />
               </Button>
             </Link>
