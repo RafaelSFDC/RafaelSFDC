@@ -11,7 +11,7 @@ const Hero5 = () => {
   const [titleNumber, setTitleNumber] = useState(0);
   const titles = useMemo(
     //Aqui mostre minhas skills
-    () => ["Full-Stack", "Web", "React"],
+    () => ["Full-Stack", "Frontend", "Backend", "React", "Next.js"],
     []
   );
 
@@ -68,9 +68,9 @@ const Hero5 = () => {
             </h1>
 
             <p className="max-w-2xl text-center text-lg leading-relaxed tracking-tight text-muted-foreground md:text-xl">
-              Sou Desenvolvedor Web. Comecei a estudar programação por que eu me
-              sempre gostei de saber como as tecnologias funcionavam. Aprendi a
-              programar por conta da minha paixão pela programação.
+              Desenvolvedor apaixonado por criar soluções digitais inovadoras.
+              Especializado em desenvolvimento web moderno com React, Next.js e tecnologias full-stack.
+              Transformo ideias em aplicações funcionais e experiências digitais excepcionais.
             </p>
           </div>
           <div className="flex justify-center gap-3 flex-wrap">

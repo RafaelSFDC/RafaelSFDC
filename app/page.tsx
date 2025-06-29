@@ -2,6 +2,7 @@ import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/data/projects";
 import Hero5 from "@/components/hero";
 import HeroHeader from "@/components/header";
+import ContactForm from "@/components/contact-form";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -398,68 +399,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Form */}
-          <div className="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800">
-            <h3 className="text-xl font-semibold mb-6">Envie uma mensagem</h3>
-            <form className="space-y-4">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-zinc-300 mb-1"
-                >
-                  Nome
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                  placeholder="Seu nome"
-                  required
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-zinc-300 mb-1"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                  placeholder="seu.email@exemplo.com"
-                  required
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-zinc-300 mb-1"
-                >
-                  Mensagem
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  className="w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                  placeholder="Sua mensagem aqui..."
-                  required
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-medium py-2 px-4 rounded-md transition-colors"
-              >
-                Enviar Mensagem
-              </button>
-            </form>
-          </div>
+          <ContactForm />
 
           {/* Contact Info */}
           <div className="space-y-6">
