@@ -3,6 +3,7 @@ import { projects } from "@/data/projects";
 import Hero5 from "@/components/hero";
 import HeroHeader from "@/components/header";
 import ContactForm from "@/components/contact-form";
+import ResumeGenerator from "@/components/resume-generator";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -515,6 +516,14 @@ export default function Home() {
                   </svg>
                   LinkedIn
                 </a>
+              </div>
+
+              {/* Botão de Download do Currículo */}
+              <div className="mt-6 pt-6 border-t border-zinc-700">
+                <h4 className="text-lg font-semibold mb-3 text-cyan-400">
+                  Baixar Currículo
+                </h4>
+                <ResumeGenerator />
               </div>
             </div>
           </div>

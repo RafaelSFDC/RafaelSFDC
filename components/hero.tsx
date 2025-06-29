@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { MoveRight, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import ResumeGenerator from "@/components/resume-generator";
 
 const Hero5 = () => {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -84,6 +85,7 @@ const Hero5 = () => {
                 Ver meus projetos <MoveRight className="h-4 w-4" />
               </Button>
             </Link>
+            <ResumeGenerator />
           </div>
         </div>
       </div>
