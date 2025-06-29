@@ -5,7 +5,7 @@
 ### Desenvolvedor Full-Stack apaixonado por transformar ideias em produtos reais
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-rafaelsfcarvalho.vercel.app-cyan?style=for-the-badge&logo=vercel)](https://rafaelsfcarvalho.vercel.app/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-rafael--silva--ferreira--de--carvalho-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/rafael-silva-ferreira-de-carvalho-902a47173/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-rafael--silva--ferreira--de--carvalho-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/rafael-silva-ferreira-de-carvalho/)
 [![Email](https://img.shields.io/badge/Email-rafaelsfcarvalho@outlook.com-red?style=for-the-badge&logo=microsoft-outlook)](mailto:rafaelsfcarvalho@outlook.com)
 
 </div>
@@ -122,7 +122,7 @@ Estou sempre aberto a novos desafios e oportunidades de colaboração!
 <div align="center">
 
 [![Portfolio](https://img.shields.io/badge/🌐_Portfolio-Visite_meu_site-cyan?style=for-the-badge)](https://rafaelsfcarvalho.vercel.app/)
-[![LinkedIn](https://img.shields.io/badge/💼_LinkedIn-Conecte--se_comigo-blue?style=for-the-badge)](https://www.linkedin.com/in/rafael-silva-ferreira-de-carvalho-902a47173/)
+[![LinkedIn](https://img.shields.io/badge/💼_LinkedIn-Conecte--se_comigo-blue?style=for-the-badge)](https://www.linkedin.com/in/rafael-silva-ferreira-de-carvalho/)
 [![Email](https://img.shields.io/badge/📧_Email-Entre_em_contato-red?style=for-the-badge)](mailto:rafaelsfcarvalho@outlook.com)
 
 ---
