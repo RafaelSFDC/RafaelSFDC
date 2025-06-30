@@ -85,7 +85,7 @@ const Hero5 = () => {
                 Ver meus projetos <MoveRight className="h-4 w-4" />
               </Button>
             </Link>
-            <ResumeGenerator />
+            {/* <ResumeGenerator /> */}
           </div>
         </div>
       </div>
