@@ -39,7 +39,7 @@ const resumeData: ResumeData = {
     github: "GitHub",
     linkedin: "LinkedIn"
   },
-  summary: "Desenvolvedor Front-end com sólida experiência em React Native, React.js e Next.js. Atuação em projetos web e mobile com foco em performance, testes, autenticação, publicação e usabilidade. Domínio do estado com Context API e Redux, testes unitários, integração com backend e análise de qualidade com SonarQube. Facilidade de aprendizado e adaptação a diferentes ambientes de trabalho.",
+  summary: "Desenvolvedor Full-Stack com 3 anos de experiência como freelancer, especializado em React, Next.js, Laravel e tecnologias modernas. Atuação em projetos web e mobile com foco em performance, testes, autenticação e usabilidade. Experiência no desenvolvimento de sites, sistemas de gestão, dashboards, e-commerces, aplicações SaaS e APIs. Domínio do estado com Context API e Redux, testes unitários, integração com backend e análise de qualidade. Facilidade de aprendizado e adaptação a diferentes ambientes de trabalho.",
   experience: [
     {
       title: "Freelancer - Alucam",

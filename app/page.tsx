@@ -303,8 +303,8 @@ export default function Home() {
                 Quem sou eu
               </h3>
               <p className="text-zinc-300 mb-4">
-                Meu nome é Rafael e sou Desenvolvedor Web. Comecei a estudar
-                programação porque sempre fui fascinado por como as tecnologias
+                Meu nome é Rafael e sou Desenvolvedor Full-Stack com 3 anos de experiência como freelancer.
+                Comecei a estudar programação porque sempre fui fascinado por como as tecnologias
                 funcionavam por trás das interfaces. Essa curiosidade me levou a
                 mergulhar no mundo do desenvolvimento.
               </p>
@@ -313,7 +313,7 @@ export default function Home() {
                 por criar interfaces intuitivas e responsivas. Com o tempo,
                 expandi meus conhecimentos para o Back-End, tornando-me um
                 desenvolvedor Full-Stack capaz de construir aplicações
-                completas.
+                completas e soluções digitais robustas.
               </p>
             </div>
           </div>
@@ -365,12 +365,20 @@ export default function Home() {
                 </svg>
                 Experiência Profissional
               </h3>
+              <p className="text-zinc-300 mb-4">
+                Com 3 anos de experiência como desenvolvedor freelancer, colaboro
+                com diversos clientes em projetos variados e desafiadores. Minha expertise
+                abrange o desenvolvimento completo de soluções digitais.
+              </p>
               <p className="text-zinc-300">
-                Atualmente trabalho como desenvolvedor FreeLancer, colaborando
-                com diversos clientes em projetos variados. Tenho experiência em
-                desenvolvimento de sites institucionais, e-commerces, aplicações
-                web e sistemas de gestão. Estou aberto a oportunidades de
-                trabalho fixo em empresas que valorizem inovação e qualidade.
+                <strong>Principais tipos de projetos desenvolvidos:</strong><br />
+                • Sites institucionais e landing pages responsivas<br />
+                • Sistemas de gestão e dashboards administrativos<br />
+                • E-commerces e plataformas de vendas online<br />
+                • Aplicações web complexas e SaaS<br />
+                • APIs RESTful e integrações de terceiros<br />
+                • Aplicativos mobile com React Native<br />
+                • Sistemas de autenticação e autorização
               </p>
             </div>
           </div>

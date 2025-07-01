@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { MoveRight, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import ResumeGenerator from "@/components/resume-generator";
 
 const Hero5 = () => {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -69,9 +68,9 @@ const Hero5 = () => {
             </h1>
 
             <p className="max-w-2xl text-center text-lg leading-relaxed tracking-tight text-muted-foreground md:text-xl">
-              Desenvolvedor apaixonado por criar soluções digitais inovadoras.
+              Desenvolvedor Full-Stack com 3 anos de experiência como freelancer, apaixonado por criar soluções digitais inovadoras.
               Especializado em desenvolvimento web moderno com React, Next.js e tecnologias full-stack.
-              Transformo ideias em aplicações funcionais e experiências digitais excepcionais.
+              Transformo ideias em aplicações funcionais, sistemas robustos e experiências digitais excepcionais.
             </p>
           </div>
           <div className="flex justify-center gap-3 flex-wrap">
