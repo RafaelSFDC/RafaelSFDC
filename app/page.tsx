@@ -3,7 +3,7 @@ import { projects } from "@/data/projects";
 import Hero5 from "@/components/hero";
 import HeroHeader from "@/components/header";
 import ContactForm from "@/components/contact-form";
-import ResumeGenerator from "@/components/resume-generator";
+import DownloadResume from "@/components/download-resume";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -531,7 +531,7 @@ export default function Home() {
                 <h4 className="text-lg font-semibold mb-3 text-cyan-400">
                   Baixar Currículo
                 </h4>
-                <ResumeGenerator />
+                <DownloadResume />
               </div>
             </div>
           </div>
