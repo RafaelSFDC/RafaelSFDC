@@ -20,12 +20,14 @@ Sou um **Desenvolvedor Full-Stack** com paixão por criar soluções digitais qu
 - 🧠 **Foco em:** Código limpo, arquitetura sólida e UX excepcional
 - 🛠️ **Atualmente:** Desenvolvendo SaaS com foco em produtividade e automação
 - 🗃️ **Stack atual:** Next.js + TypeScript + Prisma + PostgreSQL
+- 🔍 **SEO:** Otimizado com `robots.txt` e `sitemap.xml` dinâmicos
 
 ---
 
 ## 🛠️ Stack Tecnológica
 
 ### Frontend
+
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
@@ -34,16 +36,19 @@ Sou um **Desenvolvedor Full-Stack** com paixão por criar soluções digitais qu
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
 ### Backend
+
 ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
 
 ### Banco de Dados
+
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
 
 ### Ferramentas & Outros
+
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
@@ -54,11 +59,13 @@ Sou um **Desenvolvedor Full-Stack** com paixão por criar soluções digitais qu
 ## 🎯 Projetos em Destaque
 
 ### 🔗 [Unilink](https://unilink-ruddy.vercel.app/)
+
 **Link Tree Moderno e Personalizável**
 
 Uma aplicação web moderna que permite criar páginas personalizadas com todos os links importantes em um só lugar.
 
 **🚀 Principais Features:**
+
 - 5 templates de design únicos (Minimal, Modern, Vibrant, Professional, Creative)
 - Customização completa de cores e temas
 - Dashboard administrativo intuitivo
@@ -74,11 +81,13 @@ Uma aplicação web moderna que permite criar páginas personalizadas com todos 
 ---
 
 ### 💰 [Venda Fácil](https://vendafacil.onrender.com)
+
 **Sistema Completo de Gestão de Vendas**
 
 Sistema robusto para gerenciamento de vendas com dashboard intuitivo e funcionalidades avançadas.
 
 **🚀 Principais Features:**
+
 - Dashboard completo de gestão
 - Gerenciamento de clientes e produtos
 - Sistema de parcelamentos customizáveis
@@ -129,6 +138,6 @@ Estou sempre aberto a novos desafios e oportunidades de colaboração!
 
 **⭐ Obrigado por visitar meu perfil! ⭐**
 
-*"O código é poesia em movimento, e cada projeto é uma nova história para contar."*
+_"O código é poesia em movimento, e cada projeto é uma nova história para contar."_
 
 </div>

@@ -6,9 +6,9 @@ import { Download } from "lucide-react";
 export default function DownloadResume() {
   const handleDownload = () => {
     // Criar um link temporário para download
-    const link = document.createElement('a');
-    link.href = '/Curriculo.docx';
-    link.download = 'Rafael_Carvalho_Curriculo.docx';
+    const link = document.createElement("a");
+    link.href = "/Curriculo_Rafael_Carvalho.md";
+    link.download = "Curriculo_Rafael_Carvalho.md";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

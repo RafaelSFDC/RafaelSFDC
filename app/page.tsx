@@ -35,8 +35,14 @@ import {
   SiGraphql,
   SiWebpack,
   SiJest,
+  SiPrisma,
+  SiFirebase,
+  SiRedis,
+  SiTestinglibrary,
 } from "react-icons/si";
-import { TbBrandVscode, TbGitMerge } from "react-icons/tb";
+import { TbBrandVscode, TbGitMerge, TbApi } from "react-icons/tb";
+import { MdSecurity } from "react-icons/md";
+import { DiScrum } from "react-icons/di";
 
 export default function Home() {
   return (
@@ -81,10 +87,12 @@ export default function Home() {
           <h2 className="text-3xl font-bold">Projetos</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+        <div className="flex justify-center">
+          <div className="max-w-2xl w-full">
+            {projects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -148,6 +156,7 @@ export default function Home() {
                 { name: "Vue.js", icon: <FaVuejs size={16} /> },
                 { name: "Next.js", icon: <SiNextdotjs size={16} /> },
                 { name: "Tailwind CSS", icon: <SiTailwindcss size={16} /> },
+                { name: "Prisma", icon: <SiPrisma size={16} /> },
                 {
                   name: "Styled Components",
                   icon: <SiStyledcomponents size={16} />,
@@ -196,9 +205,11 @@ export default function Home() {
                 { name: "Laravel", icon: <FaLaravel size={16} /> },
                 { name: "MongoDB", icon: <SiMongodb size={16} /> },
                 { name: "PostgreSQL", icon: <SiPostgresql size={16} /> },
-                { name: "Firebase", icon: <FaFire size={16} /> },
-                { name: "REST API", icon: <FaLink size={16} /> },
+                { name: "Firebase", icon: <SiFirebase size={16} /> },
+                { name: "Redis", icon: <SiRedis size={16} /> },
+                { name: "REST API", icon: <TbApi size={16} /> },
                 { name: "GraphQL", icon: <SiGraphql size={16} /> },
+                { name: "SQL & NoSQL", icon: <FaDatabase size={16} /> },
               ].map((skill) => (
                 <div
                   key={skill.name}
@@ -242,6 +253,8 @@ export default function Home() {
                 { name: "Jest", icon: <SiJest size={16} /> },
                 { name: "Docker", icon: <FaDocker size={16} /> },
                 { name: "CI/CD", icon: <TbGitMerge size={16} /> },
+                { name: "Auth (OAuth/JWT)", icon: <MdSecurity size={16} /> },
+                { name: "Scrum & Agile", icon: <DiScrum size={16} /> },
               ].map((skill) => (
                 <div
                   key={skill.name}
@@ -303,17 +316,18 @@ export default function Home() {
                 Quem sou eu
               </h3>
               <p className="text-zinc-300 mb-4">
-                Meu nome é Rafael e sou Desenvolvedor Full-Stack com 3 anos de experiência como freelancer.
-                Comecei a estudar programação porque sempre fui fascinado por como as tecnologias
-                funcionavam por trás das interfaces. Essa curiosidade me levou a
-                mergulhar no mundo do desenvolvimento.
+                Meu nome é Rafael e sou Desenvolvedor Full-Stack com 6 anos de
+                experiência como freelancer. Comecei a estudar programação
+                porque sempre fui fascinado por como as tecnologias funcionavam
+                por trás das interfaces. Essa curiosidade me levou a mergulhar
+                no mundo do desenvolvimento.
               </p>
               <p className="text-zinc-300">
                 Minha jornada começou pelo Front-End, onde descobri minha paixão
                 por criar interfaces intuitivas e responsivas. Com o tempo,
                 expandi meus conhecimentos para o Back-End, tornando-me um
-                desenvolvedor Full-Stack capaz de construir aplicações
-                completas e soluções digitais robustas.
+                desenvolvedor Full-Stack capaz de construir aplicações completas
+                e soluções digitais robustas.
               </p>
             </div>
           </div>
@@ -366,19 +380,26 @@ export default function Home() {
                 Experiência Profissional
               </h3>
               <p className="text-zinc-300 mb-4">
-                Com 3 anos de experiência como desenvolvedor freelancer, colaboro
-                com diversos clientes em projetos variados e desafiadores. Minha expertise
-                abrange o desenvolvimento completo de soluções digitais.
+                Com 6 anos de experiência como desenvolvedor freelancer,
+                colaboro com diversos clientes em projetos variados e
+                desafiadores. Minha expertise abrange o desenvolvimento completo
+                de soluções digitais.
               </p>
               <p className="text-zinc-300">
-                <strong>Principais tipos de projetos desenvolvidos:</strong><br />
-                • Sites institucionais e landing pages responsivas<br />
-                • Sistemas de gestão e dashboards administrativos<br />
-                • E-commerces e plataformas de vendas online<br />
-                • Aplicações web complexas e SaaS<br />
-                • APIs RESTful e integrações de terceiros<br />
-                • Aplicativos mobile com React Native<br />
-                • Sistemas de autenticação e autorização
+                <strong>Principais tipos de projetos desenvolvidos:</strong>
+                <br />
+                • Sites institucionais e landing pages responsivas
+                <br />
+                • Sistemas de gestão e dashboards administrativos
+                <br />
+                • E-commerces e plataformas de vendas online
+                <br />
+                • Aplicações web complexas e SaaS
+                <br />
+                • APIs RESTful e integrações de terceiros
+                <br />
+                • Aplicativos mobile com React Native
+                <br />• Sistemas de autenticação e autorização
               </p>
             </div>
           </div>
@@ -406,83 +427,30 @@ export default function Home() {
           <h2 className="text-3xl font-bold">Contato</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Contact Form */}
-          <ContactForm />
-
-          {/* Contact Info */}
-          <div className="space-y-6">
-            <div className="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800">
-              <h3 className="text-xl font-semibold mb-4">
-                Informações de Contato
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                      <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm text-zinc-400">Email</p>
-                    <a
-                      href="mailto:rafaelsfcarvalho@outlook.com"
-                      className="text-cyan-400 hover:underline"
-                    >
-                      rafaelsfcarvalho@outlook.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm text-zinc-400">Telefone</p>
-                    <a
-                      href="whatsapp://send?phone=+5521979674045"
-                      className="text-cyan-400 hover:underline"
-                    >
-                      +55 (21) 97967-4045
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800">
-              <h3 className="text-xl font-semibold mb-4">Redes Sociais</h3>
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-zinc-800 rounded-md hover:bg-zinc-700 transition-colors"
-                >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mx-auto">
+          {/* Informações de Contato */}
+          <div className="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800">
+            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-cyan-400"
+              >
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              Informações de Contato
+            </h3>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -493,19 +461,56 @@ export default function Home() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-cyan-400"
                   >
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
                   </svg>
-                  GitHub
-                </a>
+                </div>
+                <div>
+                  <p className="text-sm text-zinc-400">Email</p>
+                  <a
+                    href="mailto:rafaelsfcarvalho@outlook.com"
+                    className="text-cyan-400 hover:underline"
+                  >
+                    rafaelsfcarvalho@outlook.com
+                  </a>
+                </div>
+              </div>
 
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-zinc-800 rounded-md hover:bg-zinc-700 transition-colors"
-                >
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm text-zinc-400">Telefone</p>
+                  <a
+                    href="whatsapp://send?phone=+5521979674045"
+                    className="text-cyan-400 hover:underline"
+                  >
+                    +55 (21) 97967-4045
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Redes Sociais & Download */}
+          <div className="space-y-6">
+            <div className="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800 h-full flex flex-col justify-between">
+              <div>
+                <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -522,11 +527,59 @@ export default function Home() {
                     <rect x="2" y="9" width="4" height="12"></rect>
                     <circle cx="4" cy="4" r="2"></circle>
                   </svg>
-                  LinkedIn
-                </a>
+                  Redes Sociais
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href="https://github.com/RafaelSFDC"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 bg-zinc-800 rounded-md hover:bg-zinc-700 transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-cyan-400"
+                    >
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    GitHub
+                  </a>
+
+                  <a
+                    href="https://www.linkedin.com/in/rafael-silva-ferreira-de-carvalho"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 bg-zinc-800 rounded-md hover:bg-zinc-700 transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-cyan-400"
+                    >
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect x="2" y="9" width="4" height="12"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                    LinkedIn
+                  </a>
+                </div>
               </div>
 
-              {/* Botão de Download do Currículo */}
               <div className="mt-6 pt-6 border-t border-zinc-700">
                 <h4 className="text-lg font-semibold mb-3 text-cyan-400">
                   Baixar Currículo
