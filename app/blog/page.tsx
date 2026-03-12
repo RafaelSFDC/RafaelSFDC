@@ -7,30 +7,46 @@ import { getAllPosts } from "@/lib/blog";
 import { BlogsList } from "./blogs-list";
 import { Metadata } from "next";
 import { CollectionJsonLd } from "@/components/seo/collection-json-ld";
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Blog RafaelSFDC | Estratégias Digitais, E-commerce e SEO",
+  title: "Blog sobre SEO Técnico, Performance e Estratégia Digital",
   description:
-    "Aprenda estratégias práticas para vender mais e crescer sua presença online: tutoriais de e-commerce, dicas de SEO e marketing digital.",
-  keywords:
-    "blog ecommerce, dicas vendas online, tutoriais loja virtual, estratégias marketing digital, guia ecommerce, seo para loja virtual",
+    "Artigos sobre SEO técnico, desenvolvimento web, performance, segurança e estratégias digitais para crescer com tecnologia.",
+  keywords: [
+    "seo técnico",
+    "performance web",
+    "next.js",
+    "segurança web",
+    "estratégia digital",
+    "blog desenvolvimento web",
+  ],
   alternates: {
-    canonical: "/blog",
+    canonical: `${SITE_URL}/blog`,
   },
   openGraph: {
-    title: "Blog RafaelSFDC | Estratégias Digitais, E-commerce e SEO",
+    title: "Blog RafaelSFDC | SEO Técnico, Performance e Estratégia Digital",
     description:
-      "Aprenda estratégias práticas para vender mais e crescer sua presença online: tutoriais de e-commerce, dicas de SEO e marketing digital.",
-    url: "https://rafaelsfdc.com.br/blog",
-    siteName: "RafaelSFDC",
+      "Artigos sobre SEO técnico, desenvolvimento web, performance, segurança e estratégias digitais para crescer com tecnologia.",
+    url: `${SITE_URL}/blog`,
+    siteName: SITE_NAME,
     locale: "pt_BR",
     type: "website",
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "Blog Rafael SFDC",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog RafaelSFDC | Estratégias Digitais, E-commerce e SEO",
+    title: "Blog RafaelSFDC | SEO Técnico, Performance e Estratégia Digital",
     description:
-      "Aprenda estratégias práticas para vender mais e crescer sua presença online: tutoriais de e-commerce, dicas de SEO e marketing digital.",
+      "Artigos sobre SEO técnico, desenvolvimento web, performance, segurança e estratégias digitais para crescer com tecnologia.",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 
@@ -52,15 +68,15 @@ export default function BlogPage() {
 
   const collectionItems = posts.map((post) => ({
     name: post.title,
-    url: `https://rafaelsfcarvalho.vercel.app/blog/${post.slug}`,
+    url: `${SITE_URL}/blog/${post.slug}`,
   }));
 
   return (
     <>
       <CollectionJsonLd
         name="Blog RafaelSFDC"
-        description="Aprenda estratégias práticas para vender mais: tutoriais de e-commerce, dicas de SEO e marketing digital."
-        url="https://rafaelsfcarvalho.vercel.app/blog"
+        description="Artigos sobre SEO técnico, desenvolvimento web, performance, segurança e estratégia digital."
+        url={`${SITE_URL}/blog`}
         items={collectionItems}
       />
       <div className="container mx-auto px-4 py-16 max-w-6xl">

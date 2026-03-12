@@ -14,6 +14,7 @@ export type Post = {
   ogImage: {
     url: string;
   };
+  coverImageAlt?: string;
   content: string;
   author: {
     name: string;
@@ -32,6 +33,7 @@ export type Post = {
   readingTime?: number;
   seo?: {
     title?: string;
+    description?: string;
     keywords?: string;
     metaDescription?: string;
   };

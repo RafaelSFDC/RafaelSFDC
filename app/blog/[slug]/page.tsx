@@ -26,6 +26,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 import { FAQPageJsonLd } from "@/components/seo/faq-page-json-ld";
 import { formatDate } from "@/lib/utils";
 import { extractFAQFromMarkdown } from "@/lib/extract-faq";
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 
 // Markdown components are now handled globally in @/components/blog/mdx-content
 
@@ -61,8 +62,7 @@ export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const baseUrl =
-    process.env.NEXT_PUBLIC_APP_URL || "https://rafaelsfcarvalho.vercel.app";
+  const baseUrl = SITE_URL;
 
   try {
     const post = getPostBySlug(slug, [
@@ -81,7 +81,11 @@ export async function generateMetadata({
     const postUrl = `${baseUrl}/blog/${slug}`;
 
     const metaDescription =
-      post.excerpt || (post as any).description || post.seo?.metaDescription;
+      post.seo?.description ||
+      post.excerpt ||
+      (post as any).description ||
+      post.seo?.metaDescription;
+    const imageUrl = post.ogImage?.url || post.coverImage || DEFAULT_OG_IMAGE;
 
     return {
       title: post.seo?.title || post.title,
@@ -94,13 +98,13 @@ export async function generateMetadata({
         title: post.title,
         description: metaDescription,
         url: postUrl,
-        siteName: "RafaelSFDC",
+        siteName: SITE_NAME,
         images: [
           {
-            url: post.ogImage?.url || post.coverImage || "/og-default.jpg",
+            url: imageUrl,
             width: 1200,
             height: 630,
-            alt: post.title,
+            alt: post.coverImageAlt || post.title,
           },
         ],
         locale: "pt_BR",
@@ -113,7 +117,7 @@ export async function generateMetadata({
         card: "summary_large_image",
         title: post.title,
         description: metaDescription,
-        images: [post.ogImage?.url || post.coverImage || "/og-default.jpg"],
+        images: [imageUrl],
       },
       robots: {
         index: true,
@@ -142,6 +146,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       "content",
       "ogImage",
       "coverImage",
+      "coverImageAlt",
       "excerpt",
       "category",
       "tags",
@@ -172,8 +177,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     .filter((p) => p.slug !== slug)
     .slice(0, 3);
 
-  const baseUrl =
-    process.env.NEXT_PUBLIC_APP_URL || "https://rafaelsfcarvalho.vercel.app";
+  const baseUrl = SITE_URL;
   const postUrl = `${baseUrl}/blog/${slug}`;
 
   // Breadcrumb Schema
@@ -202,7 +206,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     },
     publisher: {
       "@type": "Organization",
-      name: "RafaelSFDC",
+      name: SITE_NAME,
       logo: {
         "@type": "ImageObject",
         url: `${baseUrl}/logo.svg`,
@@ -286,7 +290,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <figure className="-mx-4 sm:mx-0 mb-12 sm:rounded-2xl overflow-hidden shadow-sm sm:shadow-lg border-y sm:border">
               <img
                 src={post.coverImage}
-                alt={post.title}
+                alt={post.coverImageAlt || post.title}
                 className="w-full h-auto"
               />
             </figure>

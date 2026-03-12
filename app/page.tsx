@@ -43,6 +43,47 @@ import {
 import { TbBrandVscode, TbGitMerge, TbApi } from "react-icons/tb";
 import { MdSecurity } from "react-icons/md";
 import { DiScrum } from "react-icons/di";
+import type { Metadata } from "next";
+import { SITE_NAME, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Desenvolvedor Full-Stack, Performance e SEO Técnico",
+  description:
+    "Rafael desenvolve sites, dashboards, aplicações web e soluções full-stack com foco em performance, segurança e SEO técnico.",
+  alternates: {
+    canonical: SITE_URL,
+  },
+  keywords: [
+    "desenvolvedor full-stack",
+    "next.js",
+    "react",
+    "seo técnico",
+    "desenvolvimento web",
+    "freelancer full-stack",
+  ],
+  openGraph: {
+    title: "Rafael SFDC | Desenvolvedor Full-Stack, Performance e SEO Técnico",
+    description:
+      "Projetos, serviços e experiência em React, Next.js, Laravel, APIs, performance web e SEO técnico.",
+    url: SITE_URL,
+    type: "website",
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "Portfólio Rafael SFDC",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rafael SFDC | Desenvolvedor Full-Stack, Performance e SEO Técnico",
+    description:
+      "Projetos, serviços e experiência em React, Next.js, Laravel, APIs, performance web e SEO técnico.",
+    images: [DEFAULT_OG_IMAGE],
+  },
+};
 
 export default function Home() {
   return (

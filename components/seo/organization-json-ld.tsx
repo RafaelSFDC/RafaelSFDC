@@ -1,13 +1,14 @@
 import { WithContext, Organization } from "schema-dts";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export function OrganizationJsonLd() {
   const jsonLd: WithContext<Organization> = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "RafaelSFDC",
+    name: SITE_NAME,
     alternateName: "Rafael Silva Ferreira de Carvalho",
-    url: "https://rafaelsfcarvalho.vercel.app",
-    logo: "https://rafaelsfcarvalho.vercel.app/logo.svg",
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.svg`,
     description:
       "Consultoria e estratégias para e-commerce e marketing digital.",
     disambiguatingDescription:

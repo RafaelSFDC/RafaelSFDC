@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { cn } from "@/lib/utils";
 
 interface LottieAnimationProps {
@@ -15,8 +14,6 @@ interface LottieAnimationProps {
 
 export function LottieAnimation({
   src,
-  loop = true,
-  autoplay = true,
   className,
   width,
   height,
@@ -36,12 +33,17 @@ export function LottieAnimation({
         }}
         className="relative"
       >
-        <DotLottieReact
-          src={src}
-          loop={loop}
-          autoplay={autoplay}
-          className="w-full h-full"
-        />
+        <div className="flex min-h-40 items-center justify-center rounded-lg border border-dashed border-border/60 bg-background/40 p-6 text-center text-sm text-muted-foreground">
+          Animação indisponível no momento.
+          <a
+            href={src}
+            target="_blank"
+            rel="noreferrer"
+            className="ml-1 text-primary underline underline-offset-4"
+          >
+            Abrir arquivo
+          </a>
+        </div>
       </div>
     </div>
   );
