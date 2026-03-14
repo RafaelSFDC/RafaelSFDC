@@ -123,14 +123,6 @@ const rafael = {
 
 ---
 
-## 💼 Experiência
-
-**Freelancer — Alucamp** `Fev 2024 – Mar 2024`
-
-Desenvolvimento Full-Stack de uma dashboard completa de CRM: autenticação com múltiplos níveis de autorização, gráficos dinâmicos para análise de dados, design responsivo e fluxo de produto definido do zero.
-
----
-
 ## 📊 GitHub Stats
 
 <div align="center">
