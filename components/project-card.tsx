@@ -8,6 +8,7 @@ import Image from "next/image"
 import type { ProjectDetails } from "@/types/project"
 import { useState } from "react"
 import { ProjectDetailsModal } from "@/components/project-details-modal"
+import { cn } from "@/lib/utils"
 
 interface ProjectCardProps {
   project: ProjectDetails
@@ -22,85 +23,111 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <>
-      <Card className="bg-zinc-900 border-zinc-800 overflow-hidden group hover:border-cyan-500/30 transition-all duration-300">
-        <div className="relative h-[250px] lg:h-[400px] overflow-hidden">
+      <Card className="project-card group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-800/50 bg-zinc-900/40 backdrop-blur-sm transition-all duration-350">
+        {/* Project Image Wrapper */}
+        <div className="relative h-[240px] w-full overflow-hidden lg:h-[280px]">
           {isPrivate && (
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/30 z-10 flex items-center justify-center">
-              <Lock className="h-12 w-12 text-cyan-400/50" />
+            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/60 backdrop-blur-[2px]">
+              <Lock className="h-10 w-10 text-cyan-400/60 transition-transform duration-300 group-hover:scale-110" />
+              <span className="mt-2 text-xs font-medium uppercase tracking-widest text-zinc-400">Acesso Restrito</span>
             </div>
           )}
+          
+          <div className="absolute inset-0 z-10 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-60" />
+          
           <Image
             src={project.image || "/placeholder.svg"}
             alt={`${project.title} Project`}
             width={600}
             height={400}
-            className={`object-cover w-full h-full transition-transform duration-500 group-hover:scale-105 ${isPrivate ? "opacity-50" : ""}`}
+            className={cn(
+              "project-image h-full w-full object-cover grayscale-[0.2] transition-all duration-700 group-hover:grayscale-0",
+              isPrivate && "opacity-40"
+            )}
           />
+          
+          {/* Hover Overlay Gradient */}
+          <div className="absolute inset-0 z-10 bg-cyan-500/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         </div>
-        <CardHeader>
-          <div className="flex items-center gap-2">
-            <CardTitle className="text-xl text-white">{project.title}</CardTitle>
-            {isPrivate && <Badge className="bg-zinc-700 text-zinc-300">Privado</Badge>}
-            {isDemoOnly && <Badge className="bg-amber-600/20 text-amber-400 border-amber-500/30">Demo</Badge>}
+
+        <CardHeader className="relative z-20 space-y-1.5 pt-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <CardTitle className="font-display text-xl font-bold tracking-tight text-zinc-100 md:text-2xl">{project.title}</CardTitle>
+            </div>
+            <div className="flex gap-1.5">
+              {isPrivate && <Badge className="rounded-full bg-zinc-800 text-[10px] uppercase tracking-wider text-zinc-400 border-none">Privado</Badge>}
+              {isDemoOnly && <Badge className="rounded-full bg-amber-500/10 text-[10px] uppercase tracking-wider text-amber-500 border border-amber-500/20">Demo</Badge>}
+            </div>
           </div>
-          <CardDescription className="text-zinc-400">{project.description}</CardDescription>
+          <CardDescription className="line-clamp-2 text-sm leading-relaxed text-zinc-400">
+            {project.description}
+          </CardDescription>
         </CardHeader>
-        <CardContent>
-          <div className="mb-4">
-            <p className="text-sm text-zinc-400 mb-2">Tecnologias Usadas</p>
-            <div className="flex flex-wrap gap-2">
-              {project.technologies.map((tech) => (
-                <Badge key={tech.name} variant="outline" className="bg-transparent border-cyan-500 text-cyan-400">
+
+        <CardContent className="relative z-20 flex-grow">
+          <div className="space-y-3">
+            <div className="flex flex-wrap gap-1.5">
+              {project.technologies.slice(0, 4).map((tech) => (
+                <Badge 
+                  key={tech.name} 
+                  variant="outline" 
+                  className="rounded-full bg-cyan-500/5 px-2.5 py-0.5 text-[10px] font-medium text-cyan-400/80 border-cyan-500/20"
+                >
                   {tech.name}
                 </Badge>
               ))}
+              {project.technologies.length > 4 && (
+                <Badge variant="outline" className="rounded-full bg-zinc-800/50 px-2.5 py-0.5 text-[10px] font-medium text-zinc-500 border-zinc-700">
+                  +{project.technologies.length - 4}
+                </Badge>
+              )}
             </div>
           </div>
         </CardContent>
-        <CardFooter className="flex gap-2 flex-wrap">
+
+        <CardFooter className="relative z-20 flex gap-2 pt-2 border-t border-zinc-800/50 mt-auto bg-zinc-950/20">
           <Button
-            variant="outline"
-            className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20 hover:bg-cyan-500/20"
+            variant="ghost"
+            size="sm"
+            className="h-9 flex-1 rounded-full text-xs font-medium text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors"
             onClick={() => setShowDetails(true)}
           >
-            <Info className="mr-2 h-4 w-4" /> Detalhes
+            <Info className="mr-1.5 h-3.5 w-3.5" /> Detalhes
           </Button>
 
           {isPrivate ? (
-            <Button
-              variant="outline"
-              className="bg-zinc-800 text-zinc-400 border-zinc-700 hover:bg-zinc-700 cursor-not-allowed opacity-70"
-              disabled
-            >
-              <Lock className="mr-2 h-4 w-4" /> Acesso Restrito
-            </Button>
+            <div className="flex h-9 flex-1 items-center justify-center rounded-full bg-zinc-800/40 text-[10px] font-medium uppercase tracking-wider text-zinc-500">
+              <Lock className="mr-1.5 h-3 w-3" /> Privado
+            </div>
           ) : (
-            <>
+            <div className="flex flex-1 gap-2">
               {project.demoUrl && (
                 <Button
                   variant="outline"
-                  className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20 hover:bg-cyan-500/20"
+                  size="sm"
+                  className="h-9 flex-1 rounded-full border-cyan-500/20 bg-cyan-500/5 text-xs font-semibold text-cyan-400 transition-all hover:bg-cyan-500 hover:text-zinc-950 hover:border-cyan-500"
                   asChild
                 >
                   <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="mr-2 h-4 w-4" /> Ver Online
+                    <ExternalLink className="mr-1.5 h-3.5 w-3.5" /> Online
                   </a>
                 </Button>
               )}
 
-              {/* Só mostra o código fonte se for público (não demo-only) */}
               {project.codeUrl && isPublic && (
                 <Button
-                  variant="outline"
-                  className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20 hover:bg-cyan-500/20"
+                  variant="ghost"
+                  size="sm"
+                  className="h-9 flex-1 rounded-full text-xs font-medium text-zinc-400 hover:bg-zinc-800 hover:text-white"
                   asChild
                 >
                   <a href={project.codeUrl} target="_blank" rel="noopener noreferrer">
-                    <Code className="mr-2 h-4 w-4" /> Código Fonte
+                    <Code className="mr-1.5 h-3.5 w-3.5" /> Código
                   </a>
                 </Button>
               )}
-            </>
+            </div>
           )}
         </CardFooter>
       </Card>

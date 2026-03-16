@@ -1,14 +1,26 @@
 import type React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Syne, DM_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { OrganizationJsonLd } from "@/components/seo/organization-json-ld";
 import { WebsiteJsonLd } from "@/components/seo/website-json-ld";
 import { SITE_NAME, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/site";
 
-const inter = Inter({ subsets: ["latin"] });
+const syne = Syne({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-body",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -65,7 +77,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${syne.variable} ${dmSans.variable}`}>
         <WebsiteJsonLd />
         <OrganizationJsonLd />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>

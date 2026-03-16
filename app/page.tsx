@@ -1,9 +1,11 @@
-import { ProjectCard } from "@/components/project-card";
-import { projects } from "@/data/projects";
-import Hero5 from "@/components/hero";
-import HeroHeader from "@/components/header";
-import ContactForm from "@/components/contact-form";
-import DownloadResume from "@/components/download-resume";
+"use client"
+
+import { useEffect, useRef } from "react"
+import { ProjectCard } from "@/components/project-card"
+import { projects } from "@/data/projects"
+import Hero5 from "@/components/hero"
+import HeroHeader from "@/components/header"
+import DownloadResume from "@/components/download-resume"
 import {
   FaHtml5,
   FaCss3Alt,
@@ -23,7 +25,7 @@ import {
   FaFigma,
   FaDocker,
   FaMobile,
-} from "react-icons/fa";
+} from "react-icons/fa"
 import {
   SiTypescript,
   SiTailwindcss,
@@ -39,558 +41,280 @@ import {
   SiFirebase,
   SiRedis,
   SiTestinglibrary,
-} from "react-icons/si";
-import { TbBrandVscode, TbGitMerge, TbApi } from "react-icons/tb";
-import { MdSecurity } from "react-icons/md";
-import { DiScrum } from "react-icons/di";
-import type { Metadata } from "next";
-import { SITE_NAME, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/site";
-
-export const metadata: Metadata = {
-  title: "Desenvolvedor Full-Stack, Performance e SEO Técnico",
-  description:
-    "Rafael desenvolve sites, dashboards, aplicações web e soluções full-stack com foco em performance, segurança e SEO técnico.",
-  alternates: {
-    canonical: SITE_URL,
-  },
-  keywords: [
-    "desenvolvedor full-stack",
-    "next.js",
-    "react",
-    "seo técnico",
-    "desenvolvimento web",
-    "freelancer full-stack",
-  ],
-  openGraph: {
-    title: "Rafael SFDC | Desenvolvedor Full-Stack, Performance e SEO Técnico",
-    description:
-      "Projetos, serviços e experiência em React, Next.js, Laravel, APIs, performance web e SEO técnico.",
-    url: SITE_URL,
-    type: "website",
-    images: [
-      {
-        url: DEFAULT_OG_IMAGE,
-        width: 1200,
-        height: 630,
-        alt: "Portfólio Rafael SFDC",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Rafael SFDC | Desenvolvedor Full-Stack, Performance e SEO Técnico",
-    description:
-      "Projetos, serviços e experiência em React, Next.js, Laravel, APIs, performance web e SEO técnico.",
-    images: [DEFAULT_OG_IMAGE],
-  },
-};
+} from "react-icons/si"
+import { TbBrandVscode, TbGitMerge, TbApi } from "react-icons/tb"
+import { MdSecurity, MdMailOutline, MdPhoneInTalk } from "react-icons/md"
+import { DiScrum } from "react-icons/di"
+import { cn } from "@/lib/utils"
 
 export default function Home() {
-  return (
-    <div className="min-h-screen bg-black text-white custom-scrollbar">
-      {/* Header */}
-      <HeroHeader />
-      <Hero5 />
-      {/* Hero Section */}
-      {/* <section className="container mx-auto py-20 px-4 relative">
-        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=800&width=800')] bg-no-repeat bg-right opacity-20"></div>
-        <div className="relative z-10">
-          <Button
-            variant="outline"
-            className="bg-cyan-500 text-white border-none hover:bg-cyan-600 mb-6"
-          >
-            Bem vindo ao meu Portfólio
-          </Button>
-          <h1 className="text-5xl font-bold mb-4">Me chamo Rafael</h1>
-          <h2 className="text-3xl font-medium">Sou Desenvolvedor Full-Stack</h2>
-        </div>
-      </section> */}
+  const revealRefs = useRef<(HTMLElement | null)[]>([])
 
-      {/* Projects Section */}
-      <section id="projetos" className="container mx-auto py-16 px-4">
-        <div className="flex items-center gap-3 mb-10">
-          <div className="text-cyan-400">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed")
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    revealRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref)
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
+  const addToRefs = (el: HTMLElement | null) => {
+    if (el && !revealRefs.current.includes(el)) {
+      revealRefs.current.push(el)
+    }
+  }
+
+  const SectionHeading = ({ children, icon: Icon, id }: { children: string, icon: any, id?: string }) => (
+    <div className="section-heading reveal" ref={addToRefs}>
+      <div className="flex items-center gap-3">
+        <div className="bg-cyan-500/10 p-2.5 rounded-xl border border-cyan-500/20 text-cyan-400">
+          <Icon size={24} />
+        </div>
+        <h2 className="font-display text-3xl font-bold tracking-tight text-white md:text-4xl">{children}</h2>
+      </div>
+      <div className="section-heading-line flex-grow ml-4 opacity-50" />
+    </div>
+  )
+
+  return (
+    <div className="min-h-screen bg-black text-white custom-scrollbar selection:bg-cyan-500/30">
+      <HeroHeader />
+      
+      <main className="relative z-10">
+        <Hero5 />
+
+        {/* Projects Section */}
+        <section id="projetos" className="container mx-auto py-24 px-4">
+          <SectionHeading icon={() => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
               <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
             </svg>
-          </div>
-          <h2 className="text-3xl font-bold">Projetos</h2>
-        </div>
+          )}>
+            Projetos Selecionados
+          </SectionHeading>
 
-        <div className="flex justify-center">
-          <div className="max-w-2xl w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 reveal reveal-delay-2" ref={addToRefs}>
             {projects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Skills Section */}
-      <section id="habilidades" className="container mx-auto py-16 px-4">
-        <div className="flex items-center gap-3 mb-10">
-          <div className="text-cyan-400">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
+        {/* Skills Section */}
+        <section id="habilidades" className="container mx-auto py-24 px-4 bg-gradient-to-b from-transparent via-zinc-900/10 to-transparent">
+          <SectionHeading icon={() => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 2v6.5l5-3 5 3V2"></path>
               <path d="M2 22V2"></path>
               <path d="M2 17h20"></path>
               <path d="M2 12h20"></path>
               <path d="M2 7h20"></path>
             </svg>
-          </div>
-          <h2 className="text-3xl font-bold">Habilidades</h2>
-        </div>
+          )}>
+            Habilidades Técnicas
+          </SectionHeading>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Frontend */}
-          <div className="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800">
-            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-cyan-400"
-              >
-                <path d="M2 12h10"></path>
-                <path d="M9 4v16"></path>
-                <path d="M14 9l3 3-3 3"></path>
-                <path d="M14 4v4"></path>
-                <path d="M14 16v4"></path>
-              </svg>
-              Frontend
-            </h3>
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                { name: "HTML", icon: <FaHtml5 size={16} /> },
-                { name: "CSS", icon: <FaCss3Alt size={16} /> },
-                { name: "JavaScript", icon: <FaJs size={16} /> },
-                { name: "TypeScript", icon: <SiTypescript size={16} /> },
-                { name: "React", icon: <FaReact size={16} /> },
-                { name: "React Native", icon: <FaMobile size={16} /> },
-                { name: "Vue.js", icon: <FaVuejs size={16} /> },
-                { name: "Next.js", icon: <SiNextdotjs size={16} /> },
-                { name: "Tailwind CSS", icon: <SiTailwindcss size={16} /> },
-                { name: "Prisma", icon: <SiPrisma size={16} /> },
-                {
-                  name: "Styled Components",
-                  icon: <SiStyledcomponents size={16} />,
-                },
-              ].map((skill) => (
-                <div
-                  key={skill.name}
-                  className="flex items-center gap-2 text-zinc-300"
-                >
-                  <div className="w-8 h-8 rounded-md bg-zinc-800 flex items-center justify-center text-cyan-400">
-                    {skill.icon}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Frontend */}
+            <div className="glass-card p-8 rounded-2xl reveal reveal-delay-1" ref={addToRefs}>
+              <h3 className="font-display text-xl font-bold mb-6 flex items-center gap-2 text-zinc-100">
+                <span className="h-8 w-1 bg-cyan-500 rounded-full mr-1" />
+                Frontend
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { name: "HTML", icon: <FaHtml5 size={16} /> },
+                  { name: "CSS", icon: <FaCss3Alt size={16} /> },
+                  { name: "JavaScript", icon: <FaJs size={16} /> },
+                  { name: "TypeScript", icon: <SiTypescript size={16} /> },
+                  { name: "React", icon: <FaReact size={16} /> },
+                  { name: "React Native", icon: <FaMobile size={16} /> },
+                  { name: "Next.js", icon: <SiNextdotjs size={16} /> },
+                  { name: "Tailwind CSS", icon: <SiTailwindcss size={16} /> },
+                  { name: "Prisma", icon: <SiPrisma size={16} /> },
+                ].map((skill) => (
+                  <div key={skill.name} className="flex items-center gap-2.5 text-zinc-400 group transition-all duration-300">
+                    <div className="w-9 h-9 rounded-lg bg-zinc-900/80 border border-zinc-800 flex items-center justify-center text-cyan-400/70 group-hover:text-cyan-400 group-hover:border-cyan-500/30 transition-all">
+                      {skill.icon}
+                    </div>
+                    <span className="text-sm font-medium group-hover:text-zinc-200 transition-colors">{skill.name}</span>
                   </div>
-                  {skill.name}
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+
+            {/* Backend */}
+            <div className="glass-card p-8 rounded-2xl reveal reveal-delay-2" ref={addToRefs}>
+              <h3 className="font-display text-xl font-bold mb-6 flex items-center gap-2 text-zinc-100">
+                <span className="h-8 w-1 bg-emerald-500 rounded-full mr-1" />
+                Backend
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { name: "Node.js", icon: <FaNodeJs size={16} /> },
+                  { name: "Express", icon: <SiExpress size={16} /> },
+                  { name: "PHP", icon: <FaPhp size={16} /> },
+                  { name: "Laravel", icon: <FaLaravel size={16} /> },
+                  { name: "MongoDB", icon: <SiMongodb size={16} /> },
+                  { name: "PostgreSQL", icon: <SiPostgresql size={16} /> },
+                  { name: "Firebase", icon: <SiFirebase size={16} /> },
+                  { name: "Redis", icon: <SiRedis size={16} /> },
+                  { name: "REST API", icon: <TbApi size={16} /> },
+                ].map((skill) => (
+                  <div key={skill.name} className="flex items-center gap-2.5 text-zinc-400 group transition-all duration-300">
+                    <div className="w-9 h-9 rounded-lg bg-zinc-900/80 border border-zinc-800 flex items-center justify-center text-emerald-400/70 group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-all">
+                      {skill.icon}
+                    </div>
+                    <span className="text-sm font-medium group-hover:text-zinc-200 transition-colors">{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Ferramentas */}
+            <div className="glass-card p-8 rounded-2xl reveal reveal-delay-3" ref={addToRefs}>
+              <h3 className="font-display text-xl font-bold mb-6 flex items-center gap-2 text-zinc-100">
+                <span className="h-8 w-1 bg-purple-500 rounded-full mr-1" />
+                Workflow
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { name: "Git", icon: <FaGitAlt size={16} /> },
+                  { name: "GitHub", icon: <FaGithub size={16} /> },
+                  { name: "Docker", icon: <FaDocker size={16} /> },
+                  { name: "CI/CD", icon: <TbGitMerge size={16} /> },
+                  { name: "VS Code", icon: <TbBrandVscode size={16} /> },
+                  { name: "Figma", icon: <FaFigma size={16} /> },
+                  { name: "Auth", icon: <MdSecurity size={16} /> },
+                  { name: "Scrum", icon: <DiScrum size={16} /> },
+                ].map((skill) => (
+                  <div key={skill.name} className="flex items-center gap-2.5 text-zinc-400 group transition-all duration-300">
+                    <div className="w-9 h-9 rounded-lg bg-zinc-900/80 border border-zinc-800 flex items-center justify-center text-purple-400/70 group-hover:text-purple-400 group-hover:border-purple-500/30 transition-all">
+                      {skill.icon}
+                    </div>
+                    <span className="text-sm font-medium group-hover:text-zinc-200 transition-colors">{skill.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
+        </section>
 
-          {/* Backend */}
-          <div className="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800">
-            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-cyan-400"
-              >
-                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                <line x1="6" y1="18" x2="6.01" y2="18"></line>
-              </svg>
-              Backend
-            </h3>
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                { name: "Node.js", icon: <FaNodeJs size={16} /> },
-                { name: "Express", icon: <SiExpress size={16} /> },
-                { name: "PHP", icon: <FaPhp size={16} /> },
-                { name: "Laravel", icon: <FaLaravel size={16} /> },
-                { name: "MongoDB", icon: <SiMongodb size={16} /> },
-                { name: "PostgreSQL", icon: <SiPostgresql size={16} /> },
-                { name: "Firebase", icon: <SiFirebase size={16} /> },
-                { name: "Redis", icon: <SiRedis size={16} /> },
-                { name: "REST API", icon: <TbApi size={16} /> },
-                { name: "GraphQL", icon: <SiGraphql size={16} /> },
-                { name: "SQL & NoSQL", icon: <FaDatabase size={16} /> },
-              ].map((skill) => (
-                <div
-                  key={skill.name}
-                  className="flex items-center gap-2 text-zinc-300"
-                >
-                  <div className="w-8 h-8 rounded-md bg-zinc-800 flex items-center justify-center text-cyan-400">
-                    {skill.icon}
-                  </div>
-                  {skill.name}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Ferramentas */}
-          <div className="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800">
-            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-cyan-400"
-              >
-                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-              </svg>
-              Ferramentas & Outros
-            </h3>
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                { name: "Git", icon: <FaGitAlt size={16} /> },
-                { name: "GitHub", icon: <FaGithub size={16} /> },
-                { name: "VS Code", icon: <TbBrandVscode size={16} /> },
-                { name: "Figma", icon: <FaFigma size={16} /> },
-                { name: "Webpack", icon: <SiWebpack size={16} /> },
-                { name: "Jest", icon: <SiJest size={16} /> },
-                { name: "Docker", icon: <FaDocker size={16} /> },
-                { name: "CI/CD", icon: <TbGitMerge size={16} /> },
-                { name: "Auth (OAuth/JWT)", icon: <MdSecurity size={16} /> },
-                { name: "Scrum & Agile", icon: <DiScrum size={16} /> },
-              ].map((skill) => (
-                <div
-                  key={skill.name}
-                  className="flex items-center gap-2 text-zinc-300"
-                >
-                  <div className="w-8 h-8 rounded-md bg-zinc-800 flex items-center justify-center text-cyan-400">
-                    {skill.icon}
-                  </div>
-                  {skill.name}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="sobre" className="container mx-auto py-16 px-4">
-        <div className="flex items-center gap-3 mb-10">
-          <div className="text-cyan-400">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
+        {/* About Section */}
+        <section id="sobre" className="container mx-auto py-24 px-4 overflow-hidden">
+          <SectionHeading icon={() => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="12" y1="16" x2="12" y2="12"></line>
               <line x1="12" y1="8" x2="12.01" y2="8"></line>
             </svg>
-          </div>
-          <h2 className="text-3xl font-bold">Sobre</h2>
-        </div>
+          )}>
+            Sobre Rafael
+          </SectionHeading>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="space-y-4">
-            <div className="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800">
-              <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-cyan-400"
-                >
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-                Quem sou eu
-              </h3>
-              <p className="text-zinc-300 mb-4">
-                Meu nome é Rafael e sou Desenvolvedor Full-Stack com 6 anos de
-                experiência como freelancer. Comecei a estudar programação
-                porque sempre fui fascinado por como as tecnologias funcionavam
-                por trás das interfaces. Essa curiosidade me levou a mergulhar
-                no mundo do desenvolvimento.
-              </p>
-              <p className="text-zinc-300">
-                Minha jornada começou pelo Front-End, onde descobri minha paixão
-                por criar interfaces intuitivas e responsivas. Com o tempo,
-                expandi meus conhecimentos para o Back-End, tornando-me um
-                desenvolvedor Full-Stack capaz de construir aplicações completas
-                e soluções digitais robustas.
-              </p>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <div className="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800">
-              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-cyan-400"
-                >
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                </svg>
-                Interesses
-              </h3>
-              <p className="text-zinc-300">
-                Além do desenvolvimento web, tenho interesse em UI/UX Design,
-                Inteligência Artificial e novas tecnologias. Gosto de acompanhar
-                as tendências do mercado e estou sempre em busca de aprender
-                algo novo para aprimorar minhas habilidades e entregar soluções
-                cada vez melhores.
-              </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start reveal reveal-delay-2" ref={addToRefs}>
+            <div className="space-y-6">
+              <div className="glass-card p-8 rounded-2xl">
+                <h3 className="font-display text-2xl font-bold mb-5 flex items-center gap-2 text-zinc-100">
+                  Quem sou eu
+                </h3>
+                <div className="space-y-4 text-zinc-400 leading-relaxed text-lg">
+                  <p>
+                    Meu nome é <span className="text-cyan-400 font-medium">Rafael</span> e sou Desenvolvedor Full-Stack com <span className="text-zinc-200 font-medium">6 anos de experiência</span> como freelancer.
+                  </p>
+                  <p>
+                    Minha jornada começou pelo Front-End, onde descobri minha paixão por criar interfaces intuitivas e responsivas. Com o tempo, expandi para o Back-End, tornando-me capaz de construir aplicações completas e soluções robustas que realmente resolvem problemas.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <div className="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800">
-              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-cyan-400"
-                >
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-                Experiência Profissional
-              </h3>
-              <p className="text-zinc-300 mb-4">
-                Com 6 anos de experiência como desenvolvedor freelancer,
-                colaboro com diversos clientes em projetos variados e
-                desafiadores. Minha expertise abrange o desenvolvimento completo
-                de soluções digitais.
-              </p>
-              <p className="text-zinc-300">
-                <strong>Principais tipos de projetos desenvolvidos:</strong>
-                <br />
-                • Sites institucionais e landing pages responsivas
-                <br />
-                • Sistemas de gestão e dashboards administrativos
-                <br />
-                • E-commerces e plataformas de vendas online
-                <br />
-                • Aplicações web complexas e SaaS
-                <br />
-                • APIs RESTful e integrações de terceiros
-                <br />
-                • Aplicativos mobile com React Native
-                <br />• Sistemas de autenticação e autorização
-              </p>
+            <div className="space-y-6">
+              <div className="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full -mr-16 -mt-16 blur-3xl transition-all duration-500 group-hover:bg-cyan-500/10" />
+                <h3 className="font-display text-xl font-bold mb-4 flex items-center gap-2 text-zinc-100">
+                  Interesses & Experiência
+                </h3>
+                <div className="space-y-4 text-zinc-400 text-sm">
+                  <p>
+                    Além do código, sou fascinado por <span className="text-cyan-400">UI/UX Design</span> e <span className="text-emerald-400">Inteligência Artificial</span>. Acredito que a tecnologia deve ser poderosa, mas simples de usar.
+                  </p>
+                  <div className="pt-4 border-t border-zinc-800">
+                    <p className="font-medium text-zinc-200 mb-2">Expertise em:</p>
+                    <ul className="grid grid-cols-1 gap-2 opacity-80">
+                      <li>• Dashboards & Sistemas SaaS complexos</li>
+                      <li>• E-commerces & Lojas Online de alta conversão</li>
+                      <li>• APIs RESTful & Integrações de terceiros</li>
+                      <li>• Performance Web & SEO Técnico</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contact Section */}
-      <section id="contato" className="container mx-auto py-16 px-4">
-        <div className="flex items-center gap-3 mb-10">
-          <div className="text-cyan-400">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
+        {/* Contact Section */}
+        <section id="contato" className="container mx-auto py-24 px-4">
+          <SectionHeading icon={() => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
             </svg>
-          </div>
-          <h2 className="text-3xl font-bold">Contato</h2>
-        </div>
+          )}>
+            Vamos Conversar?
+          </SectionHeading>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mx-auto">
-          {/* Informações de Contato */}
-          <div className="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800">
-            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-cyan-400"
-              >
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              Informações de Contato
-            </h3>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm text-zinc-400">Email</p>
-                  <a
-                    href="mailto:rafaelsfcarvalho@outlook.com"
-                    className="text-cyan-400 hover:underline"
-                  >
-                    rafaelsfcarvalho@outlook.com
-                  </a>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 reveal reveal-delay-2" ref={addToRefs}>
+            {/* Informações de Contato */}
+            <div className="glass-card p-8 rounded-2xl border-l-4 border-l-cyan-500">
+              <h3 className="font-display text-xl font-bold mb-6 text-zinc-100 italic">Get in touch</h3>
+              <div className="space-y-6">
+                <a href="mailto:rafaelsfcarvalho@outlook.com" className="flex items-center gap-4 group">
+                  <div className="w-12 h-12 rounded-xl bg-zinc-900 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500 group-hover:text-zinc-950 transition-all duration-300">
+                    <MdMailOutline size={24} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-zinc-500 uppercase font-bold tracking-widest">Email</p>
+                    <p className="text-zinc-200 font-medium transition-colors group-hover:text-cyan-400">rafaelsfcarvalho@outlook.com</p>
+                  </div>
+                </a>
 
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm text-zinc-400">Telefone</p>
-                  <a
-                    href="whatsapp://send?phone=+5521979674045"
-                    className="text-cyan-400 hover:underline"
-                  >
-                    +55 (21) 97967-4045
-                  </a>
-                </div>
+                <a href="whatsapp://send?phone=+5521979674045" className="flex items-center gap-4 group">
+                  <div className="w-12 h-12 rounded-xl bg-zinc-900 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-zinc-950 transition-all duration-300">
+                    <MdPhoneInTalk size={24} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-zinc-500 uppercase font-bold tracking-widest">Telefone</p>
+                    <p className="text-zinc-200 font-medium transition-colors group-hover:text-emerald-400">+55 (21) 97967-4045</p>
+                  </div>
+                </a>
               </div>
             </div>
-          </div>
 
-          {/* Redes Sociais & Download */}
-          <div className="space-y-6">
-            <div className="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800 h-full flex flex-col justify-between">
-              <div>
-                <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-cyan-400"
-                  >
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect x="2" y="9" width="4" height="12"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
-                  </svg>
-                  Redes Sociais
-                </h3>
-                <div className="flex flex-wrap gap-3">
+            {/* Social Links */}
+            <div className="glass-card p-8 rounded-2xl bg-zinc-950/40">
+              <h3 className="font-display text-xl font-bold mb-6 text-zinc-100 italic">Find me on</h3>
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-wrap gap-4">
                   <a
                     href="https://github.com/RafaelSFDC"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-zinc-800 rounded-md hover:bg-zinc-700 transition-colors"
+                    className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-zinc-900 hover:bg-zinc-800 rounded-xl border border-zinc-800 text-zinc-300 font-medium transition-all hover:scale-[1.02] active:scale-[0.98]"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-cyan-400"
-                    >
-                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                    </svg>
+                    <FaGithub size={20} className="text-zinc-400" />
                     GitHub
                   </a>
 
@@ -598,39 +322,38 @@ export default function Home() {
                     href="https://www.linkedin.com/in/rafael-silva-ferreira-de-carvalho"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-zinc-800 rounded-md hover:bg-zinc-700 transition-colors"
+                    className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-zinc-900 hover:bg-zinc-800 rounded-xl border border-zinc-800 text-zinc-300 font-medium transition-all hover:scale-[1.02] active:scale-[0.98]"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-cyan-400"
-                    >
-                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                      <rect x="2" y="9" width="4" height="12"></rect>
-                      <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
+                    <FaLinkedinIn size={20} className="text-[#0A66C2]" />
                     LinkedIn
                   </a>
                 </div>
-              </div>
-
-              <div className="mt-6 pt-6 border-t border-zinc-700">
-                <h4 className="text-lg font-semibold mb-3 text-cyan-400">
-                  Baixar Currículo
-                </h4>
-                <DownloadResume />
+                
+                <div className="pt-4 mt-2 border-t border-zinc-800/50">
+                  <DownloadResume />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
     </div>
-  );
+  )
+}
+
+function FaLinkedinIn({ size, className }: { size: number, className: string }) {
+  return (
+    <svg 
+      stroke="currentColor" 
+      fill="currentColor" 
+      strokeWidth="0" 
+      viewBox="0 0 448 512" 
+      className={className} 
+      height={size} 
+      width={size} 
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
+    </svg>
+  )
 }
