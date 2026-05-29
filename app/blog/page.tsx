@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/blog`,
   },
   openGraph: {
-    title: "Blog RafaelSFDC | SEO Técnico, Performance e Estratégia Digital",
+    title: "Blog Rafael SFDC | SEO Técnico, Performance e Estratégia Digital",
     description:
       "Artigos sobre SEO técnico, desenvolvimento web, performance, segurança e estratégias digitais para crescer com tecnologia.",
     url: `${SITE_URL}/blog`,
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog RafaelSFDC | SEO Técnico, Performance e Estratégia Digital",
+    title: "Blog Rafael SFDC | SEO Técnico, Performance e Estratégia Digital",
     description:
       "Artigos sobre SEO técnico, desenvolvimento web, performance, segurança e estratégias digitais para crescer com tecnologia.",
     images: [DEFAULT_OG_IMAGE],
@@ -74,7 +74,7 @@ export default function BlogPage() {
   return (
     <>
       <CollectionJsonLd
-        name="Blog RafaelSFDC"
+        name="Blog Rafael SFDC"
         description="Artigos sobre SEO técnico, desenvolvimento web, performance, segurança e estratégia digital."
         url={`${SITE_URL}/blog`}
         items={collectionItems}

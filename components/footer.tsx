@@ -1,7 +1,29 @@
 import Link from "next/link";
-import { FaGithub, FaLinkedinIn, FaYoutube, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
-export default function Footer() {
+const homeLinks = [
+  { name: "Sobre", href: "#sobre" },
+  { name: "Habilidades", href: "#habilidades" },
+  { name: "Projetos", href: "#projetos" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contato", href: "#contato" },
+];
+
+const blogLinks = [
+  { name: "Home", href: "/" },
+  { name: "Projetos", href: "/#projetos" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contato", href: "/#contato" },
+];
+
+interface FooterProps {
+  navigationMode?: "home" | "blog";
+}
+
+export default function Footer({ navigationMode = "home" }: FooterProps) {
+  const navigationLinks = navigationMode === "blog" ? blogLinks : homeLinks;
+  const homeHref = "/";
+
   return (
     <footer className="relative border-t border-zinc-800/50 bg-black pt-16 pb-8 overflow-hidden">
       {/* Decorative gradient blur */}
@@ -11,7 +33,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Brand/Bio */}
           <div className="space-y-4">
-            <Link href="#" className="font-display text-2xl font-bold tracking-tight">
+            <Link href={homeHref} className="font-display text-2xl font-bold tracking-tight">
               <span className="gradient-text">Rafael</span>
               <span className="text-zinc-500">.</span>
             </Link>
@@ -25,12 +47,7 @@ export default function Footer() {
           <div>
             <h4 className="font-display text-sm font-bold uppercase tracking-widest text-zinc-100 mb-6">Navegação</h4>
             <ul className="space-y-3">
-              {[
-                { name: "Sobre", href: "#sobre" },
-                { name: "Habilidades", href: "#habilidades" },
-                { name: "Projetos", href: "#projetos" },
-                { name: "Contato", href: "#contato" },
-              ].map((link) => (
+              {navigationLinks.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="text-zinc-500 text-sm hover:text-cyan-400 transition-colors">
                     {link.name}
@@ -48,6 +65,7 @@ export default function Footer() {
                 href="https://github.com/RafaelSFDC" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                aria-label="GitHub de Rafael SFDC"
                 className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 transition-all"
               >
                 <FaGithub size={18} />
@@ -56,6 +74,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/in/rafael-silva-ferreira-de-carvalho" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                aria-label="LinkedIn de Rafael SFDC"
                 className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-[#0A66C2] hover:border-[#0A66C2]/30 transition-all"
               >
                 <FaLinkedinIn size={18} />
@@ -73,10 +92,9 @@ export default function Footer() {
           <p className="text-zinc-600 text-xs">
             © 2026 Rafael SFDC. Todos os direitos reservados.
           </p>
-          <div className="flex gap-6 text-xs text-zinc-600">
-            <Link href="#" className="hover:text-zinc-400 transition-colors">Termos</Link>
-            <Link href="#" className="hover:text-zinc-400 transition-colors">Privacidade</Link>
-          </div>
+          <p className="text-xs text-zinc-600">
+            SEO Técnico, Performance Web & Desenvolvimento Full-Stack.
+          </p>
         </div>
       </div>
     </footer>

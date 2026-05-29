@@ -14,7 +14,7 @@ tags:
   - WordPress Otimizado
 featured: true
 seo:
-  title: "Sites de Alta Performance e Baixo Custo: Guia 2026 | Kataly"
+  title: "Sites de Alta Performance e Baixo Custo: Guia 2026 | Rafael SFDC"
   description: "Aprenda a ter sites de alta performance com baixo custo. Domine o Google com estratégias de hospedagem barata e otimização técnica em 2026."
 author:
   name: "Rafael SF Carvalho"
@@ -22,8 +22,8 @@ author:
   social:
     instagram: "https://www.instagram.com/rafaelsfcarvalho/"
   bio: >-
-    Especialista em e-commerce e marketing digital em 2026, focado em ajudar
-    empreendedores a escalarem suas operações com tecnologia e estratégia.
+    Desenvolvedor full-stack com foco em Next.js, performance web e SEO técnico
+    para projetos que precisam crescer com base sólida.
 ---
 
 "Você precisa gastar uma fortuna para ter um site rápido." Se você ainda acredita nisso, está deixando dinheiro na mesa todos os dias. Em 2026, **sites de alta performance com baixo custo** não são apenas uma possibilidade técnica — são a arma secreta das pequenas empresas para superar concorrentes gigantes que ainda operam com infraestruturas legadas e pesadas.

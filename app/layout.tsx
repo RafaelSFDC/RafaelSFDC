@@ -25,11 +25,11 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Portfólio de Rafael | Desenvolvedor Full-Stack e SEO Técnico",
+    default: "Rafael SFDC | Desenvolvedor Full-Stack, Next.js & SEO Técnico",
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Portfólio profissional de Rafael, desenvolvedor full-stack especializado em Next.js, React, Laravel, SEO técnico e aplicações web de alta performance.",
+    "Portfólio de Rafael SFDC, desenvolvedor full-stack especializado em Next.js, React, performance web, SEO técnico e aplicações sob medida.",
   alternates: {
     canonical: "/",
   },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: SITE_NAME,
     locale: "pt_BR",
-    title: "Portfólio de Rafael | Desenvolvedor Full-Stack e SEO Técnico",
+    title: "Rafael SFDC | Desenvolvedor Full-Stack, Next.js & SEO Técnico",
     description:
       "Projetos, serviços e artigos sobre desenvolvimento web, performance, segurança e SEO técnico.",
     images: [
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfólio de Rafael | Desenvolvedor Full-Stack e SEO Técnico",
+    title: "Rafael SFDC | Desenvolvedor Full-Stack, Next.js & SEO Técnico",
     description:
       "Projetos, serviços e artigos sobre desenvolvimento web, performance, segurança e SEO técnico.",
     images: [DEFAULT_OG_IMAGE],

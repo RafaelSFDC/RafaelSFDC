@@ -5,16 +5,32 @@ import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
-const menuItems = [
+const homeMenuItems = [
   { name: "Sobre", href: "#sobre" },
   { name: "Habilidades", href: "#habilidades" },
   { name: "Projetos", href: "#projetos" },
+  { name: "Blog", href: "/blog" },
   { name: "Contato", href: "#contato" },
 ];
 
-const HeroHeader = () => {
+const blogMenuItems = [
+  { name: "Home", href: "/" },
+  { name: "Projetos", href: "/#projetos" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contato", href: "/#contato" },
+];
+
+interface HeroHeaderProps {
+  navigationMode?: "home" | "blog";
+}
+
+const HeroHeader = ({ navigationMode = "home" }: HeroHeaderProps) => {
   const [menuState, setMenuState] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const menuItems = navigationMode === "blog" ? blogMenuItems : homeMenuItems;
+  const contactHref = navigationMode === "blog" ? "/#contato" : "#contato";
+  const projectsHref = navigationMode === "blog" ? "/#projetos" : "#projetos";
+  const homeHref = "/";
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +57,7 @@ const HeroHeader = () => {
             {/* Logo */}
             <div className="flex w-full justify-between lg:w-auto">
               <Link
-                href="#"
+                href={homeHref}
                 className="font-display text-xl font-bold tracking-tight"
               >
                 <span className="gradient-text">Rafael</span>
@@ -114,7 +130,7 @@ const HeroHeader = () => {
               {/* Desktop CTAs */}
               <div className="flex w-full flex-col gap-2 sm:flex-row md:w-fit">
                 <Link
-                  href="#contato"
+                  href={contactHref}
                   className={cn(
                     "hidden rounded-full border border-zinc-700 px-5 py-2 text-sm font-medium text-zinc-300 transition-all duration-200 hover:border-cyan-500/50 hover:bg-cyan-500/8 hover:text-cyan-400 lg:inline-flex items-center justify-center",
                     isScrolled && "lg:hidden"
@@ -123,7 +139,7 @@ const HeroHeader = () => {
                   Contato
                 </Link>
                 <Link
-                  href="#projetos"
+                  href={projectsHref}
                   className={cn(
                     "rounded-full bg-cyan-500 px-5 py-2 text-sm font-semibold text-zinc-950 transition-all duration-200 hover:bg-cyan-400 hover:shadow-lg hover:shadow-cyan-500/25 flex items-center justify-center",
                     isScrolled && "lg:hidden"
@@ -132,7 +148,7 @@ const HeroHeader = () => {
                   Ver Projetos
                 </Link>
                 <Link
-                  href="#contato"
+                  href={contactHref}
                   className={cn(
                     "rounded-full bg-cyan-500 px-5 py-2 text-sm font-semibold text-zinc-950 transition-all duration-200 hover:bg-cyan-400 hover:shadow-lg hover:shadow-cyan-500/25 items-center justify-center",
                     isScrolled ? "lg:inline-flex" : "hidden"

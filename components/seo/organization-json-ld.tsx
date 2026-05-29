@@ -10,43 +10,35 @@ export function OrganizationJsonLd() {
     url: SITE_URL,
     logo: `${SITE_URL}/logo.svg`,
     description:
-      "Consultoria e estratégias para e-commerce e marketing digital.",
+      "Desenvolvimento full-stack com foco em Next.js, performance web, SEO técnico e aplicações sob medida.",
     disambiguatingDescription:
-      "Especialista em e-commerce e vendas online. Estratégias de SEO, marketing e tecnologia.",
+      "Portfólio e serviços de desenvolvimento web para sites, sistemas e experiências digitais de alta performance.",
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+55-21-97967-4045",
-      contactType: "customer service",
+      contactType: "sales",
       areaServed: "BR",
       availableLanguage: "Portuguese",
-    },
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Avenida Geremário Dantas, 81, Bloco 3, Apt 101",
-      addressLocality: "Rio de Janeiro",
-      addressRegion: "RJ",
-      postalCode: "22743-010",
-      addressCountry: "BR",
     },
     areaServed: {
       "@type": "Country",
       name: "Brasil",
     },
     knowsAbout: [
-      "E-commerce",
-      "Loja Virtual",
-      "Plataforma de E-commerce",
-      "Como vender online",
-      "Venda sem estoque",
-      "CRM de Vendas",
-      "Checkout Transparente",
-      "Reforma Tributária 2026",
-      "Gestão de Marketplaces",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "SEO Técnico",
+      "Performance Web",
+      "Arquitetura Frontend",
+      "Desenvolvimento Full-Stack",
+      "Aplicações SaaS",
     ],
-    taxID: "64.201.961/0001-47",
     legalName: "Rafael Silva Ferreira de Carvalho",
-    foundingDate: "2024",
-    sameAs: ["https://github.com/RafaelSFDC"],
+    sameAs: [
+      "https://github.com/RafaelSFDC",
+      "https://www.linkedin.com/in/rafael-silva-ferreira-de-carvalho",
+    ],
   };
 
   return (

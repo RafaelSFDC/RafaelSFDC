@@ -9,9 +9,9 @@ export default function BlogLayout({
 }) {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans antialiased">
-      <HeroHeader />
+      <HeroHeader navigationMode="blog" />
       <main className="flex-1 pt-20">{children}</main>
-      <Footer />
+      <Footer navigationMode="blog" />
     </div>
   );
 }

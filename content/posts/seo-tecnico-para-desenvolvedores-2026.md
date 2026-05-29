@@ -14,7 +14,7 @@ tags:
   - Otimização de Performance
 featured: true
 seo:
-  title: "SEO Técnico para Devs 2026: Guia de Engenharia de Busca | Kataly"
+  title: "SEO Técnico para Devs 2026: Guia de Engenharia de Busca | Rafael SFDC"
   description: "Domine o SEO Técnico em 2026: Core Web Vitals, SSR com Next.js e otimização para IA (GEO). Transforme seu código em uma máquina de tráfego orgânico."
 author:
   name: "Rafael SF Carvalho"
@@ -22,8 +22,8 @@ author:
   social:
     instagram: "https://www.instagram.com/rafaelsfcarvalho/"
   bio: >-
-    Especialista em e-commerce e marketing digital em 2026, focado em ajudar
-    empreendedores a escalarem suas operações com tecnologia e estratégia.
+    Desenvolvedor full-stack com foco em Next.js, performance web e SEO técnico
+    para projetos que precisam crescer com base sólida.
 ---
 
 "Se não está no Google, não existe." Em 2026, essa máxima evoluiu: se o seu código não é otimizado para **SEO Técnico**, sua aplicação é invisível não apenas para o Google, mas para toda a nova geração de IAs de resposta.

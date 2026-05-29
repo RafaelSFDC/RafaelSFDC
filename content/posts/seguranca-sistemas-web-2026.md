@@ -22,8 +22,8 @@ author:
   social:
     instagram: "https://www.instagram.com/rafaelsfcarvalho/"
   bio: >-
-    Especialista em e-commerce e marketing digital em 2026, focado em ajudar
-    empreendedores a escalarem suas operações com tecnologia e estratégia.
+    Desenvolvedor full-stack com foco em Next.js, performance web e SEO técnico
+    para projetos que precisam crescer com base sólida.
 ---
 
 "Acontece com os outros, não comigo." Se você ainda pensa assim sobre **segurança da informação**, os dados de 2025 têm um alerta urgente para você. O Brasil liderou o ranking de ataques cibernéticos na América Latina, com impressionantes 60 bilhões de tentativas de invasão.
