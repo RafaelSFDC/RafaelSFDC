@@ -3,7 +3,7 @@ import type { ProjectDetails } from "@/types/project";
 export const projects: ProjectDetails[] = [
   {
     id: "kataly",
-    title: "Kataly",
+    title: "Kataly Enterprise",
     description:
       "O Sistema Operacional Completo para Negócios Digitais. Uma plataforma SaaS all-in-one que unifica CRM, Vendas e Automação.",
     longDescription:
@@ -37,5 +37,36 @@ export const projects: ProjectDetails[] = [
     ],
     year: 2024,
     category: "SaaS / E-commerce",
+  },
+  {
+    id: "unilink",
+    title: "UniLink",
+    description:
+      "Dashboard universitário completo para gestão acadêmica, com controle de alunos, disciplinas e relatórios inteligentes.",
+    longDescription:
+      "UniLink é um sistema de gestão acadêmica desenvolvido para facilitar a administração de instituições de ensino. A plataforma oferece cadastro de alunos e professores, gerenciamento de disciplinas e turmas, emissão de relatórios de desempenho e muito mais. Construído com Laravel no backend e React no frontend, proporciona uma experiência fluida e responsiva.",
+    image: "/unilink-home.png",
+    status: "public",
+    technologies: [
+      { name: "Laravel" },
+      { name: "React" },
+      { name: "MySQL" },
+      { name: "Tailwind CSS" },
+      { name: "TypeScript" },
+    ],
+    features: [
+      "Gestão completa de alunos e professores",
+      "Controle de disciplinas e turmas",
+      "Relatórios de desempenho acadêmico",
+      "Interface responsiva e moderna",
+      "Autenticação e controle de acesso",
+    ],
+    challenges: [
+      "Modelagem de banco de dados relacional complexo",
+      "Integração de múltiplos módulos acadêmicos",
+      "Performance em consultas de grande volume",
+    ],
+    year: 2024,
+    category: "Sistema de Gestão",
   },
 ];

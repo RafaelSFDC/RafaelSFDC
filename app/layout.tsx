@@ -1,7 +1,7 @@
 import type React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Syne, DM_Sans } from "next/font/google";
+import { Syne, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { OrganizationJsonLd } from "@/components/seo/organization-json-ld";
@@ -15,10 +15,17 @@ const syne = Syne({
   display: "swap",
 });
 
-const dmSans = DM_Sans({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["500"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -77,7 +84,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className={`${syne.variable} ${dmSans.variable}`}>
+      <body className={`${syne.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable}`}>
         <WebsiteJsonLd />
         <OrganizationJsonLd />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>

@@ -13,7 +13,6 @@ import fs from "fs";
 import path from "path";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 import { getPostBySlug, getAllPosts } from "@/lib/blog";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { AudioPlayer } from "@/components/blog/audio-player";
@@ -237,23 +236,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <div className="min-h-screen pb-16">
         {/* Header com Gradiente */}
         <div className="relative overflow-hidden mb-8 pt-8 pb-10">
-          <div className="absolute inset-0 bg-linear-to-b from-primary/5 to-transparent -z-10" />
+          <div className="absolute inset-0 glow-bg opacity-60 -z-10" />
 
-          <div className="max-w-4xl mx-auto px-4">
+          <div className="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop">
             <div className="mb-6">
               <Link
                 href="/blog"
-                className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
+                className="inline-flex items-center text-sm text-on-surface-variant hover:text-surface-tint transition-colors"
               >
                 <ArrowLeft className="mr-2 size-4" />
                 Voltar para Blog
               </Link>
             </div>
 
-            <div className="flex flex-wrap items-center gap-y-2 gap-x-4 text-sm text-muted-foreground mb-6">
+            <div className="flex flex-wrap items-center gap-y-2 gap-x-4 text-sm text-on-surface-variant mb-6">
               <Badge
                 variant="outline"
-                className="border-primary/20 bg-primary/5 hover:bg-primary/10 text-primary"
+                className="border-surface-tint/20 bg-surface-tint/5 hover:bg-surface-tint/10 text-surface-tint rounded-xl"
               >
                 {post.category}
               </Badge>
@@ -262,7 +261,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 {formatDate(post.date)}
               </div>
               <span className="opacity-30 hidden sm:inline">|</span>
-              <div className="font-medium text-foreground hidden sm:inline">
+              <div className="font-medium text-on-surface hidden sm:inline">
                 Por {post.author?.name}
               </div>
               <span className="opacity-30 hidden sm:inline">|</span>
@@ -275,19 +274,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 leading-tight text-foreground">
+            <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-4 text-on-surface">
               {post.title}
             </h1>
 
-            <p className="text-xl text-muted-foreground leading-relaxed mb-0">
+            <p className="text-body-lg text-on-surface-variant leading-relaxed mb-0">
               {post.excerpt}
             </p>
           </div>
         </div>
 
-        <article className="max-w-4xl mx-auto px-4">
+        <article className="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop">
           {post.coverImage && (
-            <figure className="-mx-4 sm:mx-0 mb-12 sm:rounded-2xl overflow-hidden shadow-sm sm:shadow-lg border-y sm:border">
+            <figure className="-mx-4 sm:mx-0 mb-12 rounded-2xl overflow-hidden shadow-sm sm:shadow-lg border-y sm:border border-white/10">
               <img
                 src={post.coverImage}
                 alt={post.coverImageAlt || post.title}
@@ -329,13 +328,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
 
           {/* Tags */}
-          <div className="mt-12 pt-8 border-t">
+          <div className="mt-12 pt-8 border-t border-white/10">
             <div className="flex flex-wrap gap-2">
               {post.tags?.map((tag) => (
                 <Badge
                   key={tag}
-                  variant="secondary"
-                  className="hover:bg-primary hover:text-primary-foreground cursor-pointer transition-colors px-3 py-1"
+                  variant="outline"
+                  className="border-white/10 hover:border-surface-tint/30 text-on-surface-variant hover:text-surface-tint cursor-pointer transition-colors px-3 py-1 rounded-xl"
                 >
                   #{tag}
                 </Badge>
@@ -344,14 +343,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
 
           {/* Author Bio */}
-          <div className="mt-12 p-8 bg-muted/30 rounded-2xl flex flex-col sm:flex-row items-center sm:items-start gap-6 border">
+          <div className="mt-12 p-8 glass-card rounded-2xl flex flex-col sm:flex-row items-center sm:items-start gap-6">
             <Avatar className="size-20 border-2 border-background">
               <AvatarImage src={post.author?.picture} />
               <AvatarFallback>{post.author?.name?.charAt(0)}</AvatarFallback>
             </Avatar>
             <div className="text-center sm:text-left">
-              <h3 className="text-lg font-bold mb-2">Sobre o autor</h3>
-              <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+              <h3 className="font-headline-md text-headline-md mb-2">Sobre o autor</h3>
+              <p className="text-on-surface-variant text-sm mb-4 leading-relaxed">
                 {post.author?.bio ||
                   "Especialista em e-commerce e marketing digital, apaixonado por ajudar empreendedores a crescerem online."}
               </p>
@@ -361,26 +360,26 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Related Posts */}
         {otherPosts.length > 0 && (
-          <section className="mt-20 border-t bg-muted/20 py-16">
-            <div className="max-w-7xl mx-auto px-4 lg:px-8">
+          <section className="mt-section-gap border-t border-white/10 py-section-gap">
+            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
               <div className="flex items-center justify-between mb-10">
-                <h3 className="text-2xl font-bold">Continue lendo</h3>
+                <h3 className="font-headline-md text-headline-md">Continue lendo</h3>
                 <Link
                   href="/blog"
-                  className="text-primary hover:underline font-medium text-sm"
+                  className="text-surface-tint hover:underline font-medium text-sm"
                 >
                   Ver todos
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
                 {otherPosts.map((otherPost) => (
                   <Link
                     key={otherPost.slug}
                     href={`/blog/${otherPost.slug}`}
                     className="group"
                   >
-                    <Card className="h-full overflow-hidden hover:shadow-lg transition-all duration-300 py-0">
+                    <div className="glass-card rounded-2xl overflow-hidden h-full hover:border-surface-tint/30 transition-all duration-300">
                       <div className="aspect-video relative overflow-hidden">
                         <img
                           src={otherPost.coverImage}
@@ -389,17 +388,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         />
                       </div>
                       <div className="p-6">
-                        <p className="text-xs font-medium text-primary mb-2">
+                        <p className="font-label-sm text-label-sm text-surface-tint mb-2 uppercase tracking-wider">
                           {otherPost.category}
                         </p>
-                        <h4 className="font-bold mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                        <h4 className="font-bold mb-2 line-clamp-2 group-hover:text-surface-tint transition-colors">
                           {otherPost.title}
                         </h4>
-                        <p className="text-xs text-muted-foreground flex justify-between mt-4">
+                        <p className="font-label-sm text-label-sm text-on-surface-variant flex justify-between mt-4">
                           <span>{formatDate(otherPost.date)}</span>
                         </p>
                       </div>
-                    </Card>
+                    </div>
                   </Link>
                 ))}
               </div>

@@ -1,8 +1,6 @@
 import { FileText } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { getAllPosts } from "@/lib/blog";
 import { BlogsList } from "./blogs-list";
 import { Metadata } from "next";
@@ -25,13 +23,14 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/blog`,
   },
   openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    locale: "pt_BR",
     title: "Blog Rafael SFDC | SEO Técnico, Performance e Estratégia Digital",
     description:
       "Artigos sobre SEO técnico, desenvolvimento web, performance, segurança e estratégias digitais para crescer com tecnologia.",
     url: `${SITE_URL}/blog`,
-    siteName: SITE_NAME,
-    locale: "pt_BR",
-    type: "website",
     images: [
       {
         url: DEFAULT_OG_IMAGE,
@@ -79,22 +78,17 @@ export default function BlogPage() {
         url={`${SITE_URL}/blog`}
         items={collectionItems}
       />
-      <div className="container mx-auto px-4 py-16 max-w-6xl">
-        {/* Header */}
-        <div className="flex flex-col gap-4 text-center mb-16">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <FileText className="size-8 text-primary" />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-black tracking-tight">
-            Blog <span className="text-primary">Estratégico</span>
+      <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap">
+        <div className="flex items-center gap-4 mb-6">
+          <FileText className="size-8 text-surface-tint" />
+          <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg">
+            Blog Estratégico
           </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Aprenda estratégias práticas para vender mais e crescer sua presença
-            online.
-          </p>
         </div>
-
-        <Separator className="my-12" />
+        <p className="text-on-surface-variant font-body-lg text-body-lg max-w-2xl mb-16">
+          Aprenda estratégias práticas para vender mais e crescer sua presença
+          online.
+        </p>
 
         <BlogsList
           initialFeaturedPost={featuredPost}
@@ -102,39 +96,35 @@ export default function BlogPage() {
           allPosts={posts}
         />
 
-        <Separator className="my-20" />
-
         {/* Newsletter CTA */}
-        <Card className="relative overflow-hidden bg-background border-none shadow-none">
-          <div className="absolute inset-0 bg-linear-to-r from-primary/5 via-primary/10 to-transparent rounded-3xl" />
-          <CardContent className="relative z-10 p-8 sm:p-16 text-center border rounded-3xl bg-background/50 backdrop-blur-sm">
-            <div className="max-w-2xl mx-auto space-y-4">
-              <span className="text-primary font-bold text-xs tracking-wider uppercase mb-2 block">
-                Newsletter
-              </span>
-              <h3 className="text-3xl font-bold">
-                Receba conteúdos semanais na sua caixa de entrada
-              </h3>
-              <p className="text-muted-foreground">
-                Junte-se a mais de 10.000 empreendedores que recebem nossas
-                dicas de gestão e e-commerce.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-4">
-                <Input
-                  type="email"
-                  placeholder="Seu melhor e-mail"
-                  className="flex-1 bg-background"
-                />
-                <Button className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg shadow-primary/20">
-                  Inscrever-se
-                </Button>
-              </div>
-              <p className="text-xs text-muted-foreground pt-2">
-                Sem spam. Cancele quando quiser.
-              </p>
+        <div className="glass-card p-12 md:p-16 rounded-2xl text-center relative overflow-hidden mt-section-gap">
+          <div className="absolute top-0 left-0 w-full h-full glow-bg opacity-30 pointer-events-none" />
+          <div className="max-w-2xl mx-auto space-y-4 relative">
+            <span className="font-label-sm text-label-sm text-surface-tint uppercase tracking-widest mb-2 block">
+              Newsletter
+            </span>
+            <h3 className="font-headline-md text-headline-md">
+              Receba conteúdos semanais na sua caixa de entrada
+            </h3>
+            <p className="text-on-surface-variant">
+              Junte-se a mais de 10.000 empreendedores que recebem nossas
+              dicas de gestão e e-commerce.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-4">
+              <Input
+                type="email"
+                placeholder="Seu melhor e-mail"
+                className="flex-1 bg-white/5 border-white/10 text-on-surface placeholder:text-on-surface-variant/50"
+              />
+              <button className="px-8 py-3 bg-primary-container text-on-primary-container font-bold rounded-xl flex items-center justify-center gap-2 hover:brightness-110 transition-all text-sm">
+                Inscrever-se
+              </button>
             </div>
-          </CardContent>
-        </Card>
+            <p className="text-xs text-on-surface-variant/60 pt-2">
+              Sem spam. Cancele quando quiser.
+            </p>
+          </div>
+        </div>
       </div>
     </>
   );

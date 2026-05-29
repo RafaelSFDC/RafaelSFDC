@@ -1,11 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 
 export default function DownloadResume() {
   const handleDownload = () => {
-    // Criar um link temporário para download
     const link = document.createElement("a");
     link.href = "/Curriculo_Rafael_Carvalho.md";
     link.download = "Curriculo_Rafael_Carvalho.md";
@@ -15,13 +13,12 @@ export default function DownloadResume() {
   };
 
   return (
-    <Button
+    <button
       onClick={handleDownload}
-      className="gap-2 bg-cyan-600 hover:bg-cyan-700"
-      size="lg"
+      className="px-8 py-3 bg-primary-container text-on-primary-container font-bold rounded-xl flex items-center gap-2 hover:brightness-110 transition-all"
     >
-      <Download className="h-4 w-4" />
+      <Download className="size-5" />
       Baixar Currículo
-    </Button>
+    </button>
   );
 }

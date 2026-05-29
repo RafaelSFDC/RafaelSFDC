@@ -4,13 +4,6 @@ import { useState } from "react";
 import { Search, Eye } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
@@ -31,7 +24,6 @@ export function BlogsList({
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Todos");
 
-  // Get unique categories from all posts
   const categories = [
     "Todos",
     ...Array.from(
@@ -65,12 +57,12 @@ export function BlogsList({
       {/* Search and Filter */}
       <div className="space-y-4">
         <div className="relative max-w-xl">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-on-surface-variant" />
           <Input
             placeholder="Buscar por tema, artigo ou tutorial..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10"
+            className="pl-10 bg-white/5 border-white/10 text-on-surface placeholder:text-on-surface-variant/50"
           />
         </div>
 
@@ -84,7 +76,7 @@ export function BlogsList({
               <TabsTrigger
                 key={category}
                 value={category}
-                className="rounded-full border border-transparent data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:border-primary/20 hover:bg-muted"
+                className="rounded-xl border border-white/10 data-[state=active]:bg-surface-tint/10 data-[state=active]:text-surface-tint data-[state=active]:border-surface-tint/20 hover:bg-white/5 text-on-surface-variant"
               >
                 {category}
               </TabsTrigger>
@@ -96,7 +88,7 @@ export function BlogsList({
       {/* Featured Post */}
       {showFeatured && (
         <Link href={`/blog/${initialFeaturedPost.slug}`}>
-          <Card className="overflow-hidden border-primary/20 hover:border-primary/40 transition-all cursor-pointer group hover:shadow-lg py-0">
+          <div className="glass-card rounded-2xl overflow-hidden group hover:border-surface-tint/30 transition-all cursor-pointer">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
               <div className="relative h-64 lg:h-auto overflow-hidden">
                 <img
@@ -105,14 +97,14 @@ export function BlogsList({
                   src={initialFeaturedPost.coverImage}
                 />
                 <div className="absolute top-6 left-6">
-                  <Badge className="bg-primary/90 backdrop-blur text-white hover:bg-primary border-none shadow-sm">
+                  <Badge className="bg-surface-tint/90 backdrop-blur text-on-primary-container hover:bg-surface-tint border-none shadow-sm rounded-xl px-3 py-1">
                     Destaque
                   </Badge>
                 </div>
               </div>
               <div className="p-8 lg:p-12 flex flex-col justify-center">
-                <div className="flex items-center gap-2 mb-4 text-xs font-medium text-muted-foreground">
-                  <span className="text-primary">
+                <div className="flex items-center gap-2 mb-4 text-xs font-medium text-on-surface-variant">
+                  <span className="text-surface-tint">
                     {initialFeaturedPost.category}
                   </span>
                   <span>•</span>
@@ -121,10 +113,10 @@ export function BlogsList({
                       formatDate(initialFeaturedPost.date)}
                   </span>
                 </div>
-                <h3 className="text-3xl font-bold mb-4 group-hover:text-primary transition-colors leading-tight">
+                <h3 className="font-headline-md text-headline-md mb-4 group-hover:text-surface-tint transition-colors">
                   {initialFeaturedPost.title}
                 </h3>
-                <p className="text-muted-foreground mb-8 text-base leading-relaxed line-clamp-3">
+                <p className="text-on-surface-variant mb-8 text-base leading-relaxed line-clamp-3">
                   {initialFeaturedPost.excerpt}
                 </p>
                 <div className="flex items-center gap-3">
@@ -135,17 +127,17 @@ export function BlogsList({
                     </AvatarFallback>
                   </Avatar>
                   <div className="text-sm">
-                    <p className="font-semibold">
+                    <p className="font-semibold text-on-surface">
                       {initialFeaturedPost.author?.name}
                     </p>
-                    <p className="text-muted-foreground">
+                    <p className="text-on-surface-variant">
                       {initialFeaturedPost.author?.bio?.substring(0, 50)}
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-          </Card>
+          </div>
         </Link>
       )}
 
@@ -153,18 +145,18 @@ export function BlogsList({
       <div>
         <div className="flex items-end justify-between mb-6">
           <div>
-            <h3 className="text-2xl font-bold mb-2">Posts Recentes</h3>
-            <p className="text-muted-foreground">
+            <h3 className="font-headline-md text-headline-md mb-2">Posts Recentes</h3>
+            <p className="text-on-surface-variant">
               Conteúdos práticos para seu negócio.
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
           {filteredPosts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>
-              <Card className="flex py-0 flex-col group h-full hover:shadow-lg transition-all cursor-pointer overflow-hidden border-transparent hover:border-primary/20 bg-card hover:bg-accent/5">
-                <div className="relative h-56 overflow-hidden rounded-t-xl ">
+              <div className="glass-card rounded-2xl overflow-hidden group h-full hover:border-surface-tint/30 transition-all cursor-pointer flex flex-col">
+                <div className="aspect-video relative overflow-hidden">
                   <img
                     alt={post.title}
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
@@ -172,46 +164,44 @@ export function BlogsList({
                   />
                   <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
-                <CardHeader className="flex-1 flex flex-col p-6">
-                  <div className="flex items-center gap-2 mb-3 text-xs font-medium text-primary">
-                    <span>{post.category}</span>
-                  </div>
-                  <CardTitle className="text-lg font-bold group-hover:text-primary transition-colors line-clamp-2 leading-tight">
+                <div className="p-6 flex flex-col flex-1">
+                  <p className="font-label-sm text-label-sm text-surface-tint mb-3 uppercase tracking-wider">
+                    {post.category}
+                  </p>
+                  <h4 className="font-headline-md text-headline-md mb-2 group-hover:text-surface-tint transition-colors line-clamp-2">
                     {post.title}
-                  </CardTitle>
-                  <CardDescription className="text-sm mt-3 line-clamp-3 flex-1">
+                  </h4>
+                  <p className="text-on-surface-variant text-sm line-clamp-3 flex-1">
                     {post.excerpt}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-6 pt-0">
-                  <div className="pt-4 border-t flex items-center justify-between text-xs text-muted-foreground">
+                  </p>
+                  <div className="pt-4 mt-auto border-t border-white/10 flex items-center justify-between text-xs text-on-surface-variant">
                     <span>{post.date && formatDate(post.date)}</span>
                     <span className="flex items-center gap-1">
                       <Eye className="size-3" />
                       {Math.floor(Math.random() * 3000) + 1000}
                     </span>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </Link>
           ))}
         </div>
 
         {filteredPosts.length === 0 && (
-          <Card className="p-12 text-center border-dashed">
+          <div className="glass-card p-12 rounded-2xl text-center border-dashed border-white/10">
             <div className="flex justify-center mb-4">
-              <div className="bg-muted p-4 rounded-full">
-                <Search className="size-8 text-muted-foreground" />
+              <div className="bg-white/5 p-4 rounded-full">
+                <Search className="size-8 text-on-surface-variant" />
               </div>
             </div>
-            <h3 className="text-lg font-semibold mb-2">
+            <h3 className="font-headline-md text-headline-md mb-2">
               Nenhum post encontrado
             </h3>
-            <p className="text-muted-foreground max-w-sm mx-auto">
+            <p className="text-on-surface-variant max-w-sm mx-auto">
               Não encontramos nenhum post com os filtros atuais. Tente buscar
               por outros termos ou categorias.
             </p>
-          </Card>
+          </div>
         )}
       </div>
     </div>

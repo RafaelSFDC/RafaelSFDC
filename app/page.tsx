@@ -1,54 +1,31 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { ProjectCard } from "@/components/project-card"
+import { useEffect, useRef, useState } from "react"
+import { SiteCard } from "@/components/site-card"
 import { projects } from "@/data/projects"
+import { sites } from "@/data/sites"
+import { sistemas } from "@/data/sistemas"
 import Hero5 from "@/components/hero"
 import HeroHeader from "@/components/header"
 import DownloadResume from "@/components/download-resume"
+import Image from "next/image"
 import {
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaReact,
-  FaVuejs,
-  FaPhp,
-  FaLaravel,
-  FaNodeJs,
-  FaDatabase,
-  FaServer,
-  FaFire,
-  FaLink,
-  FaGitAlt,
-  FaGithub,
-  FaCode,
-  FaFigma,
-  FaDocker,
-  FaMobile,
-} from "react-icons/fa"
-import {
-  SiTypescript,
-  SiTailwindcss,
-  SiStyledcomponents,
-  SiNextdotjs,
-  SiExpress,
-  SiMongodb,
-  SiPostgresql,
-  SiGraphql,
-  SiWebpack,
-  SiJest,
-  SiPrisma,
-  SiFirebase,
-  SiRedis,
-  SiTestinglibrary,
-} from "react-icons/si"
-import { TbBrandVscode, TbGitMerge, TbApi } from "react-icons/tb"
-import { MdSecurity, MdMailOutline, MdPhoneInTalk } from "react-icons/md"
-import { DiScrum } from "react-icons/di"
-import { cn } from "@/lib/utils"
+  FolderKanban,
+  Globe,
+  Terminal,
+  Search,
+  CheckCircle,
+  ExternalLink,
+  Eye,
+  Mail,
+  Smartphone,
+} from "lucide-react"
+import { ProjectDetailsModal } from "@/components/project-details-modal"
+import type { ProjectDetails } from "@/types/project"
 
 export default function Home() {
   const revealRefs = useRef<(HTMLElement | null)[]>([])
+  const [detailsProject, setDetailsProject] = useState<ProjectDetails | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -75,285 +52,343 @@ export default function Home() {
     }
   }
 
-  const SectionHeading = ({ children, icon: Icon, id }: { children: string, icon: any, id?: string }) => (
-    <div className="section-heading reveal" ref={addToRefs}>
-      <div className="flex items-center gap-3">
-        <div className="bg-cyan-500/10 p-2.5 rounded-xl border border-cyan-500/20 text-cyan-400">
-          <Icon size={24} />
-        </div>
-        <h2 className="font-display text-3xl font-bold tracking-tight text-white md:text-4xl">{children}</h2>
+  const SectionHeading = ({
+    icon: Icon,
+    children,
+  }: {
+    icon: React.ElementType
+    children: string
+  }) => (
+    <div className="flex items-center gap-4 mb-12">
+      <div className="text-surface-tint">
+        <Icon size={32} />
       </div>
-      <div className="section-heading-line flex-grow ml-4 opacity-50" />
+      <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg">
+        {children}
+      </h2>
+    </div>
+  )
+
+  const FeaturedCard = ({ project }: { project: ProjectDetails }) => (
+    <div className="glass-card rounded-2xl overflow-hidden group">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        <div className="relative overflow-hidden aspect-video lg:aspect-auto">
+          <Image
+            src={project.image || "/placeholder.svg"}
+            alt={project.title}
+            width={800}
+            height={600}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500" />
+        </div>
+        <div className="p-8 md:p-12 flex flex-col justify-center">
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.technologies.slice(0, 4).map((tech) => (
+              <span
+                key={tech.name}
+                className="px-3 py-1 bg-white/5 border border-white/10 rounded-full font-label-sm text-label-sm"
+              >
+                {tech.name}
+              </span>
+            ))}
+          </div>
+          <h3 className="font-headline-md text-headline-md mb-4">{project.title}</h3>
+          <p className="text-on-surface-variant mb-8 leading-relaxed">
+            {project.description}
+          </p>
+          <div className="flex gap-4">
+            <button
+              onClick={() => setDetailsProject(project)}
+              className="px-6 py-3 bg-primary-container text-on-primary-container font-bold rounded-xl flex items-center gap-2 hover:brightness-110 transition-all text-sm"
+            >
+              <Eye className="size-4" /> Detalhes
+            </button>
+            {project.demoUrl && (
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 border border-white/20 hover:border-surface-tint/50 text-white font-bold rounded-xl flex items-center gap-2 transition-all text-sm"
+              >
+                <ExternalLink className="size-4" /> Online
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   )
 
   return (
-    <div className="min-h-screen bg-black text-white custom-scrollbar selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-background text-on-surface overflow-x-hidden selection:bg-surface-tint/30">
       <HeroHeader />
-      
-      <main className="relative z-10">
+
+      <main className="relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1024px] glow-bg -z-10 pointer-events-none" />
+        <div className="absolute top-[1536px] right-0 w-full h-[1024px] glow-bg -z-10 pointer-events-none opacity-50" />
+
         <Hero5 />
 
-        {/* Projects Section */}
-        <section id="projetos" className="container mx-auto py-24 px-4">
-          <SectionHeading icon={() => (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-            </svg>
-          )}>
-            Projetos Selecionados
-          </SectionHeading>
+        {/* Projetos */}
+        <section
+          id="projetos"
+          className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap"
+        >
+          <SectionHeading icon={FolderKanban}>Projetos Selecionados</SectionHeading>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 reveal reveal-delay-2" ref={addToRefs}>
+          <div className="grid grid-cols-1 gap-stack-lg" ref={addToRefs}>
             {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+              <FeaturedCard key={project.id} project={project} />
             ))}
           </div>
         </section>
 
-        {/* Skills Section */}
-        <section id="habilidades" className="container mx-auto py-24 px-4 bg-gradient-to-b from-transparent via-zinc-900/10 to-transparent">
-          <SectionHeading icon={() => (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 2v6.5l5-3 5 3V2"></path>
-              <path d="M2 22V2"></path>
-              <path d="M2 17h20"></path>
-              <path d="M2 12h20"></path>
-              <path d="M2 7h20"></path>
-            </svg>
-          )}>
-            Habilidades Técnicas
-          </SectionHeading>
+        {/* Sites */}
+        <section
+          id="sites"
+          className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap"
+        >
+          <SectionHeading icon={Globe}>Sites &amp; Serviços</SectionHeading>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Frontend */}
-            <div className="glass-card p-8 rounded-2xl reveal reveal-delay-1" ref={addToRefs}>
-              <h3 className="font-display text-xl font-bold mb-6 flex items-center gap-2 text-zinc-100">
-                <span className="h-8 w-1 bg-cyan-500 rounded-full mr-1" />
-                Frontend
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { name: "HTML", icon: <FaHtml5 size={16} /> },
-                  { name: "CSS", icon: <FaCss3Alt size={16} /> },
-                  { name: "JavaScript", icon: <FaJs size={16} /> },
-                  { name: "TypeScript", icon: <SiTypescript size={16} /> },
-                  { name: "React", icon: <FaReact size={16} /> },
-                  { name: "React Native", icon: <FaMobile size={16} /> },
-                  { name: "Next.js", icon: <SiNextdotjs size={16} /> },
-                  { name: "Tailwind CSS", icon: <SiTailwindcss size={16} /> },
-                  { name: "Prisma", icon: <SiPrisma size={16} /> },
-                ].map((skill) => (
-                  <div key={skill.name} className="flex items-center gap-2.5 text-zinc-400 group transition-all duration-300">
-                    <div className="w-9 h-9 rounded-lg bg-zinc-900/80 border border-zinc-800 flex items-center justify-center text-cyan-400/70 group-hover:text-cyan-400 group-hover:border-cyan-500/30 transition-all">
-                      {skill.icon}
-                    </div>
-                    <span className="text-sm font-medium group-hover:text-zinc-200 transition-colors">{skill.name}</span>
-                  </div>
-                ))}
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 gap-gutter"
+            ref={addToRefs}
+          >
+            {sites.map((site) => (
+              <SiteCard key={site.id} project={site} />
+            ))}
+          </div>
+        </section>
+
+        {/* Sistemas */}
+        <section
+          id="sistemas"
+          className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap"
+        >
+          <SectionHeading icon={Terminal}>Sistemas</SectionHeading>
+
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 gap-gutter"
+            ref={addToRefs}
+          >
+            {sistemas.map((sistema) => (
+              <SiteCard key={sistema.id} project={sistema} />
+            ))}
+          </div>
+        </section>
+
+        {/* Habilidades */}
+        <section
+          id="habilidades"
+          className="py-section-gap bg-surface-container-lowest/50"
+        >
+          <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+            <SectionHeading icon={Terminal}>Habilidades Técnicas</SectionHeading>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+              <div className="glass-card p-10 rounded-2xl border-l-4 border-l-surface-tint">
+                <h3 className="font-headline-md text-headline-md mb-8">Frontend</h3>
+                <ul className="space-y-4 font-label-sm text-label-sm">
+                  <li className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-surface-tint" /> HTML / CSS
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-surface-tint" /> JAVASCRIPT / TYPESCRIPT
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-surface-tint" /> REACT / NEXT.JS
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-surface-tint" /> VUE.JS
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-surface-tint" /> TAILWIND CSS
+                  </li>
+                </ul>
               </div>
-            </div>
 
-            {/* Backend */}
-            <div className="glass-card p-8 rounded-2xl reveal reveal-delay-2" ref={addToRefs}>
-              <h3 className="font-display text-xl font-bold mb-6 flex items-center gap-2 text-zinc-100">
-                <span className="h-8 w-1 bg-emerald-500 rounded-full mr-1" />
-                Backend
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { name: "Node.js", icon: <FaNodeJs size={16} /> },
-                  { name: "Express", icon: <SiExpress size={16} /> },
-                  { name: "PHP", icon: <FaPhp size={16} /> },
-                  { name: "Laravel", icon: <FaLaravel size={16} /> },
-                  { name: "MongoDB", icon: <SiMongodb size={16} /> },
-                  { name: "PostgreSQL", icon: <SiPostgresql size={16} /> },
-                  { name: "Firebase", icon: <SiFirebase size={16} /> },
-                  { name: "Redis", icon: <SiRedis size={16} /> },
-                  { name: "REST API", icon: <TbApi size={16} /> },
-                ].map((skill) => (
-                  <div key={skill.name} className="flex items-center gap-2.5 text-zinc-400 group transition-all duration-300">
-                    <div className="w-9 h-9 rounded-lg bg-zinc-900/80 border border-zinc-800 flex items-center justify-center text-emerald-400/70 group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-all">
-                      {skill.icon}
-                    </div>
-                    <span className="text-sm font-medium group-hover:text-zinc-200 transition-colors">{skill.name}</span>
-                  </div>
-                ))}
+              <div className="glass-card p-10 rounded-2xl border-l-4 border-l-surface-tint">
+                <h3 className="font-headline-md text-headline-md mb-8">Backend</h3>
+                <ul className="space-y-4 font-label-sm text-label-sm">
+                  <li className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-surface-tint" /> NODE.JS / EXPRESS
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-surface-tint" /> PHP / LARAVEL
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-surface-tint" /> POSTGRESQL / MONGODB
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-surface-tint" /> REDIS / FIREBASE
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-surface-tint" /> RESTful APIs
+                  </li>
+                </ul>
               </div>
-            </div>
 
-            {/* Ferramentas */}
-            <div className="glass-card p-8 rounded-2xl reveal reveal-delay-3" ref={addToRefs}>
-              <h3 className="font-display text-xl font-bold mb-6 flex items-center gap-2 text-zinc-100">
-                <span className="h-8 w-1 bg-purple-500 rounded-full mr-1" />
-                Workflow
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { name: "Git", icon: <FaGitAlt size={16} /> },
-                  { name: "GitHub", icon: <FaGithub size={16} /> },
-                  { name: "Docker", icon: <FaDocker size={16} /> },
-                  { name: "CI/CD", icon: <TbGitMerge size={16} /> },
-                  { name: "VS Code", icon: <TbBrandVscode size={16} /> },
-                  { name: "Figma", icon: <FaFigma size={16} /> },
-                  { name: "Auth", icon: <MdSecurity size={16} /> },
-                  { name: "Scrum", icon: <DiScrum size={16} /> },
-                ].map((skill) => (
-                  <div key={skill.name} className="flex items-center gap-2.5 text-zinc-400 group transition-all duration-300">
-                    <div className="w-9 h-9 rounded-lg bg-zinc-900/80 border border-zinc-800 flex items-center justify-center text-purple-400/70 group-hover:text-purple-400 group-hover:border-purple-500/30 transition-all">
-                      {skill.icon}
-                    </div>
-                    <span className="text-sm font-medium group-hover:text-zinc-200 transition-colors">{skill.name}</span>
-                  </div>
-                ))}
+              <div className="glass-card p-10 rounded-2xl border-l-4 border-l-surface-tint">
+                <h3 className="font-headline-md text-headline-md mb-8">Workflow</h3>
+                <ul className="space-y-4 font-label-sm text-label-sm">
+                  <li className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-surface-tint" /> DOCKER / CI-CD
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-surface-tint" /> GIT / GITHUB
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-surface-tint" /> UI/UX DESIGN (FIGMA)
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-surface-tint" /> AGILE / SCRUM
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-surface-tint" /> SEO OPTIMIZATION
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </section>
 
-        {/* About Section */}
-        <section id="sobre" className="container mx-auto py-24 px-4 overflow-hidden">
-          <SectionHeading icon={() => (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-          )}>
-            Sobre Rafael
-          </SectionHeading>
+        {/* Sobre */}
+        <section
+          id="sobre"
+          className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap"
+        >
+          <SectionHeading icon={Search}>Sobre Rafael</SectionHeading>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start reveal reveal-delay-2" ref={addToRefs}>
-            <div className="space-y-6">
-              <div className="glass-card p-8 rounded-2xl">
-                <h3 className="font-display text-2xl font-bold mb-5 flex items-center gap-2 text-zinc-100">
-                  Quem sou eu
-                </h3>
-                <div className="space-y-4 text-zinc-400 leading-relaxed text-lg">
-                  <p>
-                    Meu nome é <span className="text-cyan-400 font-medium">Rafael</span> e sou Desenvolvedor Full-Stack com <span className="text-zinc-200 font-medium">6 anos de experiência</span> como freelancer.
-                  </p>
-                  <p>
-                    Minha jornada começou pelo Front-End, onde descobri minha paixão por criar interfaces intuitivas e responsivas. Com o tempo, expandi para o Back-End, tornando-me capaz de construir aplicações completas e soluções robustas que realmente resolvem problemas.
-                  </p>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg">
+            <div className="glass-card p-10 rounded-2xl">
+              <h3 className="font-headline-md text-headline-md mb-6">Quem sou eu</h3>
+              <p className="text-on-surface-variant leading-relaxed mb-6">
+                Meu nome é{" "}
+                <span className="text-white font-bold">Rafael</span> e sou
+                Desenvolvedor Full-Stack com 6 anos de experiência como freelancer.
+                Minha jornada começou pelo Front-End, onde descobri minha paixão por
+                criar interfaces intuitivas e responsivas.
+              </p>
+              <p className="text-on-surface-variant leading-relaxed">
+                Com o tempo, expandi para o Back-End, tornando-me capaz de construir
+                aplicações completas e soluções robustas que realmente resolvem
+                problemas de negócio e escalam conforme a necessidade.
+              </p>
             </div>
 
-            <div className="space-y-6">
-              <div className="glass-card p-8 rounded-2xl relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full -mr-16 -mt-16 blur-3xl transition-all duration-500 group-hover:bg-cyan-500/10" />
-                <h3 className="font-display text-xl font-bold mb-4 flex items-center gap-2 text-zinc-100">
-                  Interesses & Experiência
-                </h3>
-                <div className="space-y-4 text-zinc-400 text-sm">
-                  <p>
-                    Além do código, sou fascinado por <span className="text-cyan-400">UI/UX Design</span> e <span className="text-emerald-400">Inteligência Artificial</span>. Acredito que a tecnologia deve ser poderosa, mas simples de usar.
-                  </p>
-                  <div className="pt-4 border-t border-zinc-800">
-                    <p className="font-medium text-zinc-200 mb-2">Expertise em:</p>
-                    <ul className="grid grid-cols-1 gap-2 opacity-80">
-                      <li>• Dashboards & Sistemas SaaS complexos</li>
-                      <li>• E-commerces & Lojas Online de alta conversão</li>
-                      <li>• APIs RESTful & Integrações de terceiros</li>
-                      <li>• Performance Web & SEO Técnico</li>
-                    </ul>
+            <div className="glass-card p-10 rounded-2xl">
+              <h3 className="font-headline-md text-headline-md mb-6">Expertise &amp; Foco</h3>
+              <ul className="space-y-6">
+                <li className="flex gap-4">
+                  <CheckCircle className="size-6 text-surface-tint shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-bold mb-1">Dashboards &amp; SaaS</h4>
+                    <p className="text-on-surface-variant text-sm">
+                      Criação de ecossistemas complexos com foco em UX e performance de dados.
+                    </p>
                   </div>
-                </div>
-              </div>
+                </li>
+                <li className="flex gap-4">
+                  <CheckCircle className="size-6 text-surface-tint shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-bold mb-1">E-commerce de Alta Conversão</h4>
+                    <p className="text-on-surface-variant text-sm">
+                      Lojas online otimizadas para carregamento rápido e máxima conversão.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <CheckCircle className="size-6 text-surface-tint shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-bold mb-1">Performance Web &amp; SEO</h4>
+                    <p className="text-on-surface-variant text-sm">
+                      Garanto que sua aplicação não seja apenas bonita, mas rápida e visível.
+                    </p>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section id="contato" className="container mx-auto py-24 px-4">
-          <SectionHeading icon={() => (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-          )}>
-            Vamos Conversar?
-          </SectionHeading>
+        {/* Contato */}
+        <section
+          id="contato"
+          className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap mb-section-gap"
+        >
+          <div className="glass-card p-12 md:p-20 rounded-2xl text-center relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full glow-bg opacity-30 pointer-events-none" />
+            <h2 className="font-display-xl-mobile md:font-headline-lg text-display-xl-mobile md:text-headline-lg mb-8">
+              Vamos Conversar?
+            </h2>
+            <p className="text-on-surface-variant max-w-xl mx-auto mb-12">
+              Estou sempre aberto a novos desafios e parcerias inovadoras. Vamos
+              transformar sua ideia em realidade digital.
+            </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 reveal reveal-delay-2" ref={addToRefs}>
-            {/* Informações de Contato */}
-            <div className="glass-card p-8 rounded-2xl border-l-4 border-l-cyan-500">
-              <h3 className="font-display text-xl font-bold mb-6 text-zinc-100 italic">Get in touch</h3>
-              <div className="space-y-6">
-                <a href="mailto:rafaelsfcarvalho@outlook.com" className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-xl bg-zinc-900 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500 group-hover:text-zinc-950 transition-all duration-300">
-                    <MdMailOutline size={24} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-zinc-500 uppercase font-bold tracking-widest">Email</p>
-                    <p className="text-zinc-200 font-medium transition-colors group-hover:text-cyan-400">rafaelsfcarvalho@outlook.com</p>
-                  </div>
+            <div className="flex flex-col md:flex-row justify-center items-center gap-12">
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-4">
+                  <Mail className="size-8 text-surface-tint" />
+                </div>
+                <span className="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">
+                  Email
+                </span>
+                <a
+                  className="font-headline-md text-headline-md hover:text-surface-tint transition-colors"
+                  href="mailto:rafaelsfcarvalho@outlook.com"
+                >
+                  rafaelsfcarvalho@outlook.com
                 </a>
+              </div>
 
-                <a href="whatsapp://send?phone=+5521979674045" className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-xl bg-zinc-900 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-zinc-950 transition-all duration-300">
-                    <MdPhoneInTalk size={24} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-zinc-500 uppercase font-bold tracking-widest">Telefone</p>
-                    <p className="text-zinc-200 font-medium transition-colors group-hover:text-emerald-400">+55 (21) 97967-4045</p>
-                  </div>
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-4">
+                  <Smartphone className="size-8 text-surface-tint" />
+                </div>
+                <span className="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">
+                  Telefone
+                </span>
+                <a
+                  className="font-headline-md text-headline-md hover:text-surface-tint transition-colors"
+                  href="tel:+5521979674045"
+                >
+                  +55 (21) 97967-4045
                 </a>
               </div>
             </div>
 
-            {/* Social Links */}
-            <div className="glass-card p-8 rounded-2xl bg-zinc-950/40">
-              <h3 className="font-display text-xl font-bold mb-6 text-zinc-100 italic">Find me on</h3>
-              <div className="flex flex-col gap-4">
-                <div className="flex flex-wrap gap-4">
-                  <a
-                    href="https://github.com/RafaelSFDC"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-zinc-900 hover:bg-zinc-800 rounded-xl border border-zinc-800 text-zinc-300 font-medium transition-all hover:scale-[1.02] active:scale-[0.98]"
-                  >
-                    <FaGithub size={20} className="text-zinc-400" />
-                    GitHub
-                  </a>
-
-                  <a
-                    href="https://www.linkedin.com/in/rafael-silva-ferreira-de-carvalho"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-zinc-900 hover:bg-zinc-800 rounded-xl border border-zinc-800 text-zinc-300 font-medium transition-all hover:scale-[1.02] active:scale-[0.98]"
-                  >
-                    <FaLinkedinIn size={20} className="text-[#0A66C2]" />
-                    LinkedIn
-                  </a>
-                </div>
-                
-                <div className="pt-4 mt-2 border-t border-zinc-800/50">
-                  <DownloadResume />
-                </div>
-              </div>
+            <div className="mt-16 flex flex-wrap justify-center gap-6">
+              <a
+                href="https://github.com/RafaelSFDC"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-3 bg-white text-black font-bold rounded-xl flex items-center gap-2 hover:scale-105 transition-all"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://www.linkedin.com/in/rafael-silva-ferreira-de-carvalho"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-3 border border-white/20 font-bold rounded-xl flex items-center gap-2 hover:bg-white/5 transition-all"
+              >
+                LinkedIn
+              </a>
+              <DownloadResume />
             </div>
           </div>
         </section>
       </main>
-    </div>
-  )
-}
 
-function FaLinkedinIn({ size, className }: { size: number, className: string }) {
-  return (
-    <svg 
-      stroke="currentColor" 
-      fill="currentColor" 
-      strokeWidth="0" 
-      viewBox="0 0 448 512" 
-      className={className} 
-      height={size} 
-      width={size} 
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
-    </svg>
+      {detailsProject && (
+        <ProjectDetailsModal
+          project={detailsProject}
+          open={!!detailsProject}
+          onOpenChange={(open) => { if (!open) setDetailsProject(null) }}
+        />
+      )}
+    </div>
   )
 }
