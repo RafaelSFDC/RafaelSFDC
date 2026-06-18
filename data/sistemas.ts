@@ -167,4 +167,89 @@ export const sistemas: ProjectDetails[] = [
     year: 2025,
     category: "Sistema de Campo",
   },
+  {
+    id: "trevio",
+    type: "whitelabel",
+    title: "Trevio",
+    tagline: "Plataforma de agência de viagens com operação completa, reservas e portal do fornecedor",
+    description:
+      "Sistema white label para agências de turismo e marketplaces de viagens: descoberta de destinos, reservas por data, checkout com Stripe, portal do cliente e do fornecedor.",
+    longDescription:
+      "Trevio é uma plataforma moderna e de alta performance para agências de viagens e marketplaces de turismo operarem de ponta a ponta. O sistema oferece calendário de disponibilidade dinâmico, precificação por data, checkout com Stripe, além de painéis especializados para Cliente (gerenciamento de itinerário e favoritos), Fornecedor (controle de produtos, reservas recebidas e repasses) e Administrador (auditoria financeira e governança). Construído com foco em cloud serverless utilizando TanStack Start, Better Auth, Drizzle ORM e Cloudflare D1/R2.",
+    image: "/placeholder.svg",
+    images: ["/placeholder.svg"],
+    status: "private",
+    technologies: [
+      { name: "TanStack Start" },
+      { name: "TanStack Router" },
+      { name: "TypeScript" },
+      { name: "Drizzle ORM" },
+      { name: "Cloudflare D1/R2" },
+      { name: "Better Auth" },
+      { name: "Stripe Billing" },
+    ],
+    contactUrl: "#contato",
+    targetAudience:
+      "Agências de viagem, operadoras de turismo locais, marketplaces de passeios e profissionais do setor de viagens que necessitam de uma plataforma proprietária completa.",
+    features: [
+      "Busca de destinos e catálogo interativo de passeios/produtos",
+      "Calendário de disponibilidade e precificação dinâmica por data",
+      "Fluxo de reservas integrado com checkout seguro via Stripe",
+      "Portal do Cliente: Itinerários personalizados dia a dia e favoritos",
+      "Portal do Fornecedor: Gestão de catálogo, reservas recebidas e repasses",
+      "Painel de Administração central para auditoria e governança de conteúdo",
+      "Módulo de inteligência: alertas de preço de destinos e recomendações",
+      "Autenticação robusta multitenant com Better Auth",
+    ],
+    highlights: [
+      {
+        title: "Arquitetura Marketplace",
+        description:
+          "Painéis independentes para clientes, fornecedores locais e administradores do sistema em um só lugar.",
+        icon: "users",
+      },
+      {
+        title: "TanStack Start & Router",
+        description:
+          "Desenvolvido sobre a stack mais moderna de React, oferecendo renderização SSR de alta velocidade e type-safety absoluto.",
+        icon: "code",
+      },
+      {
+        title: "Checkout Stripe Nativo",
+        description:
+          "Processamento de reservas, controle de reembolsos e relatórios de faturamento nativamente integrados.",
+        icon: "zap",
+      },
+    ],
+    steps: [
+      {
+        step: 1,
+        title: "Entre em contato",
+        description: "Agende uma conversa para avaliarmos seu modelo de negócio de viagens.",
+      },
+      {
+        step: 2,
+        title: "Identidade Visual & Configuração",
+        description: "Personalizamos o sistema com a sua marca, logo, regras de repasse e moedas suportadas.",
+      },
+      {
+        step: 3,
+        title: "Setup & Integrações",
+        description: "Realizamos o deploy na Cloudflare e conectamos sua conta Stripe e provedor de e-mail (Resend).",
+      },
+      {
+        step: 4,
+        title: "Operação Ativa",
+        description: "A agência entra no ar com suporte dedicado para onboarding de fornecedores e controle operacional.",
+      },
+    ],
+    challenges: [
+      "Controle complexo de disponibilidade e inventário diário por produto",
+      "Fluxo de repasse financeiro de reservas para múltiplos fornecedores",
+      "Desenvolvimento de planejador de itinerários de viagem dia a dia colaborativo",
+      "Estrutura Cloudflare Serverless compatível com processamento assíncrono",
+    ],
+    year: 2026,
+    category: "Marketplace de Turismo",
+  },
 ];
