@@ -22,21 +22,16 @@ const Hero5 = () => {
         Disponível para projetos
       </div>
 
-      <h1 className="font-display-xl-mobile md:font-display-xl text-display-xl-mobile md:text-display-xl mb-6 max-w-4xl mx-auto">
-        Me chamo{" "}
-        <span className="text-surface-tint">Rafael</span>{" "}
-        <br />
-        sou{" "}
-        <span className="bg-gradient-to-r from-surface-tint to-white bg-clip-text text-transparent">
-          Dev
-        </span>
-        <span className="text-surface-tint">_</span>
+      <h1 className="font-body text-display-xl-mobile md:text-display-xl mb-6 max-w-4xl mx-auto">
+        Desenvolvo aplicações <br />
+        de alta performance
+        <span className="text-surface-tint animate-blink">_</span>
       </h1>
 
       <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
-        Desenvolvedor Full-Stack com 6 anos de experiência como freelancer,
-        apaixonado por criar soluções digitais inovadoras. Transformo ideias em
-        aplicações robustas e de alta performance.
+        Sou Rafael, Desenvolvedor Full-Stack especializado em criar produtos digitais
+        velozes, otimizados para SEO e focados em conversão. Transformo ideias
+        complexas em código limpo e escalável.
       </p>
 
       <div className="flex flex-col sm:flex-row gap-stack-md">
