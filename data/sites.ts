@@ -12,7 +12,7 @@ export const sites: ProjectDetails[] = [
       "A Escola Criativa precisava de uma presença digital que comunicasse com clareza sua proposta pedagógica diferenciada e convertesse visitantes em alunos matriculados. O projeto incluiu arquitetura de informação focada em conversão, galeria de cursos, depoimentos de alunos e sistema de matrículas online integrado.",
     image: "/placeholder.svg",
     images: ["/placeholder.svg"],
-    status: "public",
+    status: "private",
     technologies: [
       { name: "WordPress" },
       { name: "PHP" },
@@ -48,7 +48,7 @@ export const sites: ProjectDetails[] = [
       "A Promind precisava de um site que transmitisse autoridade e credibilidade no mercado de consultoria empresarial. O projeto entregou um site corporativo com páginas institucionais completas, blog para geração de conteúdo e formulário de contato integrado — tudo otimizado para conversão e SEO.",
     image: "/placeholder.svg",
     images: ["/placeholder.svg"],
-    status: "public",
+    status: "private",
     technologies: [
       { name: "WordPress" },
       { name: "PHP" },
@@ -83,7 +83,7 @@ export const sites: ProjectDetails[] = [
       "A Alucamp precisava digitalizar seu processo comercial e permitir que clientes da construção civil solicitassem orçamentos a qualquer hora. O projeto entregou um catálogo digital completo com fichas técnicas de equipamentos, fotos de qualidade e sistema de solicitação de orçamento integrado que notifica a equipe em tempo real.",
     image: "/placeholder.svg",
     images: ["/placeholder.svg"],
-    status: "public",
+    status: "private",
     technologies: [
       { name: "WordPress" },
       { name: "PHP" },

@@ -10,7 +10,6 @@ import {
   Code,
   ChevronLeft,
   ChevronRight,
-  Lock,
   Brain,
   Layout,
   Layers,
@@ -42,6 +41,20 @@ const ICON_MAP: Record<string, React.ElementType> = {
   users: Users,
   zap: Zap,
   sparkles: Sparkles,
+}
+
+// ─── WhatsApp URL Helper ──────────────────────────────────────────────────────
+const getWhatsAppUrl = (projectTitle: string, type: "like_this" | "demo" | "acquire") => {
+  const phone = "5521979674045"
+  let text = ""
+  if (type === "like_this") {
+    text = `Olá Rafael! Vi o seu projeto "${projectTitle}" no seu portfólio e gostaria de desenvolver algo parecido para o meu negócio.`
+  } else if (type === "demo") {
+    text = `Olá Rafael! Vi o seu sistema white-label "${projectTitle}" no seu portfólio e gostaria de solicitar uma demonstração funcional.`
+  } else if (type === "acquire") {
+    text = `Olá Rafael! Tenho interesse em adquirir uma licença do seu sistema white-label "${projectTitle}" e gostaria de receber uma proposta personalizada.`
+  }
+  return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`
 }
 
 // ─── Image Carousel ───────────────────────────────────────────────────────────
@@ -256,7 +269,7 @@ function SaaSContent({ project }: { project: ProjectDetails }) {
           </CTASecondary>
         )}
         {!project.demoUrl && !project.codeUrl && (
-          <CTASecondary href="#contato" icon={MessageCircle}>
+          <CTASecondary href={getWhatsAppUrl(project.title, "demo")} icon={MessageCircle}>
             Solicitar Demonstração
           </CTASecondary>
         )}
@@ -330,7 +343,7 @@ function ClientContent({ project }: { project: ProjectDetails }) {
             Ver Projeto Online
           </CTAPrimary>
         )}
-        <CTAPrimary href={project.contactUrl || "#contato"} icon={MessageCircle}>
+        <CTAPrimary href={getWhatsAppUrl(project.title, "like_this")} icon={MessageCircle}>
           Quero algo assim
         </CTAPrimary>
       </div>
@@ -451,12 +464,17 @@ function WhiteLabelContent({ project }: { project: ProjectDetails }) {
           <p className="text-white font-semibold text-sm">Entre em contato para proposta personalizada</p>
         </div>
         <div className="flex flex-wrap gap-3 justify-center">
-          <CTAPrimary href={project.contactUrl || "#contato"} icon={MessageCircle}>
+          <CTAPrimary href={getWhatsAppUrl(project.title, "demo")} icon={MessageCircle}>
             Solicitar Demonstração
           </CTAPrimary>
-          <CTASecondary href={project.contactUrl || "#contato"} icon={ArrowRight}>
+          <CTASecondary href={getWhatsAppUrl(project.title, "acquire")} icon={ArrowRight}>
             Quero Adquirir
           </CTASecondary>
+          {project.codeUrl && project.status === "public" && (
+            <CTASecondary href={project.codeUrl} icon={Code}>
+              Ver Código Fonte
+            </CTASecondary>
+          )}
         </div>
       </div>
     </div>
@@ -502,10 +520,11 @@ export function ProjectLandingModal({ project, open, onOpenChange }: ProjectLand
               <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider border ${typeLabel.color}`}>
                 {typeLabel.label}
               </span>
-              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider border ${statusLabel.color}`}>
-                {project.status === "private" && <Lock className="w-2.5 h-2.5 mr-1" />}
-                {statusLabel.label}
-              </span>
+              {project.status !== "private" && (
+                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider border ${statusLabel.color}`}>
+                  {statusLabel.label}
+                </span>
+              )}
             </div>
 
             <h2 className="text-xl md:text-2xl font-bold text-white leading-tight">{project.title}</h2>

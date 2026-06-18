@@ -152,7 +152,7 @@ export default function Home() {
           <SectionHeading icon={Globe}>Projetos de Clientes</SectionHeading>
 
           <div
-            className="grid grid-cols-1 md:grid-cols-2 gap-gutter"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter"
             ref={addToRefs}
           >
             {sites.map((site) => (
@@ -169,7 +169,7 @@ export default function Home() {
           <SectionHeading icon={Terminal}>Sistemas White Label</SectionHeading>
 
           <div
-            className="grid grid-cols-1 md:grid-cols-2 gap-gutter"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter"
             ref={addToRefs}
           >
             {sistemas.map((sistema) => (

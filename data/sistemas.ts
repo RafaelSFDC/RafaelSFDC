@@ -252,4 +252,89 @@ export const sistemas: ProjectDetails[] = [
     year: 2026,
     category: "Marketplace de Turismo",
   },
+  {
+    id: "lumina",
+    type: "whitelabel",
+    title: "Lumina",
+    tagline: "CMS editorial moderno e open source construído sobre TanStack Start e Cloudflare",
+    description:
+      "CMS editorial completo para publicações e blogs: editor rich-text Tiptap, agendamento de posts, painel admin, comentários, assinantes e Stripe.",
+    longDescription:
+      "Lumina é um CMS editorial de alta performance, projetado para servir como base moderna de publicações e blogs corporativos. A plataforma vai muito além de um blog tradicional: conta com editor de conteúdo rich-text (Tiptap), fluxo editorial completo (rascunhos, agendamento via Cron e publicação), comentários com moderação, gestão de menus e redirects, além de integração inicial com Stripe para assinaturas de conteúdo premium e telemetria avançada com PostHog. Construído sobre TanStack Start, React 19, Better Auth, Drizzle ORM e otimizado para deploy serverless na Cloudflare (Workers, D1, R2).",
+    image: "/placeholder.svg",
+    images: ["/placeholder.svg"],
+    status: "public",
+    technologies: [
+      { name: "TanStack Start" },
+      { name: "React 19" },
+      { name: "Better Auth" },
+      { name: "Drizzle ORM" },
+      { name: "Cloudflare D1/R2" },
+      { name: "Tailwind CSS v4" },
+      { name: "Stripe Billing" },
+    ],
+    contactUrl: "#contato",
+    codeUrl: "https://github.com/RafaelSFDC/lumina",
+    targetAudience:
+      "Desenvolvedores, editoras de conteúdo, blogs corporativos e criadores de conteúdo que necessitam de uma base de publicação autohospedada, rápida e extensível.",
+    features: [
+      "CMS completo com gestão de posts, páginas, categorias e tags",
+      "Editor de texto rico (Tiptap) com renderização em Markdown",
+      "Moderação nativa de comentários e caixa de mensagens de contato",
+      "Suporte a conteúdo premium com paywall integrado via Stripe",
+      "Fluxo editorial avançado com publicação agendada via Cloudflare Crons",
+      "Telemetria de uso e analytics comportamental integrado com PostHog",
+      "SEO completo global e por página, com geração automática de sitemaps e RSS",
+      "Gerenciamento dinâmico de menus de navegação e redirecionamentos",
+    ],
+    highlights: [
+      {
+        title: "Editor Visual & Tiptap",
+        description:
+          "Interface de escrita moderna com suporte a blocos ricos, embeds do YouTube, links e atalhos Markdown.",
+        icon: "layout",
+      },
+      {
+        title: "Cloudflare Serverless",
+        description:
+          "Banco D1, armazenamento R2 e Workers otimizados para custo operacional zero no plano gratuito da Cloudflare.",
+        icon: "zap",
+      },
+      {
+        title: "Autenticação e Funções",
+        description:
+          "Controle de acessos granular com Better Auth, cobrindo papéis de leitores, autores, moderadores e administradores.",
+        icon: "users",
+      },
+    ],
+    steps: [
+      {
+        step: 1,
+        title: "Bifurcar o Repositório",
+        description: "Faça o fork ou clone do repositório oficial no GitHub para iniciar sua customização.",
+      },
+      {
+        step: 2,
+        title: "Configuração de Variáveis",
+        description: "Defina suas chaves locais e de produção para Better Auth, Stripe e Cloudflare em .env.local.",
+      },
+      {
+        step: 3,
+        title: "Implantação Automatizada",
+        description: "Execute o comando de deploy para rodar as migrações no D1 e publicar seu Worker de forma imediata.",
+      },
+      {
+        step: 4,
+        title: "Painel & Produção",
+        description: "Acesse o painel do seu CMS, configure o domínio próprio e gerencie suas publicações com liberdade.",
+      },
+    ],
+    challenges: [
+      "Integração do editor rich-text Tiptap com o pipeline de renderização SSR do TanStack Start",
+      "Sincronização assíncrona de assinaturas Stripe com webhooks persistidos em Worker",
+      "Processamento serverless compatível com o controle de compatibilidade nativa da Cloudflare",
+    ],
+    year: 2026,
+    category: "CMS Editorial",
+  },
 ];
