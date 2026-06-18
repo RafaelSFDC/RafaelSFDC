@@ -1,6 +1,6 @@
 "use client"
 
-import { ExternalLink, Info, Lock } from "lucide-react"
+import { ExternalLink, Info, Lock, Globe } from "lucide-react"
 import Image from "next/image"
 import type { ProjectDetails } from "@/types/project"
 import { useState } from "react"
@@ -64,6 +64,14 @@ export function SiteCard({ project }: SiteCardProps) {
             >
               <Info className="size-4" /> Detalhes
             </button>
+            {project.landingPageUrl && (
+              <a
+                href={project.landingPageUrl}
+                className="flex-1 px-4 py-2.5 bg-surface-tint text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:brightness-110 transition-all text-xs"
+              >
+                <Globe className="size-4" /> Landing Page
+              </a>
+            )}
             {project.demoUrl && !isPrivate && (
               <a
                 href={project.demoUrl}

@@ -23,6 +23,7 @@ export const sistemas: ProjectDetails[] = [
       { name: "Better Auth" },
     ],
     contactUrl: "#contato",
+    landingPageUrl: "/pedefacil",
     targetAudience: "Restaurantes, delivery, lanchonetes e negócios de alimentação que precisam digitalizar seus pedidos, modernizar o cardápio e profissionalizar a operação via WhatsApp.",
     features: [
       "Cardápio digital mobile-first com categorias e produtos",

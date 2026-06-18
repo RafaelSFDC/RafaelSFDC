@@ -46,6 +46,7 @@ export interface ProjectDetails {
   demoUrl?: string
   codeUrl?: string
   contactUrl?: string
+  landingPageUrl?: string
   features?: string[]
   challenges?: string[]
   results?: ProjectResult[]
