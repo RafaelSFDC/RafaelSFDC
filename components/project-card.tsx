@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Image from "next/image"
 import type { ProjectDetails } from "@/types/project"
 import { useState } from "react"
-import { ProjectDetailsModal } from "@/components/project-details-modal"
+import { ProjectLandingModal } from "@/components/project-landing-modal"
 import { cn } from "@/lib/utils"
 
 interface ProjectCardProps {
@@ -132,7 +132,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </CardFooter>
       </Card>
 
-      <ProjectDetailsModal project={project} open={showDetails} onOpenChange={setShowDetails} />
+      <ProjectLandingModal project={project} open={showDetails} onOpenChange={setShowDetails} />
     </>
   )
 }

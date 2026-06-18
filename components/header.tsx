@@ -7,10 +7,10 @@ import Link from "next/link";
 
 const homeMenuItems = [
   { name: "Sobre", href: "#sobre" },
-  { name: "Habilidades", href: "#habilidades" },
-  { name: "Projetos", href: "#projetos" },
-  { name: "Sites", href: "#sites" },
-  { name: "Sistemas", href: "#sistemas" },
+  { name: "Skills", href: "#habilidades" },
+  { name: "SaaS", href: "#projetos" },
+  { name: "Clientes", href: "#sites" },
+  { name: "White Label", href: "#sistemas" },
   { name: "Blog", href: "/blog" },
   { name: "Contato", href: "#contato" },
 ];

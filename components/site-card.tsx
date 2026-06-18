@@ -4,7 +4,7 @@ import { ExternalLink, Info, Lock } from "lucide-react"
 import Image from "next/image"
 import type { ProjectDetails } from "@/types/project"
 import { useState } from "react"
-import { ProjectDetailsModal } from "@/components/project-details-modal"
+import { ProjectLandingModal } from "@/components/project-landing-modal"
 import { cn } from "@/lib/utils"
 
 interface SiteCardProps {
@@ -78,7 +78,7 @@ export function SiteCard({ project }: SiteCardProps) {
         </div>
       </div>
 
-      <ProjectDetailsModal project={project} open={showDetails} onOpenChange={setShowDetails} />
+      <ProjectLandingModal project={project} open={showDetails} onOpenChange={setShowDetails} />
     </>
   )
 }

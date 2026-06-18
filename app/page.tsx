@@ -20,7 +20,7 @@ import {
   Mail,
   Smartphone,
 } from "lucide-react"
-import { ProjectDetailsModal } from "@/components/project-details-modal"
+import { ProjectLandingModal } from "@/components/project-landing-modal"
 import type { ProjectDetails } from "@/types/project"
 
 export default function Home() {
@@ -135,7 +135,7 @@ export default function Home() {
           id="projetos"
           className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap"
         >
-          <SectionHeading icon={FolderKanban}>Projetos Selecionados</SectionHeading>
+          <SectionHeading icon={FolderKanban}>Produtos SaaS</SectionHeading>
 
           <div className="grid grid-cols-1 gap-stack-lg" ref={addToRefs}>
             {projects.map((project) => (
@@ -149,7 +149,7 @@ export default function Home() {
           id="sites"
           className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap"
         >
-          <SectionHeading icon={Globe}>Sites &amp; Serviços</SectionHeading>
+          <SectionHeading icon={Globe}>Projetos de Clientes</SectionHeading>
 
           <div
             className="grid grid-cols-1 md:grid-cols-2 gap-gutter"
@@ -166,7 +166,7 @@ export default function Home() {
           id="sistemas"
           className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap"
         >
-          <SectionHeading icon={Terminal}>Sistemas</SectionHeading>
+          <SectionHeading icon={Terminal}>Sistemas White Label</SectionHeading>
 
           <div
             className="grid grid-cols-1 md:grid-cols-2 gap-gutter"
@@ -383,7 +383,7 @@ export default function Home() {
       </main>
 
       {detailsProject && (
-        <ProjectDetailsModal
+        <ProjectLandingModal
           project={detailsProject}
           open={!!detailsProject}
           onOpenChange={(open) => { if (!open) setDetailsProject(null) }}
