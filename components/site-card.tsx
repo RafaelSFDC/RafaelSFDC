@@ -64,7 +64,7 @@ export function SiteCard({ project }: SiteCardProps) {
             >
               <Info className="size-4" /> Detalhes
             </button>
-            {project.landingPageUrl && (
+            {project.landingPageUrl && project.type !== "whitelabel" && (
               <a
                 href={project.landingPageUrl}
                 className="flex-1 px-4 py-2.5 bg-surface-tint text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:brightness-110 transition-all text-xs"

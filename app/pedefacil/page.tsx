@@ -661,6 +661,65 @@ function DeploymentOptions() {
   );
 }
 
+function AddonsSection() {
+  const addons = [
+    {
+      title: "Módulo de WhatsApp Automatizado",
+      desc: "Envio automático de status do pedido (Aprovado, Em Produção, Saiu para Entrega) direto no WhatsApp do cliente via API oficial, reduzindo o tempo de atendimento manual.",
+      type: "Software & Automação",
+    },
+    {
+      title: "Configuração de Analytics & Pixels",
+      desc: "Instalação profissional de Meta Pixel, Google Analytics (GA4) e Google Tag Manager no seu checkout para registrar compras e otimizar campanhas de tráfego.",
+      type: "Dados & Otimização",
+    },
+    {
+      title: "Gestão de Tráfego Pago Local",
+      desc: "Nossa equipe cria, gerencia e otimiza anúncios patrocinados no Instagram e Facebook direcionados a clientes em um raio de até 5km do seu restaurante, focando em vendas diárias.",
+      type: "Serviço de Crescimento",
+    },
+  ];
+
+  return (
+    <section className="py-20 bg-white" id="addons">
+      <div className="container-max mx-auto gutter">
+        <div className="text-center mb-16">
+          <h2 className="font-headline-lg text-primary mb-3">
+            Addons e Módulos de Expansão
+          </h2>
+          <p className="font-body-md text-on-surface-variant max-w-xl mx-auto">
+            Eleve o nível do seu sistema de delivery com recursos de automação comercial e marketing prontos para integrar.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {addons.map((a, i) => (
+            <div
+              key={i}
+              className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/30 flex flex-col justify-between hover:border-secondary transition-all"
+            >
+              <div>
+                <span className="inline-block text-xs font-bold text-secondary bg-secondary-container/20 px-2.5 py-1 rounded-full mb-4">
+                  {a.type}
+                </span>
+                <h4 className="font-headline-sm text-lg mb-2 text-primary">{a.title}</h4>
+                <p className="font-body-sm text-on-surface-variant leading-relaxed">
+                  {a.desc}
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-outline-variant/20 flex items-center justify-between">
+                <span className="text-xs text-on-surface-variant">Opcional sob consulta</span>
+                <a href="#cta" className="text-xs font-bold text-secondary flex items-center gap-1 hover:opacity-85 transition-all">
+                  Saber Mais <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FAQ() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
@@ -799,6 +858,7 @@ export default function PedeFacilPage() {
         <FeaturesGrid />
         <ComparisonTable />
         <DeploymentOptions />
+        <AddonsSection />
         <FAQ />
         <FinalCTA />
       </main>

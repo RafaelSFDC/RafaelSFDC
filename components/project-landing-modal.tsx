@@ -417,6 +417,33 @@ function WhiteLabelContent({ project }: { project: ProjectDetails }) {
         <TechStack technologies={project.technologies} />
       </div>
 
+      {/* Landing Page Promotion Banner */}
+      {project.landingPageUrl && (
+        <div className="relative overflow-hidden rounded-xl border border-[#00dce5]/30 bg-gradient-to-r from-[#00dce5]/10 via-[#00dce5]/5 to-transparent p-6 flex flex-col md:flex-row items-center justify-between gap-4 group">
+          {/* Subtle background glow */}
+          <div className="absolute -right-10 -top-10 w-32 h-32 bg-[#00dce5]/10 rounded-full blur-2xl group-hover:bg-[#00dce5]/20 transition-all duration-500" />
+          
+          <div className="flex items-start gap-4 relative z-10">
+            <div className="w-12 h-12 rounded-lg bg-[#00dce5]/15 flex items-center justify-center flex-shrink-0 text-[#00dce5]">
+              <Sparkles className="w-6 h-6 animate-pulse" />
+            </div>
+            <div>
+              <h4 className="font-bold text-white text-base mb-1">Página de Vendas & Demonstrador</h4>
+              <p className="text-white/60 text-xs leading-relaxed max-w-md">
+                Quer ver a página comercial com preços, comparativos completos e detalhes de licenciamento deste sistema?
+              </p>
+            </div>
+          </div>
+          
+          <a
+            href={project.landingPageUrl}
+            className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#00dce5] text-black font-bold text-xs rounded-xl hover:bg-[#00f5ff] hover:scale-[1.03] active:scale-[0.97] transition-all relative z-10 whitespace-nowrap shadow-lg shadow-[#00dce5]/20"
+          >
+            Acessar Landing Page <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+        </div>
+      )}
+
       {/* CTA */}
       <div className="pt-2 border-t border-white/8 flex flex-col gap-4">
         <div className="rounded-xl border border-[#00dce5]/20 bg-[#00dce5]/5 p-5 text-center">
