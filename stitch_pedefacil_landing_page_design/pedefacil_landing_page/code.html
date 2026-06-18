@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PedeFacil - Cardápio Digital &amp; Pedidos via WhatsApp</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f6f3ee",
+                    "surface-container": "#f0ede9",
+                    "on-tertiary-container": "#da8f00",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#1c1c19",
+                    "on-surface-variant": "#414844",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#311d00",
+                    "surface-dim": "#dcdad5",
+                    "on-secondary-fixed": "#002109",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#005322",
+                    "primary": "#022619",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#c1c8c2",
+                    "on-tertiary-fixed": "#291800",
+                    "inverse-primary": "#aacfbb",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#fcf9f4",
+                    "surface-container-high": "#ebe8e3",
+                    "surface": "#fcf9f4",
+                    "on-error": "#ffffff",
+                    "primary-container": "#1a3c2e",
+                    "inverse-surface": "#31302d",
+                    "primary-fixed": "#c5ebd7",
+                    "on-secondary-container": "#007232",
+                    "tertiary-container": "#4d3000",
+                    "on-primary-container": "#82a794",
+                    "on-primary-fixed-variant": "#2c4d3e",
+                    "secondary": "#006d2f",
+                    "secondary-fixed-dim": "#3de273",
+                    "on-tertiary-fixed-variant": "#633f00",
+                    "tertiary-fixed": "#ffddb4",
+                    "secondary-container": "#5dfd8a",
+                    "surface-container-highest": "#e5e2dd",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#aacfbb",
+                    "on-primary-fixed": "#002115",
+                    "secondary-fixed": "#66ff8e",
+                    "tertiary-fixed-dim": "#ffb955",
+                    "surface-variant": "#e5e2dd",
+                    "background": "#fcf9f4",
+                    "surface-tint": "#436555",
+                    "outline": "#727974",
+                    "on-background": "#1c1c19",
+                    "inverse-on-surface": "#f3f0eb",
+                    "whatsapp": "#25D366"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "16px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "64px",
+                    "md": "24px",
+                    "lg": "40px",
+                    "xs": "4px",
+                    "base": "8px",
+                    "sm": "12px",
+                    "container-max": "1200px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .whatsapp-pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="docked full-width top-0 sticky z-50 bg-surface-bright shadow-sm">
+<nav class="max-w-container-max mx-auto px-gutter h-20 flex items-center justify-between">
+<div class="font-headline-md text-headline-md font-bold text-primary">PedeFacil</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#como-funciona">Como Funciona</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#vantagens">Vantagens</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#faq">FAQ</a>
+</div>
+<div class="flex items-center gap-sm">
+<button class="hidden sm:block text-on-surface-variant font-label-md text-label-md px-md py-sm hover:opacity-90 transition-all active:scale-95">Entrar</button>
+<button class="bg-secondary text-on-secondary font-label-md text-label-md px-md py-sm rounded-lg hover:opacity-90 transition-all active:scale-95">Quero testar grátis</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Section 1: Hero -->
+<section class="relative overflow-hidden py-xl md:py-32">
+<div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 lg:grid-cols-2 gap-lg items-center">
+<div class="flex flex-col gap-md z-10">
+<span class="inline-block px-sm py-xs bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-full w-fit">
+                        Taxa Zero sobre Vendas
+                    </span>
+<h1 class="font-headline-xl text-headline-xl text-primary leading-tight">
+                        Seu cardápio digital profissional. Pedidos direto no WhatsApp. <span class="text-secondary">Sem comissão.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                        Automatize seus pedidos, economize com taxas e tenha total controle do seu negócio com um sistema simples e potente.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-sm pt-sm">
+<button class="bg-whatsapp text-white flex items-center justify-center gap-xs px-md py-lg rounded-xl font-headline-sm text-headline-sm shadow-lg whatsapp-pulse hover:opacity-90 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">whatshot</span>
+                            Quero testar grátis
+                        </button>
+<button class="border-2 border-primary text-primary px-md py-lg rounded-xl font-headline-sm text-headline-sm hover:bg-primary hover:text-white transition-all">
+                            Ver como funciona
+                        </button>
+</div>
+</div>
+<div class="relative order-first lg:order-last">
+<div class="absolute -inset-4 bg-primary-fixed blur-3xl opacity-20 rounded-full"></div>
+<img alt="Smartphone displaying a modern restaurant digital menu" class="relative z-10 w-full h-auto drop-shadow-2xl rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtFiuZm1h9mrIDDL4wV24_lTI7Wyb7g-u3toVfDBNPcYKDJntWYKY97GNqIRK8zQ4EHl9WRRFTj0A5FV2xSVRI7R3KawEMYghhQzq0avEqW5zofjIgglunfMUKEB-pqr8_btcbCEWcHYhAtIaUvKxy8iJwgKkItIdNif1LeTTa0OjWlShTnYHYx6yC3_LkJz44bgrLQgWGKOB2dqQ-9E_1aSm_ylfqNJ_KOxYA6_d_nqzTPwBQpK21gIib01Qfc_oQikRn_ItJWAA"/>
+</div>
+</div>
+</section>
+<!-- Section 2: Pain Section -->
+<section class="bg-primary-container py-xl">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-surface-bright mb-sm">Chega de perder dinheiro e tempo</h2>
+<p class="font-body-md text-body-md text-on-primary-container opacity-80">O delivery tradicional está sufocando o seu restaurante?</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="bg-surface-container-lowest/5 p-md rounded-xl border border-white/10 flex flex-col gap-sm">
+<div class="w-12 h-12 rounded-full bg-error-container/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-3xl">money_off</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-surface-bright">Altas comissões do iFood</h3>
+<p class="font-body-sm text-body-sm text-on-primary-container">Pare de entregar até 30% do seu faturamento para os aplicativos de delivery. O lucro deve ser seu.</p>
+</div>
+<div class="bg-surface-container-lowest/5 p-md rounded-xl border border-white/10 flex flex-col gap-sm">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed/20 flex items-center justify-center text-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-3xl">alarm_off</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-surface-bright">Caos no WhatsApp</h3>
+<p class="font-body-sm text-body-sm text-on-primary-container">Atendimento demorado, erros nos pedidos e esquecimentos. Organize o fluxo de mensagens de forma profissional.</p>
+</div>
+<div class="bg-surface-container-lowest/5 p-md rounded-xl border border-white/10 flex flex-col gap-sm">
+<div class="w-12 h-12 rounded-full bg-primary-fixed/20 flex items-center justify-center text-primary-fixed">
+<span class="material-symbols-outlined text-3xl">file_present</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-surface-bright">Cardápios em PDF</h3>
+<p class="font-body-sm text-body-sm text-on-primary-container">Arquivos pesados e difíceis de atualizar que frustram o cliente. Ofereça uma experiência de navegação rápida e fluida.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: How it Works -->
+<section class="py-xl bg-surface" id="como-funciona">
+<div class="max-w-container-max mx-auto px-gutter">
+<h2 class="font-headline-lg text-headline-lg text-center text-primary mb-xl">Simples de usar para você e seu cliente</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-xl relative">
+<div class="hidden md:block absolute top-10 left-0 w-full h-0.5 bg-outline-variant/30 -z-0"></div>
+<div class="flex flex-col items-center text-center gap-sm relative z-10">
+<div class="w-20 h-20 rounded-full bg-white shadow-lg flex items-center justify-center text-secondary font-headline-md text-headline-md border-4 border-surface">1</div>
+<h3 class="font-headline-sm text-headline-sm mt-sm">Cadastre seu cardápio</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Adicione fotos, descrições e preços de forma intuitiva no nosso painel exclusivo.</p>
+</div>
+<div class="flex flex-col items-center text-center gap-sm relative z-10">
+<div class="w-20 h-20 rounded-full bg-white shadow-lg flex items-center justify-center text-secondary font-headline-md text-headline-md border-4 border-surface">2</div>
+<h3 class="font-headline-sm text-headline-sm mt-sm">Divulgue seu link</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Coloque seu link personalizado na bio do Instagram e no status do seu WhatsApp.</p>
+</div>
+<div class="flex flex-col items-center text-center gap-sm relative z-10">
+<div class="w-20 h-20 rounded-full bg-white shadow-lg flex items-center justify-center text-secondary font-headline-md text-headline-md border-4 border-surface">3</div>
+<h3 class="font-headline-sm text-headline-sm mt-sm">Receba pedidos no WhatsApp</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">O cliente fecha o carrinho e você recebe o pedido pronto para imprimir e produzir.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Features Grid -->
+<section class="py-xl bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Tudo o que você precisa para vender mais</h2>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-sm">
+<!-- Feature Cards -->
+<div class="bg-white p-md rounded-xl shadow-sm border border-outline-variant/20 hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-secondary mb-base">restaurant_menu</span>
+<h4 class="font-headline-sm text-headline-sm text-sm mb-xs">Cardápio Digital</h4>
+<p class="text-[12px] text-on-surface-variant leading-tight">Visual moderno e rápido para celular.</p>
+</div>
+<div class="bg-white p-md rounded-xl shadow-sm border border-outline-variant/20 hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-secondary mb-base" style="font-variation-settings: 'FILL' 1;">whatshot</span>
+<h4 class="font-headline-sm text-headline-sm text-sm mb-xs">WhatsApp Business</h4>
+<p class="text-[12px] text-on-surface-variant leading-tight">Integração nativa e inteligente.</p>
+</div>
+<div class="bg-white p-md rounded-xl shadow-sm border border-outline-variant/20 hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-secondary mb-base">dashboard</span>
+<h4 class="font-headline-sm text-headline-sm text-sm mb-xs">Painel de Controle</h4>
+<p class="text-[12px] text-on-surface-variant leading-tight">Gestão simplificada de estoque.</p>
+</div>
+<div class="bg-white p-md rounded-xl shadow-sm border border-outline-variant/20 hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-secondary mb-base">local_shipping</span>
+<h4 class="font-headline-sm text-headline-sm text-sm mb-xs">Entrega por Bairro</h4>
+<p class="text-[12px] text-on-surface-variant leading-tight">Taxas de entrega configuráveis.</p>
+</div>
+<div class="bg-white p-md rounded-xl shadow-sm border border-outline-variant/20 hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-secondary mb-base">confirmation_number</span>
+<h4 class="font-headline-sm text-headline-sm text-sm mb-xs">Cupons de Desconto</h4>
+<p class="text-[12px] text-on-surface-variant leading-tight">Fidelize seus clientes com ofertas.</p>
+</div>
+<div class="bg-white p-md rounded-xl shadow-sm border border-outline-variant/20 hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-secondary mb-base">notifications_active</span>
+<h4 class="font-headline-sm text-headline-sm text-sm mb-xs">Status do Pedido</h4>
+<p class="text-[12px] text-on-surface-variant leading-tight">Aviso automático de produção.</p>
+</div>
+<div class="bg-white p-md rounded-xl shadow-sm border border-outline-variant/20 hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-secondary mb-base">payments</span>
+<h4 class="font-headline-sm text-headline-sm text-sm mb-xs">Pagamento Online</h4>
+<p class="text-[12px] text-on-surface-variant leading-tight">Receba via PIX ou Cartão.</p>
+</div>
+<div class="bg-white p-md rounded-xl shadow-sm border border-outline-variant/20 hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-secondary mb-base">storefront</span>
+<h4 class="font-headline-sm text-headline-sm text-sm mb-xs">Marca Própria</h4>
+<p class="text-[12px] text-on-surface-variant leading-tight">Suas cores, sua logo, sua marca.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Comparison Table -->
+<section class="py-xl" id="vantagens">
+<div class="max-w-container-max mx-auto px-gutter">
+<h2 class="font-headline-lg text-headline-lg text-center text-primary mb-xl">PedeFacil vs Aplicativos de Terceiros</h2>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
+<thead>
+<tr class="bg-surface-container-high">
+<th class="p-md text-left font-headline-sm">Recurso</th>
+<th class="p-md text-center font-headline-sm text-error">iFood / Rappi</th>
+<th class="p-md text-center font-headline-sm text-secondary bg-secondary-container/20">PedeFacil</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr>
+<td class="p-md font-body-md font-bold">Comissão</td>
+<td class="p-md text-center text-error">Até 30% por pedido</td>
+<td class="p-md text-center text-secondary font-bold">Zero comissão</td>
+</tr>
+<tr>
+<td class="p-md font-body-md font-bold">Controle de Dados</td>
+<td class="p-md text-center text-on-surface-variant">Eles mandam no cliente</td>
+<td class="p-md text-center text-secondary font-bold">Os dados são 100% seus</td>
+</tr>
+<tr>
+<td class="p-md font-body-md font-bold">Marca Própria</td>
+<td class="p-md text-center text-on-surface-variant">Não (Você é apenas mais um)</td>
+<td class="p-md text-center text-secondary font-bold">Sim (Identidade visual total)</td>
+</tr>
+<tr>
+<td class="p-md font-body-md font-bold">Pedidos no WhatsApp</td>
+<td class="p-md text-center text-on-surface-variant">Não</td>
+<td class="p-md text-center text-secondary font-bold">Sim (Foco total no Whats)</td>
+</tr>
+<tr>
+<td class="p-md font-body-md font-bold">Relatórios</td>
+<td class="p-md text-center text-on-surface-variant">Básicos</td>
+<td class="p-md text-center text-secondary font-bold">Completos e Estratégicos</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Section 6: Testimonials -->
+<section class="py-xl bg-surface-container">
+<div class="max-w-container-max mx-auto px-gutter">
+<h2 class="font-headline-lg text-headline-lg text-center text-primary mb-xl">Quem usa, recomenda</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="bg-white p-lg rounded-xl shadow-sm flex flex-col gap-sm">
+<div class="flex text-on-tertiary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md italic text-on-surface-variant">"Reduzi minhas taxas em 80% no primeiro mês. O sistema se pagou em apenas 3 dias de uso intenso."</p>
+<div class="mt-base">
+<p class="font-bold">João Pedro</p>
+<p class="text-body-sm opacity-70">Pizzaria do Vale</p>
+</div>
+</div>
+<div class="bg-white p-lg rounded-xl shadow-sm flex flex-col gap-sm">
+<div class="flex text-on-tertiary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md italic text-on-surface-variant">"O atendimento pelo WhatsApp era uma bagunça. Agora recebemos tudo organizado, com o endereço e o troco certinho."</p>
+<div class="mt-base">
+<p class="font-bold">Mariana Costa</p>
+<p class="text-body-sm opacity-70">Burger House</p>
+</div>
+</div>
+<div class="bg-white p-lg rounded-xl shadow-sm flex flex-col gap-sm">
+<div class="flex text-on-tertiary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md italic text-on-surface-variant">"Meus clientes adoraram o cardápio. É muito mais rápido que baixar PDF ou ficar perguntando preços."</p>
+<div class="mt-base">
+<p class="font-bold">Ricardo Silva</p>
+<p class="text-body-sm opacity-70">Sushiman Express</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 7: FAQ Accordion -->
+<section class="py-xl" id="faq">
+<div class="max-w-3xl mx-auto px-gutter">
+<h2 class="font-headline-lg text-headline-lg text-center text-primary mb-xl">Dúvidas Frequentes</h2>
+<div class="space-y-sm">
+<details class="group bg-white rounded-xl shadow-sm border border-outline-variant/30">
+<summary class="flex items-center justify-between p-md cursor-pointer list-none">
+<span class="font-headline-sm text-headline-sm text-base">Como recebo os pagamentos?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-md pt-0 text-on-surface-variant font-body-md">
+                            Você pode configurar para receber via PIX (com envio automático do comprovante), cartão na entrega ou integrar com gateways de pagamento online. O dinheiro cai direto na sua conta.
+                        </div>
+</details>
+<details class="group bg-white rounded-xl shadow-sm border border-outline-variant/30">
+<summary class="flex items-center justify-between p-md cursor-pointer list-none">
+<span class="font-headline-sm text-headline-sm text-base">Preciso baixar algum aplicativo?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-md pt-0 text-on-surface-variant font-body-md">
+                            Não! O PedeFacil funciona direto no navegador do seu celular ou computador. Seus clientes também não precisam baixar nada, basta clicar no link.
+                        </div>
+</details>
+<details class="group bg-white rounded-xl shadow-sm border border-outline-variant/30">
+<summary class="flex items-center justify-between p-md cursor-pointer list-none">
+<span class="font-headline-sm text-headline-sm text-base">Posso usar minha própria marca?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-md pt-0 text-on-surface-variant font-body-md">
+                            Sim, o cardápio é totalmente personalizável com sua logomarca, cores principais e fotos dos seus produtos.
+                        </div>
+</details>
+<details class="group bg-white rounded-xl shadow-sm border border-outline-variant/30">
+<summary class="flex items-center justify-between p-md cursor-pointer list-none">
+<span class="font-headline-sm text-headline-sm text-base">Tem limite de pedidos ou produtos?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-md pt-0 text-on-surface-variant font-body-md">
+                            Nossos planos são ilimitados. Você pode cadastrar quantos produtos quiser e receber infinitos pedidos sem cobrança extra.
+                        </div>
+</details>
+<details class="group bg-white rounded-xl shadow-sm border border-outline-variant/30">
+<summary class="flex items-center justify-between p-md cursor-pointer list-none">
+<span class="font-headline-sm text-headline-sm text-base">Como funciona o suporte?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-md pt-0 text-on-surface-variant font-body-md">
+                            Oferecemos suporte humano via WhatsApp em horário comercial para ajudar você a configurar tudo e tirar qualquer dúvida técnica.
+                        </div>
+</details>
+<details class="group bg-white rounded-xl shadow-sm border border-outline-variant/30">
+<summary class="flex items-center justify-between p-md cursor-pointer list-none">
+<span class="font-headline-sm text-headline-sm text-base">Existe fidelidade no contrato?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-md pt-0 text-on-surface-variant font-body-md">
+                            Não. Você paga mensalmente e pode cancelar a qualquer momento sem multas ou burocracia.
+                        </div>
+</details>
+</div>
+</div>
+</section>
+<!-- Section 8: Final CTA -->
+<section class="py-xl bg-primary text-surface-bright">
+<div class="max-w-container-max mx-auto px-gutter text-center flex flex-col items-center gap-md">
+<h2 class="font-headline-xl text-headline-xl">Pronto para profissionalizar seu restaurante?</h2>
+<p class="font-body-lg text-body-lg opacity-80 max-w-2xl">
+                    Junte-se a centenas de estabelecimentos que recuperaram sua margem de lucro com o PedeFacil. Aproveite nosso piloto gratuito por tempo limitado.
+                </p>
+<div class="flex flex-col sm:flex-row gap-sm w-full sm:w-auto mt-sm">
+<button class="bg-secondary text-on-secondary px-lg py-md rounded-xl font-headline-md text-headline-md hover:opacity-90 transition-all shadow-xl active:scale-95">
+                        Quero meu cardápio digital
+                    </button>
+<button class="border border-surface-bright/30 bg-surface-bright/5 px-lg py-md rounded-xl font-headline-md text-headline-md hover:bg-surface-bright/10 transition-all active:scale-95">
+                        Falar com consultor
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest py-xl">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-md border-b border-outline-variant/20 pb-md mb-md">
+<div class="font-headline-sm text-headline-sm font-bold text-on-surface">PedeFacil</div>
+<div class="flex gap-md">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-all" href="#">Termos de Uso</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-all" href="#">Privacidade</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-all" href="#">Ajuda</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-all" href="#">Contato</a>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 PedeFacil. Todos os direitos reservados.</p>
+<div class="flex gap-sm">
+<div class="w-8 h-8 rounded-full bg-on-surface/5 flex items-center justify-center text-on-surface-variant hover:text-primary transition-all cursor-pointer">
+<span class="material-symbols-outlined text-sm">share</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-on-surface/5 flex items-center justify-center text-on-surface-variant hover:text-primary transition-all cursor-pointer">
+<span class="material-symbols-outlined text-sm">public</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth reveal on scroll logic can be added here
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100');
+                        entry.target.classList.remove('opacity-0');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            elements.forEach(el => {
+                el.classList.add('transition-opacity', 'duration-1000', 'ease-out');
+            });
+        });
+    </script>
+</body></html>

@@ -24,13 +24,12 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: SITE_URL,
+    url: `${SITE_URL}/blog`,
     siteName: SITE_NAME,
     locale: "pt_BR",
     title: "Blog Rafael SFDC | SEO Técnico, Performance e Estratégia Digital",
     description:
       "Artigos sobre SEO técnico, desenvolvimento web, performance, segurança e estratégias digitais para crescer com tecnologia.",
-    url: `${SITE_URL}/blog`,
     images: [
       {
         url: DEFAULT_OG_IMAGE,
