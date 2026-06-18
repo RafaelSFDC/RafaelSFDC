@@ -27,135 +27,107 @@ import {
 const features = [
   {
     icon: <Store className="w-6 h-6" />,
-    title: "Cardápio Digital",
-    desc: "Visual moderno e rápido para celular.",
+    title: "Cardápio Mobile-First",
+    desc: "Navegação ultra-rápida sem download ou PDFs pesados.",
   },
   {
     icon: <MessageCircle className="w-6 h-6" />,
-    title: "WhatsApp Business",
-    desc: "Integração nativa e inteligente.",
+    title: "Pedidos Estruturados",
+    desc: "Receba mensagens prontas de pedidos direto no seu WhatsApp.",
   },
   {
     icon: <BarChart3 className="w-6 h-6" />,
     title: "Painel de Controle",
-    desc: "Gestão simplificada de estoque.",
+    desc: "Gestão completa de estoque, categorias e produtos.",
   },
   {
     icon: <Truck className="w-6 h-6" />,
-    title: "Entrega por Bairro",
-    desc: "Taxas de entrega configuráveis.",
+    title: "Frete por Bairro",
+    desc: "Configure taxas e pedido mínimo por bairro de entrega.",
   },
   {
     icon: <Tag className="w-6 h-6" />,
     title: "Cupons de Desconto",
-    desc: "Fidelize seus clientes com ofertas.",
+    desc: "Crie cupons com limite de uso direto no servidor.",
   },
   {
     icon: <Bell className="w-6 h-6" />,
-    title: "Status do Pedido",
-    desc: "Aviso automático de produção.",
+    title: "Alerta Sonoro de Pedidos",
+    desc: "Notificações instantâneas com som para novos pedidos.",
   },
   {
     icon: <CreditCard className="w-6 h-6" />,
-    title: "Pagamento Online",
-    desc: "Receba via PIX ou Cartão.",
+    title: "PIX com Baixa Automática",
+    desc: "Integração nativa com Asaas e Mercado Pago para QR Code.",
   },
   {
     icon: <Shield className="w-6 h-6" />,
-    title: "Marca Própria",
-    desc: "Suas cores, sua logo, sua marca.",
+    title: "Código 100% Seu",
+    desc: "Hospede gratuitamente na Cloudflare de forma independente.",
   },
 ];
 
 const comparison = [
-  { label: "Comissão", ifood: "Até 30% por pedido", pd: "Zero comissão" },
-  { label: "Controle de Dados", ifood: "Eles mandam no cliente", pd: "Os dados são 100% seus" },
-  { label: "Marca Própria", ifood: "Não (Você é apenas mais um)", pd: "Sim (Identidade visual total)" },
-  { label: "Pedidos no WhatsApp", ifood: "Não", pd: "Sim (Foco total no Whats)" },
-  { label: "Relatórios", ifood: "Básicos", pd: "Completos e Estratégicos" },
-];
-
-const testimonials = [
-  {
-    stars: 5,
-    text: '"Reduzi minhas taxas em 80% no primeiro mês. O sistema se pagou em apenas 3 dias de uso intenso."',
-    name: "João Pedro",
-    role: "Pizzaria do Vale",
-  },
-  {
-    stars: 5,
-    text: '"O atendimento pelo WhatsApp era uma bagunça. Agora recebemos tudo organizado, com o endereço e o troco certinho."',
-    name: "Mariana Costa",
-    role: "Burger House",
-  },
-  {
-    stars: 5,
-    text: '"Meus clientes adoraram o cardápio. É muito mais rápido que baixar PDF ou ficar perguntando preços."',
-    name: "Ricardo Silva",
-    role: "Sushiman Express",
-  },
+  { label: "Custo Mensal", saas: "R$ 150 a R$ 299/mês", pd: "R$ 0 (Hospedagem Grátis)" },
+  { label: "Propriedade do Código", saas: "Nenhuma (Alugado)", pd: "100% Sua (Código Fonte Incluso)" },
+  { label: "Banco de Dados", saas: "Trancado na plataforma", pd: "Seu e Exportável em CSV" },
+  { label: "Taxa de Escala", saas: "Cobra mais quando vende mais", pd: "Zero taxas adicionais" },
+  { label: "Branding e Logo", saas: "Logotipo da plataforma no rodapé", pd: "100% White Label e Personalizado" },
 ];
 
 const faqs = [
   {
-    q: "Como recebo os pagamentos?",
-    a: "Você pode configurar para receber via PIX (com envio automático do comprovante), cartão na entrega ou integrar com gateways de pagamento online. O dinheiro cai direto na sua conta.",
+    q: "Como funciona o modelo de licenciamento do PedeFacil?",
+    a: "Você faz um pagamento único para adquirir o código-fonte e a licença de uso comercial do sistema. Uma vez adquirido, o sistema é seu para usar no seu restaurante sem nenhuma mensalidade, taxa de adesão ou limite de tempo.",
   },
   {
-    q: "Preciso baixar algum aplicativo?",
-    a: "Não! O PedeFacil funciona direto no navegador do seu celular ou computador. Seus clientes também não precisam baixar nada, basta clicar no link.",
+    q: "Não entendo de programação. Como faço para instalar?",
+    a: "Se você não tem conhecimentos técnicos, oferecemos o serviço de Setup Concierge. Nós cuidamos de toda a configuração da hospedagem na Cloudflare, apontamos o seu domínio próprio (ex: cardapio.seurestaurante.com.br) e te entregamos o painel pronto para uso em até 48 horas.",
   },
   {
-    q: "Posso usar minha própria marca?",
-    a: "Sim, o cardápio é totalmente personalizável com sua logomarca, cores principais e fotos dos seus produtos.",
+    q: "Quais são os custos de hospedagem após a compra?",
+    a: "Se você hospedar na Cloudflare (usando D1 para banco de dados e R2 para imagens), o custo operacional é praticamente R$ 0. A Cloudflare oferece um plano gratuito extremamente generoso que atende com folga o volume de pedidos de um restaurante de médio/grande porte.",
   },
   {
-    q: "Tem limite de pedidos ou produtos?",
-    a: "Nossos planos são ilimitados. Você pode cadastrar quantos produtos quiser e receber infinitos pedidos sem cobrança extra.",
+    q: "Como funciona a integração com o WhatsApp?",
+    a: "O PedeFacil pode funcionar de duas formas: no modo link direto (gratuito, abre o WhatsApp do cliente com a mensagem do pedido formatada pronta para enviar) ou no modo automático (utilizando a API oficial do Twilio para disparar as mensagens diretamente para o cliente, sem necessidade de clicar no link).",
   },
   {
-    q: "Como funciona o suporte?",
-    a: "Oferecemos suporte humano via WhatsApp em horário comercial para ajudar você a configurar tudo e tirar qualquer dúvida técnica.",
+    q: "O sistema aceita pagamentos online?",
+    a: "Sim. O sistema possui integração nativa com gateways de pagamento como Asaas e Mercado Pago. Você pode receber via PIX (com geração automática de QR Code e chave copia e cola no checkout) ou cartão de crédito. O dinheiro vai direto para a sua conta do gateway, sem intermediários.",
   },
   {
-    q: "Existe fidelidade no contrato?",
-    a: "Não. Você paga mensalmente e pode cancelar a qualquer momento sem multas ou burocracia.",
+    q: "Posso alterar o visual do cardápio?",
+    a: "Sim. Por ser uma solução 100% white label e com o código fonte em mãos, você tem total controle sobre o design. O painel administrativo permite subir sua logomarca, configurar horários de funcionamento, pausar o cardápio e gerenciar taxas de entrega por bairro de forma simples.",
   },
 ];
 
 const showcaseImages = [
   {
-    src: "/placeholder.svg",
-    alt: "Cardápio digital do PedeFacil em smartphone",
-    label: "Cardápio Mobile",
+    src: "/home-page.png",
+    alt: "Cardápio digital do PedeFacil - Página Inicial",
+    label: "Cardápio Mobile-First",
   },
   {
-    src: "/placeholder.svg",
-    alt: "Painel administrativo do PedeFacil",
-    label: "Painel Administrativo",
+    src: "/buscar-page.png",
+    alt: "Busca rápida de produtos",
+    label: "Busca Dinâmica",
   },
   {
-    src: "/placeholder.svg",
-    alt: "Pedidos via WhatsApp formatados",
-    label: "Pedidos no WhatsApp",
+    src: "/filter-pizzas.png",
+    alt: "Filtros por categorias e tags",
+    label: "Filtros Personalizados",
   },
   {
-    src: "/placeholder.svg",
-    alt: "Relatórios e métricas do PedeFacil",
-    label: "Relatórios",
+    src: "/after-add-to-cart.png",
+    alt: "Fluxo de checkout e carrinho estruturado",
+    label: "Carrinho & Checkout",
   },
 ];
 
 // ─── Sections ──────────────────────────────────────────────────────────────
 function Navbar() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const links = [
     { href: "#como-funciona", label: "Como Funciona" },
@@ -165,13 +137,7 @@ function Navbar() {
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-surface-bright/95 backdrop-blur-md shadow-sm"
-          : "bg-transparent"
-      }`}
-    >
+    <header className="fixed top-0 left-0 w-full z-50 bg-surface-bright border-b border-outline-variant/20 shadow-sm">
       <nav className="container-max mx-auto gutter h-20 flex items-center justify-between">
         <a href="#" className="font-headline-md font-bold text-primary">
           PedeFacil
@@ -191,16 +157,10 @@ function Navbar() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#"
-            className="hidden sm:block text-on-surface-variant font-label-md px-6 py-2.5 hover:opacity-90 transition-all active:scale-95"
-          >
-            Entrar
-          </a>
-          <a
             href="#cta"
-            className="bg-secondary text-on-secondary font-label-md px-6 py-2.5 rounded-lg hover:opacity-90 transition-all active:scale-95"
+            className="btn btn-primary btn-md !rounded-lg"
           >
-            Quero testar grátis
+            Adquirir Sistema
           </a>
           <button
             onClick={() => setOpen(!open)}
@@ -237,29 +197,27 @@ function Hero() {
       <div className="container-max mx-auto gutter grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         <div className="flex flex-col gap-6 z-10">
           <span className="inline-block px-3 py-1 bg-secondary-container text-on-secondary-container font-label-md rounded-full w-fit text-sm">
-            Taxa Zero sobre Vendas
+            Licença Vitalícia • Sem Assinatura • Código Próprio
           </span>
           <h1 className="font-headline-xl text-primary leading-tight">
-            Seu cardápio digital profissional. Pedidos direto no WhatsApp.{" "}
-            <span className="text-secondary">Sem comissão.</span>
+            O cardápio digital profissional que é{" "}
+            <span className="text-secondary">seu para sempre.</span>
           </h1>
           <p className="font-body-lg text-on-surface-variant max-w-lg">
-            Automatize seus pedidos, economize com taxas e tenha total controle
-            do seu negócio com um sistema simples e potente.
+            Esqueça aluguel e comissões. Compre a licença do código-fonte do PedeFacil, hospede você mesmo gratuitamente ou deixe que cuidamos de toda a infraestrutura.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 pt-2">
+          <div className="flex flex-col sm:flex-row gap-4 pt-2">
             <a
-              href="#cta"
-              className="bg-whatsapp text-white flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-headline-sm shadow-lg whatsapp-pulse hover:bg-whatsapp-hover transition-all"
+              href="#modelos"
+              className="btn btn-primary btn-lg shadow-lg"
             >
-              <MessageCircle className="w-5 h-5" />
-              Quero testar grátis
+              Adquirir Sistema
             </a>
             <a
               href="#como-funciona"
-              className="border-2 border-primary text-primary px-6 py-4 rounded-xl font-headline-sm hover:bg-primary hover:text-white transition-all text-center"
+              className="btn btn-outline btn-lg"
             >
-              Ver como funciona
+              Como Funciona
             </a>
           </div>
         </div>
@@ -357,26 +315,26 @@ function PainSection() {
   const pains = [
     {
       icon: <span className="material-symbols-outlined text-3xl">money_off</span>,
-      title: "Altas comissões do iFood",
-      desc: "Pare de entregar até 30% do seu faturamento para os aplicativos de delivery. O lucro deve ser seu.",
+      title: "Mensalidades que nunca acabam",
+      desc: "Sistemas tradicionais cobram aluguel eterno. Se você parar de pagar, perde o cardápio e todos os seus clientes cadastrados. Com o PedeFacil, você compra o sistema uma única vez.",
       color: "bg-error-container/20 text-error",
     },
     {
       icon: (
-        <span className="material-symbols-outlined text-3xl">alarm_off</span>
+        <span className="material-symbols-outlined text-3xl">lock_open</span>
       ),
-      title: "Caos no WhatsApp",
-      desc: "Atendimento demorado, erros nos pedidos e esquecimentos. Organize o fluxo de mensagens de forma profissional.",
+      title: "Dados trancados e dependência",
+      desc: "No iFood ou plataformas alugadas, você não é dono dos dados. Aqui, o banco de dados é seu. Exporte seus clientes, pedidos e relatórios a qualquer momento com total liberdade.",
       color: "bg-tertiary-fixed/20 text-tertiary-fixed-dim",
     },
     {
       icon: (
         <span className="material-symbols-outlined text-3xl">
-          file_present
+          bar_chart
         </span>
       ),
-      title: "Cardápios em PDF",
-      desc: "Arquivos pesados e difíceis de atualizar que frustram o cliente. Ofereça uma experiência de navegação rápida e fluida.",
+      title: "Limitações e taxas de escala",
+      desc: "À medida que seu restaurante vende mais, plataformas cobram taxas por pedido ou te forçam a fazer upgrade de plano. Nosso sistema é ilimitado: o código roda no seu próprio servidor.",
       color: "bg-primary-fixed/20 text-primary-fixed",
     },
   ];
@@ -386,10 +344,10 @@ function PainSection() {
       <div className="container-max mx-auto gutter">
         <div className="text-center mb-10">
           <h2 className="font-headline-lg text-surface-bright mb-2">
-            Chega de perder dinheiro e tempo
+            Chega de pagar aluguel pelo seu cardápio
           </h2>
           <p className="font-body-md text-on-primary-container opacity-80">
-            O delivery tradicional está sufocando o seu restaurante?
+            Por que o modelo de mensalidades (SaaS) não faz sentido para o seu delivery:
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -419,18 +377,18 @@ function HowItWorks() {
   const steps = [
     {
       num: 1,
-      title: "Cadastre seu cardápio",
-      desc: "Adicione fotos, descrições e preços de forma intuitiva no nosso painel exclusivo.",
+      title: "Adquira a Licença",
+      desc: "Faça o pagamento único e receba acesso imediato ao código-fonte completo do sistema (TypeScript/Next.js/React).",
     },
     {
       num: 2,
-      title: "Divulgue seu link",
-      desc: "Coloque seu link personalizado na bio do Instagram e no status do seu WhatsApp.",
+      title: "Escolha a Instalação",
+      desc: "Implante você mesmo na sua conta Cloudflare de forma gratuita, ou contrate nosso Setup Concierge para instalarmos em seu domínio próprio.",
     },
     {
       num: 3,
-      title: "Receba pedidos no WhatsApp",
-      desc: "O cliente fecha o carrinho e você recebe o pedido pronto para imprimir e produzir.",
+      title: "Venda sem limites",
+      desc: "Cadastre seus produtos, configure suas taxas de entrega e comece a vender diretamente pelo WhatsApp, com PIX automático e sem comissão.",
     },
   ];
 
@@ -438,7 +396,7 @@ function HowItWorks() {
     <section className="py-20 bg-surface" id="como-funciona">
       <div className="container-max mx-auto gutter">
         <h2 className="font-headline-lg text-center text-primary mb-16">
-          Simples de usar para você e seu cliente
+          Como funciona o modelo de Código Próprio
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
           <div className="hidden md:block absolute top-10 left-0 w-full h-0.5 bg-outline-variant/30 -z-0" />
@@ -468,9 +426,9 @@ function Showcase() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActive((prev) => (prev + 1) % showcaseImages.length);
-    }, 4000);
+    }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [active]);
 
   return (
     <section className="py-20 bg-surface-container-low" id="showcase">
@@ -575,7 +533,7 @@ function ComparisonTable() {
     <section className="py-20" id="vantagens">
       <div className="container-max mx-auto gutter">
         <h2 className="font-headline-lg text-center text-primary mb-16">
-          PedeFacil vs Aplicativos de Terceiros
+          PedeFacil vs Sistemas Alugados (SaaS)
         </h2>
         <div className="overflow-x-auto">
           <table className="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
@@ -583,10 +541,10 @@ function ComparisonTable() {
               <tr className="bg-surface-container-high">
                 <th className="p-4 text-left font-headline-sm">Recurso</th>
                 <th className="p-4 text-center font-headline-sm text-error">
-                  iFood / Rappi
+                  Sistemas Alugados (SaaS)
                 </th>
                 <th className="p-4 text-center font-headline-sm text-secondary bg-secondary-container/20">
-                  PedeFacil
+                  PedeFacil (Código Próprio)
                 </th>
               </tr>
             </thead>
@@ -595,7 +553,7 @@ function ComparisonTable() {
                 <tr key={i}>
                   <td className="p-4 font-body-md font-bold">{row.label}</td>
                   <td className="p-4 text-center text-on-surface-variant">
-                    {row.ifood}
+                    {row.saas}
                   </td>
                   <td className="p-4 text-center text-secondary font-bold">
                     {row.pd}
@@ -610,33 +568,93 @@ function ComparisonTable() {
   );
 }
 
-function Testimonials() {
+function DeploymentOptions() {
   return (
-    <section className="py-20 bg-surface-container">
+    <section className="py-20 bg-surface-container" id="modelos">
       <div className="container-max mx-auto gutter">
-        <h2 className="font-headline-lg text-center text-primary mb-16">
-          Quem usa, recomenda
+        <h2 className="font-headline-lg text-center text-primary mb-3">
+          Escolha como quer começar
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
-            <div
-              key={i}
-              className="bg-white p-8 rounded-xl shadow-sm flex flex-col gap-3"
-            >
-              <div className="flex text-on-tertiary-container">
-                {Array.from({ length: t.stars }).map((_, j) => (
-                  <Star key={j} className="w-5 h-5 fill-current" />
-                ))}
+        <p className="font-body-md text-center text-on-surface-variant max-w-xl mx-auto mb-16">
+          Duas formas simples de ter o sistema rodando sob a sua própria marca, de acordo com o seu perfil.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {/* Option 1: Self-Hosted */}
+          <div className="bg-white p-8 rounded-2xl shadow-sm border border-outline-variant/20 flex flex-col justify-between">
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-primary-fixed/20 text-primary-fixed-dim flex items-center justify-center mb-6">
+                <Smartphone className="w-6 h-6 text-primary" />
               </div>
-              <p className="font-body-md italic text-on-surface-variant">
-                {t.text}
+              <h3 className="font-headline-md mb-3 text-primary">Autônomo (Self-Hosted)</h3>
+              <p className="font-body-md text-on-surface-variant mb-6">
+                Ideal para desenvolvedores, agências de tecnologia ou donos de restaurante com conhecimento em infraestrutura.
               </p>
-              <div className="mt-3">
-                <p className="font-bold">{t.name}</p>
-                <p className="text-body-sm opacity-70">{t.role}</p>
-              </div>
+              <ul className="space-y-3 font-body-sm text-on-surface-variant mb-8">
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-secondary" /> Código-fonte completo (TypeScript/React)
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-secondary" /> Manual de instalação detalhado passo a passo
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-secondary" /> Hospedagem grátis na Cloudflare (D1/R2)
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-secondary" /> Independência total: sem taxas ou contratos
+                </li>
+              </ul>
             </div>
-          ))}
+            <div>
+              <hr className="border-outline-variant/30 my-6" />
+              <div className="mb-6">
+                <span className="text-sm text-on-surface-variant">Licença de Uso Comercial</span>
+                <p className="font-headline-lg text-primary mt-1">Pagamento Único</p>
+              </div>
+              <a href="#cta" className="btn btn-outline btn-lg w-full">
+                Adquirir Código Fonte
+              </a>
+            </div>
+          </div>
+
+          {/* Option 2: Setup Concierge */}
+          <div className="bg-white p-8 rounded-2xl shadow-sm border-2 border-secondary flex flex-col justify-between relative overflow-hidden">
+            <div className="absolute top-0 right-0 bg-secondary text-white text-xs px-4 py-1.5 rounded-bl-xl font-bold">
+              MAIS POPULAR
+            </div>
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-secondary-container/20 text-secondary-fixed flex items-center justify-center mb-6">
+                <Zap className="w-6 h-6 text-secondary" />
+              </div>
+              <h3 className="font-headline-md mb-3 text-primary">Setup Concierge</h3>
+              <p className="font-body-md text-on-surface-variant mb-6">
+                Ideal para donos de restaurante que desejam receber o sistema pronto para uso e com suporte completo de configuração.
+              </p>
+              <ul className="space-y-3 font-body-sm text-on-surface-variant mb-8">
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-secondary" /> Tudo incluso na opção autônoma
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-secondary" /> Configuração da hospedagem Cloudflare por nós
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-secondary" /> Integração de domínio próprio e marca
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-secondary" /> Integração do WhatsApp e PIX automático
+                </li>
+              </ul>
+            </div>
+            <div>
+              <hr className="border-outline-variant/30 my-6" />
+              <div className="mb-6">
+                <span className="text-sm text-on-surface-variant">Licença + Instalação Completa</span>
+                <p className="font-headline-lg text-secondary mt-1">Taxa Única de Setup</p>
+              </div>
+              <a href="#cta" className="btn btn-primary btn-lg w-full">
+                Solicitar Instalação
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -687,25 +705,23 @@ function FinalCTA() {
     <section className="py-20 bg-primary text-surface-bright" id="cta">
       <div className="container-max mx-auto gutter text-center flex flex-col items-center gap-6">
         <h2 className="font-headline-xl">
-          Pronto para profissionalizar seu restaurante?
+          Pronto para ter seu próprio sistema de delivery?
         </h2>
         <p className="font-body-lg opacity-80 max-w-2xl">
-          Junte-se a centenas de estabelecimentos que recuperaram sua margem de
-          lucro com o PedeFacil. Aproveite nosso piloto gratuito por tempo
-          limitado.
+          Diga adeus às comissões abusivas e às assinaturas mensais. Adquira hoje mesmo a licença do PedeFacil e tenha o controle total do seu negócio.
         </p>
-        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto mt-2">
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2">
           <a
             href="#"
-            className="bg-secondary text-on-secondary px-8 py-4 rounded-xl font-headline-md shadow-xl hover:opacity-90 transition-all active:scale-95"
+            className="btn btn-primary btn-lg shadow-xl"
           >
-            Quero meu cardápio digital
+            Falar com Especialista
           </a>
           <a
-            href="#"
-            className="border border-surface-bright/30 bg-surface-bright/5 px-8 py-4 rounded-xl font-headline-md hover:bg-surface-bright/10 transition-all active:scale-95"
+            href="#modelos"
+            className="btn btn-outline-light btn-lg"
           >
-            Falar com consultor
+            Adquirir Licença do Código
           </a>
         </div>
       </div>
@@ -782,7 +798,7 @@ export default function PedeFacilPage() {
         <Showcase />
         <FeaturesGrid />
         <ComparisonTable />
-        <Testimonials />
+        <DeploymentOptions />
         <FAQ />
         <FinalCTA />
       </main>

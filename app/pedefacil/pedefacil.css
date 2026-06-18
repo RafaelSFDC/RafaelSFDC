@@ -254,9 +254,106 @@
   font-family: var(--font-body);
 }
 
-.pedefacil-root a {
+.pedefacil-root a:not([class*="text-"]):not([class*="btn"]) {
   color: inherit;
 }
+
+/* ─── Standardized Button Component ───────────────────────────────────────── */
+.pedefacil-root .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 12px;
+  font-family: var(--font-headline);
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.pedefacil-root .btn-md {
+  padding: 10px 24px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.pedefacil-root .btn-lg {
+  padding: 14px 32px;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+/* Primary Button (Brand Green) */
+.pedefacil-root .btn-primary {
+  background-color: var(--secondary) !important;
+  color: var(--on-secondary) !important;
+  box-shadow: 0px 4px 14px rgba(0, 109, 47, 0.15);
+}
+
+.pedefacil-root .btn-primary:hover {
+  background-color: #005625 !important;
+  box-shadow: 0px 6px 20px rgba(0, 109, 47, 0.25);
+  transform: translateY(-2px);
+}
+
+.pedefacil-root .btn-primary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Outline Button (Dark Brand Green/Primary) */
+.pedefacil-root .btn-outline {
+  background-color: transparent !important;
+  color: var(--primary) !important;
+  border: 2px solid var(--primary) !important;
+}
+
+.pedefacil-root .btn-outline:hover {
+  background-color: var(--primary) !important;
+  color: var(--on-primary) !important;
+  transform: translateY(-2px);
+}
+
+.pedefacil-root .btn-outline:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Light Outline Button (for Dark Backgrounds) */
+.pedefacil-root .btn-outline-light {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: var(--surface-bright) !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.pedefacil-root .btn-outline-light:hover {
+  background-color: var(--surface-bright) !important;
+  color: var(--primary) !important;
+  border-color: var(--surface-bright) !important;
+  transform: translateY(-2px);
+}
+
+.pedefacil-root .btn-outline-light:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* WhatsApp Button */
+.pedefacil-root .btn-whatsapp {
+  background-color: var(--whatsapp) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.2);
+}
+
+.pedefacil-root .btn-whatsapp:hover {
+  background-color: var(--whatsapp-hover) !important;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+  transform: translateY(-2px);
+}
+
+.pedefacil-root .btn-whatsapp:active {
+  transform: translateY(0) scale(0.98);
+}
+
 
 .pedefacil-root .bg-on-surface\/5 {
   background-color: rgba(28, 28, 28, 0.05);

@@ -25,9 +25,9 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "PedeFacil - Cardápio Digital & Pedidos via WhatsApp | Taxa Zero",
+  title: "PedeFacil - Cardápio Digital White Label | Sem Assinatura & Código Próprio",
   description:
-    "Cardápio digital profissional para restaurantes. Pedidos direto no WhatsApp, sem comissão, com painel administrativo completo. Teste grátis!",
+    "Cardápio digital profissional para restaurantes. Sem comissão e sem assinatura. Adquira a licença do código fonte e tenha total independência do seu delivery.",
   openGraph: {
     type: "website",
     locale: "pt_BR",
