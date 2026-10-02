@@ -1,6 +1,7 @@
 import type { ProjectDetails } from "@/types/project"
 import {
   Dialog,
+  DialogBody,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -24,8 +25,8 @@ export function ProjectDetailsModal({ project, open, onOpenChange }: ProjectDeta
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-zinc-900 border-zinc-800 text-white max-w-3xl max-h-[90vh] overflow-y-auto custom-scrollbar">
-        <DialogHeader>
+      <DialogContent className="flex flex-col gap-0 overflow-hidden bg-zinc-900 border-zinc-800 text-white max-w-3xl dialog-max-h p-6">
+        <DialogHeader className="shrink-0 space-y-1.5">
           <div className="flex items-center gap-3 flex-wrap">
             <DialogTitle className="text-2xl">{project.title}</DialogTitle>
             {isPrivate && <Badge className="bg-zinc-700 text-zinc-300">Privado</Badge>}
@@ -34,79 +35,81 @@ export function ProjectDetailsModal({ project, open, onOpenChange }: ProjectDeta
           <DialogDescription className="text-zinc-400">{project.description}</DialogDescription>
         </DialogHeader>
 
-        <div className="relative h-64 md:h-80 w-full my-4 rounded-lg overflow-hidden">
-          <img
-            src={project.image || "/placeholder.svg"}
-            alt={`${project.title} Project`}
-            fill
-            className="object-cover"
-          />
-        </div>
-
-        <div className="space-y-6">
-          <div>
-            <h3 className="text-lg font-medium flex items-center gap-2 mb-2">
-              <Lightbulb className="h-5 w-5 text-orange-400" />
-              Sobre o Projeto
-            </h3>
-            <p className="text-zinc-300">{project.longDescription}</p>
+        <DialogBody className="pt-6">
+          <div className="relative h-64 md:h-80 w-full my-4 rounded-lg overflow-hidden">
+            <img
+              src={project.image || "/placeholder.svg"}
+              alt={`${project.title} Project`}
+              fill
+              className="object-cover"
+            />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {project.features && (
-              <div>
-                <h3 className="text-lg font-medium flex items-center gap-2 mb-2">
-                  <Award className="h-5 w-5 text-orange-400" />
-                  Funcionalidades
-                </h3>
-                <ul className="list-disc list-inside text-zinc-300 space-y-1">
-                  {project.features.map((feature, index) => (
-                    <li key={index}>{feature}</li>
-                  ))}
-                </ul>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-medium flex items-center gap-2 mb-2">
+                <Lightbulb className="h-5 w-5 text-orange-400" />
+                Sobre o Projeto
+              </h3>
+              <p className="text-zinc-300">{project.longDescription}</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {project.features && (
+                <div>
+                  <h3 className="text-lg font-medium flex items-center gap-2 mb-2">
+                    <Award className="h-5 w-5 text-orange-400" />
+                    Funcionalidades
+                  </h3>
+                  <ul className="list-disc list-inside text-zinc-300 space-y-1">
+                    {project.features.map((feature, index) => (
+                      <li key={index}>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {project.challenges && (
+                <div>
+                  <h3 className="text-lg font-medium flex items-center gap-2 mb-2">
+                    <Lightbulb className="h-5 w-5 text-orange-400" />
+                    Desafios
+                  </h3>
+                  <ul className="list-disc list-inside text-zinc-300 space-y-1">
+                    {project.challenges.map((challenge, index) => (
+                      <li key={index}>{challenge}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            <div className="flex flex-wrap gap-2 items-center">
+              <div className="flex items-center gap-1 text-zinc-400">
+                <Calendar className="h-4 w-4" />
+                <span>{project.year}</span>
               </div>
-            )}
 
-            {project.challenges && (
-              <div>
-                <h3 className="text-lg font-medium flex items-center gap-2 mb-2">
-                  <Lightbulb className="h-5 w-5 text-orange-400" />
-                  Desafios
-                </h3>
-                <ul className="list-disc list-inside text-zinc-300 space-y-1">
-                  {project.challenges.map((challenge, index) => (
-                    <li key={index}>{challenge}</li>
-                  ))}
-                </ul>
+              <div className="flex items-center gap-1 text-zinc-400">
+                <Tag className="h-4 w-4" />
+                <span>{project.category}</span>
               </div>
-            )}
-          </div>
-
-          <div className="flex flex-wrap gap-2 items-center">
-            <div className="flex items-center gap-1 text-zinc-400">
-              <Calendar className="h-4 w-4" />
-              <span>{project.year}</span>
             </div>
 
-            <div className="flex items-center gap-1 text-zinc-400">
-              <Tag className="h-4 w-4" />
-              <span>{project.category}</span>
+            <div>
+              <h3 className="text-lg font-medium mb-2">Tecnologias</h3>
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((tech) => (
+                  <Badge key={tech.name} variant="outline" className="bg-transparent border-orange-500 text-orange-400">
+                    {tech.name}
+                  </Badge>
+                ))}
+              </div>
             </div>
           </div>
+        </DialogBody>
 
-          <div>
-            <h3 className="text-lg font-medium mb-2">Tecnologias</h3>
-            <div className="flex flex-wrap gap-2">
-              {project.technologies.map((tech) => (
-                <Badge key={tech.name} variant="outline" className="bg-transparent border-orange-500 text-orange-400">
-                  {tech.name}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <DialogFooter className="flex flex-wrap gap-3 sm:justify-end">
+        <DialogFooter className="shrink-0 flex flex-wrap gap-3 pt-6 sm:justify-end">
           {isPrivate ? (
             <Button
               variant="outline"

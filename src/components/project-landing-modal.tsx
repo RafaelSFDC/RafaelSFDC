@@ -2,7 +2,8 @@
 
 import { useState, useCallback } from "react"
 import type { ProjectDetails } from "@/types/project"
-import { Dialog, DialogContent, DialogTitle, DialogClose } from "@/components/ui/dialog"
+import { Dialog, DialogBody, DialogContent, DialogTitle, DialogClose } from "@/components/ui/dialog"
+import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import {
   ExternalLink,
@@ -161,13 +162,16 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 // ─── CTA Button ───────────────────────────────────────────────────────────────
-function CTAPrimary({ href, children, icon: Icon }: { href: string; children: React.ReactNode; icon?: React.ElementType }) {
+function CTAPrimary({ href, children, icon: Icon, className }: { href: string; children: React.ReactNode; icon?: React.ElementType; className?: string }) {
   return (
     <a
       href={href}
       target={href.startsWith("http") ? "_blank" : "_self"}
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#FD4E27] text-black font-bold text-sm rounded-xl hover:bg-[#FD4E27] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg"
+      className={cn(
+        "inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-[#FD4E27] text-black font-bold text-sm rounded-xl hover:bg-[#FD4E27] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg",
+        className
+      )}
     >
       {Icon && <Icon className="w-4 h-4" />}
       {children}
@@ -175,29 +179,31 @@ function CTAPrimary({ href, children, icon: Icon }: { href: string; children: Re
   )
 }
 
-function CTASecondary({ href, children, icon: Icon }: { href: string; children: React.ReactNode; icon?: React.ElementType }) {
+function CTASecondary({ href, children, icon: Icon, className }: { href: string; children: React.ReactNode; icon?: React.ElementType; className?: string }) {
   return (
     <a
       href={href}
       target={href.startsWith("http") ? "_blank" : "_self"}
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-2.5 px-6 py-3.5 border border-white/15 text-white font-medium text-sm rounded-xl hover:border-[#FD4E27]/40 hover:bg-[#FD4E27]/5 transition-all"
+      className={cn(
+        "inline-flex items-center justify-center gap-2.5 px-6 py-3.5 border border-white/15 text-white font-medium text-sm rounded-xl hover:border-[#FD4E27]/40 hover:bg-[#FD4E27]/5 transition-all",
+        className
+      )}
     >
       {Icon && <Icon className="w-4 h-4" />}
       {children}
     </a>
   )
 }
+
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // CONTENT: SaaS
 // ═══════════════════════════════════════════════════════════════════════════════
 function SaaSContent({ project }: { project: ProjectDetails }) {
-  const isPublic = project.status === "public"
-  const isDemoOnly = project.status === "demo-only"
-
   return (
     <div className="flex flex-col gap-10">
+
       {/* Carousel */}
       <ImageCarousel images={project.images?.length ? project.images : [project.image]} title={project.title} />
 
@@ -235,28 +241,10 @@ function SaaSContent({ project }: { project: ProjectDetails }) {
         <SectionTitle>Stack Técnica</SectionTitle>
         <TechStack technologies={project.technologies} />
       </div>
-
-      {/* CTA */}
-      <div className="pt-2 border-t border-white/8 flex flex-wrap gap-3">
-        {project.demoUrl && (
-          <CTAPrimary href={project.demoUrl} icon={ExternalLink}>
-            Visitar Demo
-          </CTAPrimary>
-        )}
-        {project.codeUrl && isPublic && (
-          <CTASecondary href={project.codeUrl} icon={Code}>
-            Ver Código Fonte
-          </CTASecondary>
-        )}
-        {!project.demoUrl && !project.codeUrl && (
-          <CTASecondary href={getWhatsAppUrl(project.title, "demo")} icon={MessageCircle}>
-            Solicitar Demonstração
-          </CTASecondary>
-        )}
-      </div>
     </div>
   )
 }
+
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // CONTENT: Client Project
@@ -315,21 +303,10 @@ function ClientContent({ project }: { project: ProjectDetails }) {
         <SectionTitle>Tecnologias Utilizadas</SectionTitle>
         <TechStack technologies={project.technologies} />
       </div>
-
-      {/* CTA */}
-      <div className="pt-2 border-t border-white/8 flex flex-wrap gap-3">
-        {project.demoUrl && (
-          <CTAPrimary href={project.demoUrl} icon={ExternalLink}>
-            Visitar Site
-          </CTAPrimary>
-        )}
-        <CTAPrimary href={getWhatsAppUrl(project.title, "like_this")} icon={MessageCircle}>
-          Quero algo assim
-        </CTAPrimary>
-      </div>
     </div>
   )
 }
+
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // CONTENT: White Label System
@@ -462,8 +439,52 @@ function WhiteLabelContent({ project }: { project: ProjectDetails }) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
+// FOOTER ACTIONS
+// ═══════════════════════════════════════════════════════════════════════════════
+function FooterActions({ project }: { project: ProjectDetails }) {
+  const size = "px-4 py-2.5 text-xs"
+  const isPublic = project.status === "public"
+
+  if (project.type === "client") {
+    return (
+      <>
+        {project.demoUrl && (
+          <CTAPrimary href={project.demoUrl} icon={ExternalLink} className={size}>
+            Visitar Site
+          </CTAPrimary>
+        )}
+        <CTAPrimary href={getWhatsAppUrl(project.title, "like_this")} icon={MessageCircle} className={size}>
+          Quero algo assim
+        </CTAPrimary>
+      </>
+    )
+  }
+
+  return (
+    <>
+      {project.demoUrl && (
+        <CTAPrimary href={project.demoUrl} icon={ExternalLink} className={size}>
+          Visitar Demo
+        </CTAPrimary>
+      )}
+      {project.codeUrl && isPublic && (
+        <CTASecondary href={project.codeUrl} icon={Code} className={size}>
+          Ver Código Fonte
+        </CTASecondary>
+      )}
+      {!project.demoUrl && !project.codeUrl && (
+        <CTASecondary href={getWhatsAppUrl(project.title, "demo")} icon={MessageCircle} className={size}>
+          Solicitar Demonstração
+        </CTASecondary>
+      )}
+    </>
+  )
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
 // MAIN MODAL
 // ═══════════════════════════════════════════════════════════════════════════════
+
 interface ProjectLandingModalProps {
   project: ProjectDetails
   open: boolean
@@ -488,12 +509,13 @@ export function ProjectLandingModal({ project, open, onOpenChange }: ProjectLand
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent hideCloseButton className="dialog-scroll bg-[#050505] border border-white/8 text-white w-full max-w-[calc(100vw-1.5rem)] sm:max-w-4xl max-h-[92vh] overflow-y-auto p-0 gap-0 rounded-2xl shadow-2xl shadow-black/80">
+      <DialogContent hideCloseButton className="flex flex-col gap-0 overflow-hidden bg-[#050505] border border-white/8 text-white w-full max-w-[calc(100vw-1.5rem)] sm:max-w-4xl dialog-max-h p-0 rounded-2xl shadow-2xl shadow-black/80">
         {/* Hidden accessible title */}
         <DialogTitle className="sr-only">{project.title}</DialogTitle>
 
         {/* Header */}
-        <div className="sticky top-0 z-20 px-6 py-4 border-b border-white/6 bg-[#050505]/95 backdrop-blur-xl flex items-start justify-between gap-4">
+        <div className="shrink-0 px-6 py-4 border-b border-white/6 bg-[#050505] flex items-start justify-between gap-4">
+
           <div className="flex-1 min-w-0">
             {/* Type + Status badges */}
             <div className="flex flex-wrap gap-2 mb-2">
@@ -526,17 +548,26 @@ export function ProjectLandingModal({ project, open, onOpenChange }: ProjectLand
         </div>
 
         {/* Body */}
-        <div className="px-6 py-8">
+        <DialogBody className="px-6 py-8">
           {project.type === "saas" && <SaaSContent project={project} />}
           {project.type === "client" && <ClientContent project={project} />}
           {project.type === "whitelabel" && <WhiteLabelContent project={project} />}
+        </DialogBody>
+
+        {/* Footer: meta + primary actions, always visible while body scrolls */}
+        <div className="shrink-0 border-t border-white/6 px-6 py-4 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-white/25">
+            <span>{project.year} · {project.category}</span>
+            {project.client && <span>Cliente: {project.client}</span>}
+          </div>
+
+          {project.type !== "whitelabel" && (
+            <div className="flex flex-wrap gap-3">
+              <FooterActions project={project} />
+            </div>
+          )}
         </div>
 
-        {/* Footer meta */}
-        <div className="px-6 py-4 border-t border-white/6 flex items-center justify-between text-xs text-white/25">
-          <span>{project.year} · {project.category}</span>
-          {project.client && <span>Cliente: {project.client}</span>}
-        </div>
       </DialogContent>
     </Dialog>
   )

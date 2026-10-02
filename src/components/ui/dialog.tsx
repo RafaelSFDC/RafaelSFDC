@@ -74,6 +74,22 @@ const DialogHeader = ({
 )
 DialogHeader.displayName = "DialogHeader"
 
+/* Scrollable body. Keeps the header/footer in place without sticky hacks:
+   make DialogContent a flex column, then only this child scrolls. */
+const DialogBody = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn(
+      "dialog-scroll scroll-fade-y min-h-0 flex-1 overflow-y-auto overscroll-contain",
+      className
+    )}
+    {...props}
+  />
+)
+DialogBody.displayName = "DialogBody"
+
 const DialogFooter = ({
   className,
   ...props
@@ -123,6 +139,7 @@ export {
   DialogTrigger,
   DialogContent,
   DialogHeader,
+  DialogBody,
   DialogFooter,
   DialogTitle,
   DialogDescription,

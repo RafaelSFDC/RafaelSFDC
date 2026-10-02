@@ -23,7 +23,7 @@
 - [Reroll](https://reroll.rafaelsfcarvalho.workers.dev/): Plataforma completa de catálogo e comunidade social para animes, mangás, games, séries e livros com chat em tempo real via Cloudflare Durable Objects e WebRTC. [Código](https://github.com/RafaelSFDC/Reroll)
 - [Kataly](https://kataly.com.br): Plataforma SaaS all-in-one multi-workspace para negócios digitais com 4 verticais, WhatsApp Cloud API oficial com IA, workflows em nós e Cloudflare Edge. [Código](https://github.com/RafaelSFDC/kataly)
 - [PedeFácil](https://rafaelsfcarvalho.com/pedefacil): Sistema completo de cardápio digital white label, gestão de pedidos e delivery para restaurantes e pizzarias integrado ao WhatsApp.
-- [UniLink](https://github.com/RafaelSFDC/unilink): Dashboard universitário e sistema de gestão acadêmica completo em Laravel e React.
+- [UniLink](https://github.com/RafaelSFDC/Unilink): Plataforma SaaS moderna de Link na Bio, captura de leads e apoio via PIX nativo construída com TanStack Start, React 19, Drizzle ORM e Cloudflare Edge.
 - [Lumina](https://github.com/RafaelSFDC/lumina): CMS editorial moderno e open source construído sobre TanStack Start e Cloudflare.
 
 ## Links do Site & Documentação

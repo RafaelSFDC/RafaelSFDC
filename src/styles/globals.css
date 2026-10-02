@@ -119,3 +119,44 @@ html::-webkit-scrollbar-thumb:hover {
 .dialog-scroll::-webkit-scrollbar-thumb:hover {
   background: rgba(253, 78, 39, 0.6);
 }
+
+/* Modal height cap: vh everywhere, dvh where supported (mobile browser chrome) */
+.dialog-max-h {
+  max-height: 92vh;
+  max-height: 92dvh;
+}
+
+/* Scroll-aware edge fade (CSS scroll-driven, no JS).
+   Apply to the scroll container itself. The timeline is inactive when the
+   content does not overflow, so nothing is masked. Both keyframes share the
+   same stop count so the mask interpolates smoothly. */
+@supports (animation-timeline: scroll()) {
+  @keyframes scroll-fade-y {
+    0%,
+    100% {
+      mask-image: linear-gradient(
+        to bottom,
+        #000 0,
+        #000 calc(100% - var(--scroll-fade-size, 48px)),
+        #000 calc(100% - var(--scroll-fade-size, 48px)),
+        transparent 100%
+      );
+    }
+    50% {
+      mask-image: linear-gradient(
+        to bottom,
+        transparent 0,
+        #000 var(--scroll-fade-size, 48px),
+        #000 calc(100% - var(--scroll-fade-size, 48px)),
+        transparent 100%
+      );
+    }
+  }
+
+  .scroll-fade-y {
+    animation-name: scroll-fade-y;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: scroll(self y);
+  }
+}
