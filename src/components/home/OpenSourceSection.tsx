@@ -118,9 +118,6 @@ export function OpenSourceSection() {
       <div className="glass-card rounded-lg p-6 md:p-10 mb-8 border border-white/10">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-white/10">
           <div className="flex items-center gap-4">
-            <div className="size-14 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-              <EdgekitLogo size={36} module="platform" />
-            </div>
             <div>
               <h3 className="font-headline-md text-2xl md:text-3xl font-bold text-white mb-2">
                 Edgekit — A Nuvem Serverless na Borda
@@ -132,20 +129,6 @@ export function OpenSourceSection() {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-3 shrink-0">
-            <Button
-              variant="outline"
-              render={
-                <a
-                  href="https://github.com/RafaelSFDC/Edgekit---LP"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                />
-              }
-            >
-              <FaGithub className="size-4" /> Ver no GitHub
-            </Button>
-          </div>
         </div>
 
         {/* Seletor de Módulos (Tabs com ícones oficiais do Edgekit) */}

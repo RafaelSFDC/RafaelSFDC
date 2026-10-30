@@ -7,7 +7,6 @@ import { useEffect, useRef, useState } from "react"
 import { SiteCard } from "@/components/site-card"
 import { projects } from "@/data/projects"
 import { sites } from "@/data/sites"
-import { sistemas } from "@/data/sistemas"
 import Hero5 from "@/components/hero"
 import HeroHeader from "@/components/header"
 import DownloadResume from "@/components/download-resume"
@@ -22,10 +21,6 @@ import {
   Mail,
   Smartphone,
   Kanban,
-  Layout,
-  Server,
-  Database,
-  Monitor,
   Zap,
   ShieldCheck,
 } from "lucide-react"
@@ -63,7 +58,6 @@ import type { ProjectDetails } from "@/types/project"
 const skillCategories = [
   {
     title: "Frontend & Web",
-    icon: Layout,
     skills: [
       { name: "React & React 19", icon: SiReact },
       { name: "Next.js", icon: SiNextdotjs },
@@ -76,7 +70,6 @@ const skillCategories = [
   },
   {
     title: "Backend & Edge",
-    icon: Server,
     skills: [
       { name: "Node.js & Express", icon: SiNodedotjs },
       { name: "PHP & Laravel", icon: SiLaravel },
@@ -89,7 +82,6 @@ const skillCategories = [
   },
   {
     title: "Bancos & Storage",
-    icon: Database,
     skills: [
       { name: "PostgreSQL", icon: SiPostgresql },
       { name: "MySQL", icon: SiMysql },
@@ -102,7 +94,6 @@ const skillCategories = [
   },
   {
     title: "Desktop & DevOps",
-    icon: Monitor,
     skills: [
       { name: "Tauri (Desktop Apps)", icon: SiTauri },
       { name: "Rust (Performance & Core)", icon: SiRust },
@@ -243,14 +234,6 @@ export default function Home() {
                 onOpenDetails={() => handleOpenDetails(site)}
               />
             ))}
-            {sistemas.map((sistema) => (
-              <SiteCard
-                key={sistema.id}
-                project={sistema}
-                badge="White Label"
-                onOpenDetails={() => handleOpenDetails(sistema)}
-              />
-            ))}
           </div>
         </Section>
 
@@ -259,22 +242,15 @@ export default function Home() {
             <SectionHeader icon={Code2} title="Habilidades Técnicas" description="Stack completa de ferramentas modernas, frameworks e infraestrutura que utilizo no dia a dia." />
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter">
-              {skillCategories.map((category) => {
-                const CategoryIcon = category.icon
-                return (
-                  <div
+              {skillCategories.map((category) => (
+                <div
                     key={category.title}
                     className="glass-card p-6 md:p-8 rounded-lg border-l-4 border-l-surface-tint flex flex-col justify-between hover:border-l-primary transition-all duration-300"
                   >
                     <div>
-                      <div className="flex items-center gap-3 mb-6">
-                        <span className="size-9 rounded-lg bg-surface-tint/10 flex items-center justify-center text-surface-tint shrink-0">
-                          <CategoryIcon className="size-5" aria-hidden="true" />
-                        </span>
-                        <h3 className="font-headline-md text-xl font-bold text-white tracking-tight">
-                          {category.title}
-                        </h3>
-                      </div>
+                      <h3 className="font-headline-md text-xl font-bold text-white tracking-tight mb-6">
+                        {category.title}
+                      </h3>
                       <ul className="space-y-3.5 font-label-sm text-label-sm">
                         {category.skills.map((skill) => {
                           const Icon = skill.icon
@@ -293,8 +269,7 @@ export default function Home() {
                       </ul>
                     </div>
                   </div>
-                )
-              })}
+                ))}
             </div>
         </Section>
 

@@ -142,15 +142,6 @@ Não apenas escrevo código: **projeto arquiteturas**, **tomo decisões de produ
 
 ---
 
-### 💼 Outros Sistemas & Soluções White-Label
-
-- 📰 **[Lumina](https://github.com/RafaelSFDC/lumina)** — CMS editorial moderno e open source construído sobre TanStack Start, React 19, Tiptap rich-text, Cloudflare D1/R2, Better Auth e Stripe.
-- 🍔 **[PedeFácil](https://rafaelsfcarvalho.com/pedefacil)** — Sistema white label para restaurantes: cardápio digital mobile-first, checkout estruturado via WhatsApp e painel de pedidos.
-- 🛞 **Águia Help** — Plataforma de assistência veicular e guinchos com checklist digital de campo, fotos, assinaturas e laudos em PDF.
-- ✈️ **Trevio** — Marketplace para agências de turismo e viagens com calendário dinâmico de reservas e pagamentos via Stripe.
-
----
-
 <div align="center">
 
 ### Aberto a novos projetos e colaborações 🤝
