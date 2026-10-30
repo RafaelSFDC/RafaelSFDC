@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00D9FF,100:0066FF&height=200&section=header&text=Rafael%20Carvalho&fontSize=52&fontColor=ffffff&fontAlignY=38&desc=Full-Stack%20Developer%20%7C%20SaaS%20Builder%20%7C%20UX%20Obsessed&descAlignY=58&descSize=16" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00D9FF,100:0066FF&height=200&section=header&text=Rafael%20Carvalho&fontSize=52&fontColor=ffffff&fontAlignY=38&desc=Full-Stack%20Developer%20%7C%20Edge%20Architect%20%7C%20SaaS%20Builder&descAlignY=58&descSize=16" width="100%"/>
 
 <br/>
 
@@ -15,20 +15,11 @@
 
 ## `$ whoami`
 
-Sou um **Desenvolvedor Full-Stack** com **6+ anos de experiência** como freelancer, especializado em construir produtos digitais completos — de plataformas SaaS multitenants de alto impacto e arquiteturas em Edge Computing até aplicações de tempo real e interfaces intuitivas que maximizam conversão.
+Sou um **Desenvolvedor Full-Stack** com **6+ anos de experiência** como freelancer, especializado na intersecção entre **arquitetura de infraestrutura moderna** (Edge Computing, Serverless e BaaS) e **produtos digitais de alta conversão** (SaaS multitenants, ecossistemas de negócios e interfaces de alto impacto).
+
+Além de desenvolver plataformas comerciais completas, sou criador da suíte open-source **Edgekit** — ferramentas de infraestrutura serverless desenhadas para rodar na borda global com custo zero em idle.
 
 Não apenas escrevo código: **projeto arquiteturas**, **tomo decisões de produto** e **entrego experiências**.
-
-```ts
-const rafael = {
-  role:        "Full-Stack Developer & SaaS Builder",
-  experience:  "6+ anos como freelancer",
-  focus:       ["Arquitetura de Software", "SaaS & Multitenancy", "Cloudflare Edge & Realtime", "UX & Conversão"],
-  currentWork: "Kataly & Reroll — ecossistemas modernos em edge computing",
-  stack:       ["TanStack Start", "React 19", "Cloudflare Workers", "Drizzle ORM", "TypeScript", "Tailwind CSS v4"],
-  english:     "Advanced",
-};
-```
 
 ---
 
@@ -40,25 +31,26 @@ const rafael = {
 
 **Frontend & Mobile**
 
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![TanStack](https://img.shields.io/badge/TanStack_Start-FF4154?style=flat-square&logo=react-query&logoColor=white)
 ![Next.js](https://img.shields.io/badge/Next.js-000?style=flat-square&logo=nextdotjs&logoColor=white)
 ![Astro](https://img.shields.io/badge/Astro-BC52EE?style=flat-square&logo=astro&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_v4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 
 </td>
 <td valign="top" width="33%">
 
-**Backend & Edge Computing**
+**Backend & Edge Infrastructure**
 
 ![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-F38020?style=flat-square&logo=cloudflare&logoColor=white)
 ![Durable Objects](https://img.shields.io/badge/Durable_Objects-F38020?style=flat-square&logo=cloudflare&logoColor=white)
-![WebRTC](https://img.shields.io/badge/WebRTC-333333?style=flat-square&logo=webrtc&logoColor=white)
+![Hono](https://img.shields.io/badge/Hono-E36002?style=flat-square&logo=hono&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=flat-square&logo=node.js&logoColor=white)
+![WebSockets](https://img.shields.io/badge/WebSockets-010101?style=flat-square&logo=socketdotio&logoColor=white)
+![WebRTC](https://img.shields.io/badge/WebRTC-333333?style=flat-square&logo=webrtc&logoColor=white)
 ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white)
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
 
 </td>
 <td valign="top" width="33%">
@@ -78,25 +70,41 @@ const rafael = {
 
 ---
 
-## 🚀 Projetos em Destaque
+## ⚡ Open-Source: Suíte Edgekit (Cloud Infrastructure)
+
+> **[Edgekit](https://github.com/RafaelSFDC/Edgekit---LP)** é uma suíte modular de **Backend-as-a-Service (BaaS)** e infraestrutura de borda, executada 100% sobre o ecossistema Cloudflare (Workers, D1, R2, Durable Objects). Projetada para oferecer alta escalabilidade e custo zero em idle.
+
+| Projeto Open-Source | Descrição & Destaques | Repositório |
+|---|---|:---:|
+| 🌐 **[Edgekit Platform](https://github.com/RafaelSFDC/Edgekit-Platform)** | **Serverless BaaS Core** com Cloudflare D1 (SQLite) + Drizzle ORM, REST Data API fluente automática, filtros encadeados e isolamento multi-tenant. | [![GitHub](https://img.shields.io/badge/Código_Aberto-GitHub-181717?style=flat-square&logo=github)](https://github.com/RafaelSFDC/Edgekit-Platform) |
+| 🔐 **[Edgekit Auth](https://github.com/RafaelSFDC/Edgekit-Auth)** | **Engine de Autenticação na Borda** construída com Hono e Better Auth. Suporte nativo a **Passkeys (FIDO2)**, Magic Links sem senha, RBAC e validação offline de sessões criptografadas por JWKS. | [![GitHub](https://img.shields.io/badge/Código_Aberto-GitHub-181717?style=flat-square&logo=github)](https://github.com/RafaelSFDC/Edgekit-Auth) |
+| ⚡ **[Edgekit Events](https://github.com/RafaelSFDC/Edgekit-Events)** | **Pusher Clone Serverless** para mensageria e WebSockets em tempo real. Orquestrado via Cloudflare Durable Objects com presença de usuários, broadcast e canais privados. | [![GitHub](https://img.shields.io/badge/Código_Aberto-GitHub-181717?style=flat-square&logo=github)](https://github.com/RafaelSFDC/Edgekit-Events) |
+| 📬 **[Edgekit Queue](https://github.com/RafaelSFDC/Edgekit-Queue)** | **Upstash QStash & Redis Clone** para background jobs e filas assíncronas com retries automáticos, deduplicação, delays programados e comandos Redis REST via Durable Objects. | [![GitHub](https://img.shields.io/badge/Código_Aberto-GitHub-181717?style=flat-square&logo=github)](https://github.com/RafaelSFDC/Edgekit-Queue) |
+| 🗄️ **[Edgekit Storage](https://github.com/RafaelSFDC/Edgekit-Storage)** | **Backend de Object Storage R2** com taxa zero de saída (*Zero Egress*), upload multipart em stream, URLs temporárias assinadas via HMAC-SHA256 e otimização de imagens. | [![GitHub](https://img.shields.io/badge/Código_Aberto-GitHub-181717?style=flat-square&logo=github)](https://github.com/RafaelSFDC/Edgekit-Storage) |
+
+---
+
+## 🚀 Produtos Comerciais & Plataformas SaaS
+
+> Soluções proprietárias desenvolvidas com foco em produto, resolução de problemas reais de negócios, faturamento e experiência do usuário (UI/UX).
 
 ### ⚡ [Kataly](https://kataly.com.br) — O Sistema Operacional Multi-Workspace para Negócios Digitais
 
-> Plataforma SaaS all-in-one multi-tenant com 4 verticais de negócio, storefronts independentes por workspace, CRM, automação de workflows e integração oficial com WhatsApp Cloud API e IA.
+> Plataforma SaaS all-in-one multi-tenant projetada para pequenos negócios e microempreendedores (e-commerce, restaurantes, prestadores de serviços e imobiliárias).
 
 | Feature | Detalhe |
 |---|---|
-| 🏢 **Arquitetura Multi-Tenant** | Isolamento estrito por workspace, gestão de equipes e sub-sites independentes |
-| 🧩 **4 Verticais Integradas** | E-commerce, Restaurantes (PDV/KDS), Serviços (Agenda/OS) e Imobiliárias |
-| 🎨 **Page Builder Nativo** | Criação visual de storefronts com editor drag-and-drop integrado (Puck CMS) e IA |
-| 🤖 **WhatsApp Cloud API & IA** | Caixa de entrada compartilhada oficial da Meta, templates e atendimento 24/7 com Google Gemini |
-| 🔄 **Automação de Workflows** | Motor visual de automações baseado em nós com XY Flow e histórico de execuções |
-| 💳 **Checkout Transparente** | Pagamentos diretos via Mercado Pago (PIX instantâneo) e Stripe |
+| 🏢 **Arquitetura Multi-Tenant** | Isolamento estrito por workspace em SQLite distribuído (Cloudflare D1), gestão de equipes e sub-sites independentes |
+| 🧩 **4 Verticais Integradas** | E-commerce, Restaurantes (PDV/KDS), Serviços (Agenda/OS) e Imobiliárias em um só core unificado |
+| 🎨 **Page Builder Nativo** | Motor de criação visual de storefronts drag-and-drop proprietário (Puck CMS) integrado com IA |
+| 🤖 **WhatsApp Cloud API & IA** | Integração oficial Meta com caixa de entrada unificada, templates e atendimento automatizado 24/7 via Google Gemini |
+| 🔄 **Automação de Workflows** | Editor visual de fluxos baseado em nós via XY Flow com histórico de execuções |
+| 💳 **Checkout Transparente** | Recebimentos direto na conta do vendedor com Mercado Pago (PIX instantâneo) e Stripe |
 
 **Stack:** TanStack Start · React 19 · Cloudflare Workers (D1, R2, Durable Objects) · Drizzle ORM · Better Auth · WhatsApp Cloud API · Google Gemini AI · Tailwind CSS v4
 
 [![Site](https://img.shields.io/badge/🌐_Site-kataly.com.br-00D9FF?style=flat-square)](https://kataly.com.br)
-[![Code](https://img.shields.io/badge/Code-GitHub-black?style=flat-square&logo=github)](https://github.com/RafaelSFDC/kataly)
+[![Status](https://img.shields.io/badge/Status-Comercial_/_Closed--Source-blueviolet?style=flat-square)](https://kataly.com.br)
 
 ---
 
@@ -107,42 +115,39 @@ const rafael = {
 | Feature | Detalhe |
 |---|---|
 | 📚 **Catálogo Multi-Mídia** | Suporte unificado para 10+ categorias (animes, mangás, séries, livros, games) |
-| ⚡ **Tempo Real no Edge** | Chat com canais, threads e mensagens instantâneas via Cloudflare Durable Objects |
-| 🎙️ **Chamadas de Voz P2P** | Comunicação de áudio em malha WebRTC peer-to-peer sem servidor de mídia intermediário |
-| 📊 **Gamificação & Métricas** | Tier lists interativas drag-and-drop e dashboards de consumo de conteúdo |
+| ⚡ **Tempo Real no Edge** | Chat instantâneo com canais e threads persistentes via Cloudflare Durable Objects |
+| 🎙️ **Chamadas de Voz P2P** | Comunicação de áudio em malha WebRTC peer-to-peer sem custo de servidor de mídia dedicado |
+| 📊 **Gamificação & Métricas** | Tier lists interativas drag-and-drop e métricas visuais de consumo |
 | 👥 **Servidores & Comunidade** | Workspaces e servidores compartilhados com feed de atividades em tempo real |
 
 **Stack:** TanStack Start · React 19 · Cloudflare D1 & R2 · Durable Objects · Drizzle ORM · Better Auth · WebRTC · Tailwind CSS v4
 
 [![Demo](https://img.shields.io/badge/Demo-Live-success?style=flat-square)](https://reroll.rafaelsfcarvalho.workers.dev/)
-[![Code](https://img.shields.io/badge/Code-GitHub-black?style=flat-square&logo=github)](https://github.com/RafaelSFDC/Reroll)
+[![Status](https://img.shields.io/badge/Status-Comercial_/_Closed--Source-blueviolet?style=flat-square)](https://reroll.rafaelsfcarvalho.workers.dev/)
 
 ---
 
-### 🔗 [UniLink](https://github.com/RafaelSFDC/Unilink) — Plataforma de Link na Bio, Captura de Leads & Apoio via PIX
+### 🔗 UniLink — Plataforma de Link na Bio, Captura de Leads & Apoio via PIX
 
-> Plataforma SaaS de link na bio de alta conversão com geração de PIX nativo padrão BACEN, captura de leads em tempo real, editor visual com simulador mobile e analytics com pixels de rastreamento.
+> Plataforma SaaS de link na bio de alta conversão voltada para criadores e marcas, com monetização direta e captura de leads.
 
-| Feature | Detalhe |
-|---|---|
-| 💸 **PIX Nativo BACEN** | Geração instantânea de QR Code e Copia e Cola EMV QRCPS / CRC-16 sem taxas de intermediação |
-| 📱 **Editor Visual Live** | Simulador mobile em tempo real com reordenação drag-and-drop reativa (@dnd-kit) |
-| 🎯 **Conversão & Leads** | Formulários de captura com exportação para CRM e blocos ricos (vídeos, Spotify, FAQs, contadores) |
-| 📈 **Pixels & Analytics** | Painel analítico em tempo real com Meta Pixel, Google Analytics 4 e TikTok Pixel |
-| 🏢 **Multi-Tenant** | Workspaces isolados, domínios personalizados e assinaturas via Stripe |
+- 💸 **PIX Nativo Padrão BACEN:** Geração instantânea de QR Code e Copia e Cola EMV QRCPS / CRC-16 sem intermediários nem taxas.
+- 📱 **Editor Visual Live:** Simulador mobile em tempo real com reordenação drag-and-drop reativa (`@dnd-kit`).
+- 🎯 **Captura de Leads & Blocos Ricos:** Formulários com exportação para CRM, players de áudio/vídeo e FAQ Accordion.
+- 📈 **Pixels de Rastreamento:** Métricas em tempo real e integração oficial com Meta Pixel, Google Analytics 4 e TikTok Pixel.
 
 **Stack:** TanStack Start · React 19 · Cloudflare D1 & R2 · Durable Objects · Drizzle ORM · Better Auth · Tailwind CSS v4 · Stripe & PIX
 
-[![Code](https://img.shields.io/badge/Code-GitHub-black?style=flat-square&logo=github)](https://github.com/RafaelSFDC/Unilink)
+[![Status](https://img.shields.io/badge/Status-Comercial_/_Closed--Source-blueviolet?style=flat-square)](https://rafaelsfcarvalho.com)
 
 ---
 
-### 💼 Outros Sistemas & Projetos White-Label
+### 💼 Outros Sistemas & Soluções White-Label
 
 - 📰 **[Lumina](https://github.com/RafaelSFDC/lumina)** — CMS editorial moderno e open source construído sobre TanStack Start, React 19, Tiptap rich-text, Cloudflare D1/R2, Better Auth e Stripe.
-- 🍔 **[PedeFácil](https://rafaelsfcarvalho.com/pedefacil)** — Sistema white label para restaurantes e deliveries: cardápio digital mobile-first, checkout estruturado via WhatsApp e gestão de pedidos.
-- 🛞 **Águia Help** — Plataforma white label para gestão de assistência veicular e guinchos com checklist digital em campo, captura de fotos, assinaturas e laudos em PDF.
-- ✈️ **Trevio** — Marketplace white label para agências de turismo e viagens com calendário de reservas, itinerários colaborativos e checkout com Stripe.
+- 🍔 **[PedeFácil](https://rafaelsfcarvalho.com/pedefacil)** — Sistema white label para restaurantes: cardápio digital mobile-first, checkout estruturado via WhatsApp e painel de pedidos.
+- 🛞 **Águia Help** — Plataforma de assistência veicular e guinchos com checklist digital de campo, fotos, assinaturas e laudos em PDF.
+- ✈️ **Trevio** — Marketplace para agências de turismo e viagens com calendário dinâmico de reservas e pagamentos via Stripe.
 
 ---
 
