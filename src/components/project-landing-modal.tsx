@@ -513,7 +513,7 @@ export function ProjectLandingModal({ project, open, onOpenChange }: ProjectLand
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent hideCloseButton className="flex flex-col gap-0 overflow-hidden text-white w-full max-w-[calc(100vw-1.5rem)] sm:max-w-4xl dialog-max-h p-0 rounded-2xl shadow-2xl ">
+      <DialogContent hideCloseButton className="flex flex-col gap-0 overflow-hidden text-white w-full max-w-[calc(100vw-1.5rem)] sm:max-w-4xl dialog-max-h p-0 rounded-lg shadow-2xl ">
         {/* Hidden accessible title */}
         <DialogTitle className="sr-only">{project.title}</DialogTitle>
 

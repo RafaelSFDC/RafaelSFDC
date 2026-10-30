@@ -1,5 +1,3 @@
-;
-
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 
@@ -14,7 +12,7 @@ export default function DownloadResume() {
           rel="noopener noreferrer"
         />
       }
-      size="xl"
+      size="lg"
     >
       <Download className="size-5" />
       Currículo

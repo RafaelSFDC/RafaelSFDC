@@ -22,7 +22,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <>
-      <Card className="project-card group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-800/50 bg-zinc-900/40 backdrop-blur-sm transition-all duration-350">
+      <Card className="project-card group relative flex flex-col overflow-hidden rounded-lg border border-zinc-800/50 bg-zinc-900/40 backdrop-blur-sm transition-all duration-350">
         {/* Project Image Wrapper */}
         <div className="relative h-[240px] w-full overflow-hidden lg:h-[280px]">
           {isPrivate && (

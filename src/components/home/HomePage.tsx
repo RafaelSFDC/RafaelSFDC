@@ -151,7 +151,7 @@ export default function Home() {
   }
 
   const FeaturedCard = ({ project }: { project: ProjectDetails }) => (
-    <div className="glass-card rounded-2xl overflow-hidden group">
+    <div className="glass-card rounded-lg overflow-hidden group">
       <div className="grid grid-cols-1 lg:grid-cols-2">
         <div className="relative overflow-hidden aspect-video lg:aspect-auto">
           <img
@@ -264,7 +264,7 @@ export default function Home() {
                 return (
                   <div
                     key={category.title}
-                    className="glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-surface-tint flex flex-col justify-between hover:border-l-primary transition-all duration-300"
+                    className="glass-card p-6 md:p-8 rounded-lg border-l-4 border-l-surface-tint flex flex-col justify-between hover:border-l-primary transition-all duration-300"
                   >
                     <div>
                       <div className="flex items-center gap-3 mb-6">
@@ -303,7 +303,7 @@ export default function Home() {
           <SectionHeader icon={Search} title="Sobre Mim" description="Conheça mais sobre minha trajetória de 6+ anos desenvolvendo aplicações e soluções sob medida." />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg">
-            <div className="glass-card p-10 rounded-2xl">
+            <div className="glass-card p-10 rounded-lg">
               <h3 className="font-headline-md text-headline-md mb-6">Quem sou eu</h3>
               <p className="text-on-surface-variant leading-relaxed mb-6">
                 Meu nome é{" "}
@@ -319,7 +319,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="glass-card p-10 rounded-2xl">
+            <div className="glass-card p-10 rounded-lg">
               <h3 className="font-headline-md text-headline-md mb-6">Expertise &amp; Foco</h3>
               <ul className="space-y-6">
                 <li className="flex gap-4">
@@ -356,8 +356,7 @@ export default function Home() {
 
         {/* Contato */}
         <Section id="contato">
-          <div className="glass-card p-6 sm:p-12 md:p-20 rounded-2xl text-center relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full glow-bg opacity-30 pointer-events-none" />
+          <div className="glass-card p-6 sm:p-12 md:p-20 rounded-lg text-center relative overflow-hidden">
             <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-6 sm:mb-8">
               Vamos Conversar?
             </h2>
@@ -412,7 +411,7 @@ export default function Home() {
                   />
                 }
                 variant="outline"
-                size="icon"
+                size="lg"
               >
                 <FaGithub className="size-5" />
               </Button>
@@ -426,7 +425,7 @@ export default function Home() {
                   />
                 }
                 variant="outline"
-                size="icon"
+                size="lg"
               >
                 <FaLinkedinIn className="size-5" />
               </Button>

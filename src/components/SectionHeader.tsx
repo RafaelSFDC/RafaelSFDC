@@ -105,7 +105,7 @@ export function SectionHeader({
           {icon && (
             <div
               className={cn(
-                "size-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0",
+                "size-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0",
                 iconContainerClassName
               )}
             >

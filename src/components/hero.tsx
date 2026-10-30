@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 const Hero5 = () => {
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center px-margin-mobile pt-32 pb-8 relative overflow-hidden">
+    <section className=" flex flex-col justify-center items-center text-center px-margin-mobile pt-32 pb-8 relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1024px] glow-bg -z-10 pointer-events-none" />
 
       <h1 className="font-body text-display-xl-mobile md:text-display-xl mb-6 max-w-4xl mx-auto text-balance">

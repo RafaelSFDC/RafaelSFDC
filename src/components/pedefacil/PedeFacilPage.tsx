@@ -443,7 +443,7 @@ function Showcase() {
         </div>
 
         <div className="relative max-w-4xl mx-auto">
-          <div className="overflow-hidden rounded-2xl bg-white shadow-lg border border-outline-variant/20">
+          <div className="overflow-hidden rounded-lg bg-white shadow-lg border border-outline-variant/20">
             <div className="relative aspect-video">
               <img
                 src={showcaseImages[active].src}
@@ -581,7 +581,7 @@ function DeploymentOptions() {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Option 1: Self-Hosted */}
-          <div className="bg-white p-8 rounded-2xl shadow-sm border border-outline-variant/20 flex flex-col justify-between">
+          <div className="bg-white p-8 rounded-lg shadow-sm border border-outline-variant/20 flex flex-col justify-between">
             <div>
               <div className="w-12 h-12 rounded-xl bg-primary-fixed/20 text-primary-fixed-dim flex items-center justify-center mb-6">
                 <Smartphone className="w-6 h-6 text-primary" />
@@ -618,7 +618,7 @@ function DeploymentOptions() {
           </div>
 
           {/* Option 2: Setup Concierge */}
-          <div className="bg-white p-8 rounded-2xl shadow-sm border-2 border-secondary flex flex-col justify-between relative overflow-hidden">
+          <div className="bg-white p-8 rounded-lg shadow-sm border-2 border-secondary flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 right-0 bg-secondary text-white text-xs px-4 py-1.5 rounded-bl-xl font-bold">
               MAIS POPULAR
             </div>
@@ -696,7 +696,7 @@ function AddonsSection() {
           {addons.map((a, i) => (
             <div
               key={i}
-              className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/30 flex flex-col justify-between hover:border-secondary transition-all"
+              className="bg-surface-container-low p-6 rounded-lg border border-outline-variant/30 flex flex-col justify-between hover:border-secondary transition-all"
             >
               <div>
                 <span className="inline-block text-xs font-bold text-secondary bg-secondary-container/20 px-2.5 py-1 rounded-full mb-4">

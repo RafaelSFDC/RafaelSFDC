@@ -25,7 +25,7 @@ export function SiteCard({ project, badge, onOpenDetails }: SiteCardProps) {
 
   return (
     <>
-      <div className="glass-card rounded-2xl overflow-hidden group flex flex-col h-full">
+      <div className="glass-card rounded-lg overflow-hidden group flex flex-col h-full">
         <div className="aspect-video relative overflow-hidden">
           <img
             src={project.image || "/placeholder.svg"}

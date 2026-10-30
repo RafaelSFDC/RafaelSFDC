@@ -115,10 +115,10 @@ export function OpenSourceSection() {
       />
 
       {/* Banner de Ecossistema */}
-      <div className="glass-card rounded-2xl p-6 md:p-10 mb-8 border border-white/10">
+      <div className="glass-card rounded-lg p-6 md:p-10 mb-8 border border-white/10">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-white/10">
           <div className="flex items-center gap-4">
-            <div className="size-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+            <div className="size-14 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
               <EdgekitLogo size={36} module="platform" />
             </div>
             <div>
@@ -159,7 +159,7 @@ export function OpenSourceSection() {
               <button
                 key={module.id}
                 onClick={() => setActiveModuleId(modId)}
-                className={`p-3.5 rounded-xl text-left transition-all border flex items-center gap-3 ${
+                className={`p-3.5 rounded-lg text-left transition-all border flex items-center gap-3 ${
                   isSelected
                     ? "bg-white/10 text-white"
                     : "bg-white/[0.02] border-white/10 text-on-surface-variant hover:bg-white/[0.05] hover:text-white"
@@ -192,7 +192,7 @@ export function OpenSourceSection() {
 
         {/* Detalhe do Módulo Ativo */}
         <div
-          className="bg-background/60 border rounded-xl p-6 md:p-8 transition-all"
+          className="bg-background/60 border rounded-lg p-6 md:p-8 transition-all"
           style={{
             borderColor: `${activeColor}40`,
           }}
@@ -201,7 +201,7 @@ export function OpenSourceSection() {
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <span
-                  className="size-11 rounded-xl flex items-center justify-center shrink-0 border"
+                  className="size-11 rounded-lg flex items-center justify-center shrink-0 border"
                   style={{
                     backgroundColor: `${activeColor}15`,
                     borderColor: `${activeColor}30`,
@@ -210,21 +210,9 @@ export function OpenSourceSection() {
                   <EdgekitLogo size={28} module={activeModuleId} />
                 </span>
                 <div>
-                  <div className="flex items-center gap-2">
-                    <h4 className="font-headline-md text-xl md:text-2xl font-bold text-white">
-                      {activeModule.name}
-                    </h4>
-                    <span
-                      className="px-2.5 py-0.5 rounded-full text-xs font-semibold"
-                      style={{
-                        backgroundColor: `${activeColor}20`,
-                        color: activeColor,
-                        border: `1px solid ${activeColor}40`,
-                      }}
-                    >
-                      {activeModule.badge}
-                    </span>
-                  </div>
+                  <h4 className="font-headline-md text-xl md:text-2xl font-bold text-white">
+                    {activeModule.name}
+                  </h4>
                   <p
                     className="text-xs sm:text-sm font-semibold mt-0.5"
                     style={{ color: activeColor }}
@@ -320,7 +308,7 @@ export function OpenSourceSection() {
               href={module.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-card p-4 rounded-xl border border-white/10 hover:border-white/30 transition-all group flex flex-col justify-between"
+              className="glass-card p-4 rounded-lg border border-white/10 hover:border-white/30 transition-all group flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
