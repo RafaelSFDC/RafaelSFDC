@@ -5,7 +5,7 @@ import { ArrowRight, Quote } from "lucide-react";
 const stats = [
   { value: "6+", label: "Anos de Experiência" },
   { value: "30+", label: "Projetos Entregues" },
-  { value: "2", label: "SaaS Próprios" },
+  { value: "3", label: "SaaS Próprios" },
 ];
 
 const Hero5 = () => {
