@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { fileURLToPath } from 'node:url';
 
@@ -13,10 +13,10 @@ export default defineConfig({
   output: 'static',
   integrations: [
     react(),
-    tailwind({ applyBaseStyles: false }),
     sitemap(),
   ],
   vite: {
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         '@': srcDir,

@@ -1,4 +1,4 @@
-"use client"
+
 
 import { ExternalLink, Lock, Code, Info } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -89,16 +89,18 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
         <CardFooter className="relative z-20 flex gap-2 pt-2 border-t border-zinc-800/50 mt-auto bg-zinc-950/20">
           {!isPrivate && project.demoUrl && (
-            <Button size="sm" className="flex-1" asChild>
-              <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="mr-1.5 h-3.5 w-3.5" /> Visitar Site
-              </a>
+            <Button
+              
+              className="flex-1"
+              render={<a href={project.demoUrl} target="_blank" rel="noopener noreferrer" />}
+            >
+              <ExternalLink className="mr-1.5 h-3.5 w-3.5" /> Visitar Site
             </Button>
           )}
 
           <Button
             variant="outline"
-            size="sm"
+            
             className="flex-1"
             onClick={() => setShowDetails(true)}
           >
@@ -112,10 +114,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
           )}
 
           {project.codeUrl && isPublic && (
-            <Button variant="outline" size="sm" className="flex-1" asChild>
-              <a href={project.codeUrl} target="_blank" rel="noopener noreferrer">
-                <Code className="mr-1.5 h-3.5 w-3.5" /> Código
-              </a>
+            <Button
+              variant="outline"
+              
+              className="flex-1"
+              render={<a href={project.codeUrl} target="_blank" rel="noopener noreferrer" />}
+            >
+              <Code className="mr-1.5 h-3.5 w-3.5" /> Código
             </Button>
           )}
         </CardFooter>

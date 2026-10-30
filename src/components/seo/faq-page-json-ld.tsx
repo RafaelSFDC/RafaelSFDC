@@ -1,4 +1,4 @@
-import { WithContext, FAQPage } from "schema-dts";
+import type { WithContext, FAQPage } from "schema-dts";
 
 interface FAQItem {
   question: string;

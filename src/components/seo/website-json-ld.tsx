@@ -1,4 +1,4 @@
-import { WithContext, WebSite } from "schema-dts";
+import type { WithContext, WebSite } from "schema-dts";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export function WebsiteJsonLd() {

@@ -1,4 +1,4 @@
-"use client";
+;
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -20,16 +20,12 @@ const Hero5 = () => {
       </p>
 
       <div className="flex flex-col sm:flex-row gap-stack-md w-full sm:w-auto">
-        <Button asChild size="xl">
-          <a href="#contato">
-            Entre em contato
-            <ArrowRight className="size-5" />
-          </a>
+        <Button render={<a href="#contato" />} size="xl">
+          Entre em contato
+          <ArrowRight className="size-5" />
         </Button>
-        <Button asChild size="xl" variant="outline">
-          <a href="#projetos">
-            Ver meus projetos
-          </a>
+        <Button render={<a href="#projetos" />} size="xl" variant="outline">
+          Ver meus projetos
         </Button>
       </div>
     </section>

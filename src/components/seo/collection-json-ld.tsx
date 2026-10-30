@@ -1,4 +1,4 @@
-import { WithContext, CollectionPage, ListItem } from "schema-dts";
+import type { WithContext, CollectionPage, ListItem } from "schema-dts";
 
 interface CollectionJsonLdProps {
   name: string;

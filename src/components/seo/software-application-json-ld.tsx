@@ -1,4 +1,4 @@
-import { WithContext, SoftwareApplication } from "schema-dts";
+import type { WithContext, SoftwareApplication } from "schema-dts";
 
 interface SoftwareApplicationJsonLdProps {
   name: string;

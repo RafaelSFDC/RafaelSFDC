@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Section } from "@/components/Section"
 import { SectionHeader } from "@/components/SectionHeader"
-"use client"
+
 
 import { useState } from "react"
 import { edgekitModules } from "@/data/opensource"
@@ -133,14 +133,17 @@ export function OpenSourceSection() {
           </div>
 
           <div className="flex flex-wrap gap-3 shrink-0">
-            <Button asChild variant="outline">
-              <a
-                href="https://github.com/RafaelSFDC/Edgekit---LP"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaGithub className="size-4" /> Ver no GitHub
-              </a>
+            <Button
+              variant="outline"
+              render={
+                <a
+                  href="https://github.com/RafaelSFDC/Edgekit---LP"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
+              }
+            >
+              <FaGithub className="size-4" /> Ver no GitHub
             </Button>
           </div>
         </div>
@@ -236,15 +239,18 @@ export function OpenSourceSection() {
               </p>
             </div>
 
-            <Button asChild className="shrink-0">
-              <a
-                href={activeModule.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaGithub className="size-4" /> Código Aberto
-                <ArrowRight className="size-4" />
-              </a>
+            <Button
+              className="shrink-0"
+              render={
+                <a
+                  href={activeModule.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
+              }
+            >
+              <FaGithub className="size-4" /> Código Aberto
+              <ArrowRight className="size-4" />
             </Button>
           </div>
 

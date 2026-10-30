@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Section } from "@/components/Section"
 import { SectionHeader } from "@/components/SectionHeader"
-"use client"
+
 
 import { useEffect, useRef, useState } from "react"
 import { SiteCard } from "@/components/site-card"
@@ -182,10 +182,11 @@ export default function Home() {
           </p>
           <div className="flex gap-3 sm:gap-4 mt-auto">
             {project.demoUrl && (
-              <Button asChild className="flex-1 sm:flex-initial">
-                <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="size-4" /> Visitar Site
-                </a>
+              <Button
+                render={<a href={project.demoUrl} target="_blank" rel="noopener noreferrer" />}
+                className="flex-1 sm:flex-initial"
+              >
+                <ExternalLink className="size-4" /> Visitar Site
               </Button>
             )}
             <Button
@@ -401,25 +402,33 @@ export default function Home() {
             </div>
 
             <div className="mt-16 flex flex-wrap justify-center items-center gap-4">
-              <Button asChild variant="outline" size="icon">
-                <a
-                  href="https://github.com/RafaelSFDC"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub de Rafael SFDC"
-                >
-                  <FaGithub className="size-5" />
-                </a>
+              <Button
+                render={
+                  <a
+                    href="https://github.com/RafaelSFDC"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub de Rafael SFDC"
+                  />
+                }
+                variant="outline"
+                size="icon"
+              >
+                <FaGithub className="size-5" />
               </Button>
-              <Button asChild variant="outline" size="icon">
-                <a
-                  href="https://www.linkedin.com/in/rafael-silva-ferreira-de-carvalho"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn de Rafael SFDC"
-                >
-                  <FaLinkedinIn className="size-5" />
-                </a>
+              <Button
+                render={
+                  <a
+                    href="https://www.linkedin.com/in/rafael-silva-ferreira-de-carvalho"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn de Rafael SFDC"
+                  />
+                }
+                variant="outline"
+                size="icon"
+              >
+                <FaLinkedinIn className="size-5" />
               </Button>
               <DownloadResume />
             </div>

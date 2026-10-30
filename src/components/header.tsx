@@ -1,4 +1,4 @@
-"use client";
+;
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -122,11 +122,13 @@ export const HeroHeader = () => {
 
               {/* Action CTA Button */}
               <div className="flex w-full flex-col sm:flex-row sm:gap-2 sm:space-y-0 md:w-fit">
-                <Button asChild size="sm" className="w-full sm:w-auto">
-                  <a href="#contato" onClick={() => setMenuState(false)}>
-                    <span>Contato</span>
-                    <ArrowRight className="size-4" />
-                  </a>
+                <Button
+                  render={<a href="#contato" onClick={() => setMenuState(false)} />}
+                  
+                  className="w-full sm:w-auto"
+                >
+                  <span>Contato</span>
+                  <ArrowRight className="size-4" />
                 </Button>
               </div>
             </div>

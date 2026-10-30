@@ -40,8 +40,7 @@ export function ProjectDetailsModal({ project, open, onOpenChange }: ProjectDeta
             <img
               src={project.image || "/placeholder.svg"}
               alt={`${project.title} Project`}
-              fill
-              className="object-cover"
+              className="object-cover w-full h-full"
             />
           </div>
 
@@ -113,7 +112,6 @@ export function ProjectDetailsModal({ project, open, onOpenChange }: ProjectDeta
           {isPrivate ? (
             <Button
               variant="outline"
-              className="bg-zinc-800 text-zinc-400 border-zinc-700 hover:bg-zinc-700 cursor-not-allowed opacity-70"
               disabled
             >
               Acesso Restrito
@@ -122,12 +120,9 @@ export function ProjectDetailsModal({ project, open, onOpenChange }: ProjectDeta
             <>
               {project.demoUrl && (
                 <Button
-                  className="bg-primary-container text-on-primary-container hover:brightness-110 font-bold border-0"
-                  asChild
+                  render={<a href={project.demoUrl} target="_blank" rel="noopener noreferrer" />}
                 >
-                  <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="mr-2 h-4 w-4" /> Visitar Site
-                  </a>
+                  <ExternalLink className="mr-2 h-4 w-4" /> Visitar Site
                 </Button>
               )}
 
@@ -135,12 +130,9 @@ export function ProjectDetailsModal({ project, open, onOpenChange }: ProjectDeta
               {project.codeUrl && isPublic && (
                 <Button
                   variant="outline"
-                  className="border-white/20 text-white/80 hover:bg-white/5"
-                  asChild
+                  render={<a href={project.codeUrl} target="_blank" rel="noopener noreferrer" />}
                 >
-                  <a href={project.codeUrl} target="_blank" rel="noopener noreferrer">
-                    <Code className="mr-2 h-4 w-4" /> Código Fonte
-                  </a>
+                  <Code className="mr-2 h-4 w-4" /> Código Fonte
                 </Button>
               )}
             </>

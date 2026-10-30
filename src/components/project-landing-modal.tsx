@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-"use client"
+
 
 import { useState, useCallback } from "react"
 import type { ProjectDetails } from "@/types/project"
@@ -165,30 +165,37 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 // ─── CTA Button ───────────────────────────────────────────────────────────────
 function CTAPrimary({ href, children, icon: Icon, className }: { href: string; children: React.ReactNode; icon?: React.ElementType; className?: string }) {
   return (
-    <Button asChild className={className}>
-      <a
-        href={href}
-        target={href.startsWith("http") ? "_blank" : "_self"}
-        rel="noopener noreferrer"
-      >
-        {Icon && <Icon className="w-4 h-4" />}
-        {children}
-      </a>
+    <Button
+      render={
+        <a
+          href={href}
+          target={href.startsWith("http") ? "_blank" : "_self"}
+          rel="noopener noreferrer"
+        />
+      }
+      className={className}
+    >
+      {Icon && <Icon className="w-4 h-4" />}
+      {children}
     </Button>
   )
 }
 
 function CTASecondary({ href, children, icon: Icon, className }: { href: string; children: React.ReactNode; icon?: React.ElementType; className?: string }) {
   return (
-    <Button asChild variant="outline" className={className}>
-      <a
-        href={href}
-        target={href.startsWith("http") ? "_blank" : "_self"}
-        rel="noopener noreferrer"
-      >
-        {Icon && <Icon className="w-4 h-4" />}
-        {children}
-      </a>
+    <Button
+      render={
+        <a
+          href={href}
+          target={href.startsWith("http") ? "_blank" : "_self"}
+          rel="noopener noreferrer"
+        />
+      }
+      variant="outline"
+      className={className}
+    >
+      {Icon && <Icon className="w-4 h-4" />}
+      {children}
     </Button>
   )
 }
@@ -533,14 +540,16 @@ export function ProjectLandingModal({ project, open, onOpenChange }: ProjectLand
           </div>
 
           {/* Close button */}
-          <DialogClose asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              aria-label="Fechar modal"
-            >
-              <X className="w-4 h-4" />
-            </Button>
+          <DialogClose
+            render={
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="Fechar modal"
+              />
+            }
+          >
+            <X className="w-4 h-4" />
           </DialogClose>
         </div>
 

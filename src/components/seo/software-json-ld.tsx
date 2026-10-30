@@ -1,4 +1,4 @@
-import { WithContext, SoftwareApplication } from "schema-dts";
+import type { WithContext, SoftwareApplication } from "schema-dts";
 import { SITE_URL } from "@/lib/site";
 
 export function SoftwareJsonLd() {

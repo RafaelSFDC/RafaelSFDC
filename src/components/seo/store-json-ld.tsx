@@ -1,4 +1,4 @@
-import { WithContext, Organization, Store } from "schema-dts";
+import type { WithContext, Organization, Store } from "schema-dts";
 
 interface StoreJsonLdProps {
   name: string;

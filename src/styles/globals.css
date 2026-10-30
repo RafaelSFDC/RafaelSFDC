@@ -1,34 +1,186 @@
+@import "tailwindcss";
+@import "tw-animate-css";
 @import "./fonts.css";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 2%;
-    --foreground: 0 0% 90%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 90%;
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 90%;
-    --primary: 16 98% 57%;
-    --primary-foreground: 20 90% 8%;
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 90%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 0 0% 15%;
-    --accent-foreground: 0 0% 90%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 90%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 16 98% 57%;
-    --radius: 0.25rem;
-    --font-sans: 'Geist Variable', 'Inter', system-ui, sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
-    --tracking-normal: -0.01em;
-  }
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #050505;
+  --foreground: #e5e5e5;
+  --card: #121212;
+  --card-foreground: #e5e5e5;
+  --popover: #121212;
+  --popover-foreground: #e5e5e5;
+  --primary: #FD4E27;
+  --primary-foreground: #ffffff;
+  --secondary: #262626;
+  --secondary-foreground: #e5e5e5;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+  --accent: #262626;
+  --accent-foreground: #e5e5e5;
+  --destructive: #dc2626;
+  --destructive-foreground: #fafafa;
+  --border: #262626;
+  --input: #262626;
+  --ring: #FD4E27;
+  --radius: 0.25rem;
+
+  --font-sans: 'Geist Variable', Inter, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --tracking-normal: -0.01em;
+}
+
+.dark {
+  --background: #050505;
+  --foreground: #e5e5e5;
+  --card: #121212;
+  --card-foreground: #e5e5e5;
+  --popover: #121212;
+  --popover-foreground: #e5e5e5;
+  --primary: #FD4E27;
+  --primary-foreground: #ffffff;
+  --secondary: #262626;
+  --secondary-foreground: #e5e5e5;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+  --accent: #262626;
+  --accent-foreground: #e5e5e5;
+  --destructive: #dc2626;
+  --destructive-foreground: #fafafa;
+  --border: #262626;
+  --input: #262626;
+  --ring: #FD4E27;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@theme {
+  --color-outline: #849495;
+  --color-surface-tint: #FD4E27;
+  --color-surface-container-low: #1c1b1b;
+  --color-on-surface-variant: #b9caca;
+  --color-inverse-surface: #e5e2e1;
+  --color-surface-bright: #3a3939;
+  --color-surface-container-highest: #353534;
+  --color-primary-fixed-dim: #FD4E27;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-on-tertiary-fixed-variant: #474746;
+  --color-secondary-fixed: #e5e2e1;
+  --color-on-tertiary: #313030;
+  --color-on-surface: #e5e2e1;
+  --color-inverse-on-surface: #313030;
+  --color-tertiary: #fdf9f9;
+  --color-outline-variant: #3a494a;
+  --color-inverse-primary: #9A3412;
+  --color-surface-variant: #353534;
+  --color-tertiary-fixed-dim: #c8c6c5;
+  --color-tertiary-fixed: #e5e2e1;
+  --color-on-error-container: #ffdad6;
+  --color-on-primary: #2A1000;
+  --color-on-background: #e5e2e1;
+  --color-surface-container: #201f1f;
+  --color-on-error: #690005;
+  --color-primary-fixed: #FFA88F;
+  --color-surface-dim: #131313;
+  --color-on-secondary-fixed: #1c1b1b;
+  --color-primary-container: #FD4E27;
+  --color-surface: #131313;
+  --color-on-secondary-container: #bab8b7;
+  --color-on-secondary-fixed-variant: #474646;
+  --color-on-tertiary-fixed: #1c1b1b;
+  --color-secondary-container: #4a4949;
+  --color-on-secondary: #313030;
+  --color-on-primary-fixed: #2A1000;
+  --color-on-primary-fixed-variant: #7C2D12;
+  --color-on-primary-container: #431407;
+  --color-surface-container-high: #2a2a2a;
+  --color-on-tertiary-container: #626161;
+  --color-secondary-fixed-dim: #c8c6c5;
+  --color-tertiary-container: #e0dddc;
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+
+  --spacing-margin-mobile: 20px;
+  --spacing-margin-desktop: 64px;
+  --spacing-stack-lg: 32px;
+  --spacing-section-gap: 120px;
+  --spacing-gutter: 24px;
+  --spacing-stack-md: 16px;
+  --spacing-container-max: 1280px;
+  --spacing-stack-sm: 8px;
+
+  --font-sans: 'Geist Variable', Inter, system-ui, sans-serif;
+  --font-display: 'Geist Variable', Inter, system-ui, sans-serif;
+  --font-body: 'Geist Variable', Inter, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --text-display-xl: 84px;
+  --text-display-xl--line-height: 92px;
+  --text-display-xl--letter-spacing: -0.04em;
+  --text-display-xl--font-weight: 800;
+
+  --text-display-xl-mobile: 48px;
+  --text-display-xl-mobile--line-height: 52px;
+  --text-display-xl-mobile--letter-spacing: -0.02em;
+  --text-display-xl-mobile--font-weight: 800;
+
+  --text-headline-lg: 48px;
+  --text-headline-lg--line-height: 56px;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-headline-lg--font-weight: 700;
+
+  --text-headline-lg-mobile: 32px;
+  --text-headline-lg-mobile--line-height: 40px;
+  --text-headline-lg-mobile--font-weight: 700;
+
+  --text-headline-md: 32px;
+  --text-headline-md--line-height: 40px;
+  --text-headline-md--font-weight: 700;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+  --text-body-lg--font-weight: 400;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 24px;
+  --text-body-md--font-weight: 400;
+
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 16px;
+  --text-label-sm--letter-spacing: 0.05em;
+  --text-label-sm--font-weight: 500;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+  --animate-fade-in: fade-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 @layer base {
@@ -72,10 +224,6 @@
   backdrop-filter: blur(16px);
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
 @keyframes float {
 
   0%,
@@ -102,6 +250,48 @@
 
 .animate-blink {
   animation: blink 1s step-end infinite;
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: var(--radix-accordion-content-height, var(--base-accordion-content-height, auto));
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height, var(--base-accordion-content-height, auto));
+  }
+
+  to {
+    height: 0;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 /* Site-wide dark scrollbars (match theme, kill native white bars) */
@@ -159,10 +349,7 @@ html::-webkit-scrollbar-thumb:hover {
   max-height: 92dvh;
 }
 
-/* Scroll-aware edge fade (CSS scroll-driven, no JS).
-   Apply to the scroll container itself. The timeline is inactive when the
-   content does not overflow, so nothing is masked. Both keyframes share the
-   same stop count so the mask interpolates smoothly. */
+/* Scroll-aware edge fade (CSS scroll-driven, no JS) */
 @supports (animation-timeline: scroll()) {
   @keyframes scroll-fade-y {
 

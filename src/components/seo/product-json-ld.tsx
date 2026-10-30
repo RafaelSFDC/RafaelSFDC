@@ -1,4 +1,4 @@
-import { WithContext, Product, Offer } from "schema-dts";
+import type { WithContext, Product, Offer } from "schema-dts";
 
 interface ProductJsonLdProps {
   name: string;

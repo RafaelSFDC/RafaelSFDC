@@ -1,4 +1,4 @@
-import { BreadcrumbList, WithContext } from "schema-dts";
+import type { BreadcrumbList, WithContext } from "schema-dts";
 
 interface BreadcrumbItem {
   name: string;

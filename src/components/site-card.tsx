@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-"use client"
+
 
 import { ExternalLink, Info, Globe } from "lucide-react"
 import type { ProjectDetails } from "@/types/project"
@@ -69,22 +69,26 @@ export function SiteCard({ project, badge, onOpenDetails }: SiteCardProps) {
           </div>
           <div className="flex gap-3 mt-auto">
             {project.demoUrl && (
-              <Button asChild size="sm" className="flex-1">
-                <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="size-4" /> Visitar Site
-                </a>
+              <Button
+                render={<a href={project.demoUrl} target="_blank" rel="noopener noreferrer" />}
+                
+                className="flex-1"
+              >
+                <ExternalLink className="size-4" /> Visitar Site
               </Button>
             )}
             {project.landingPageUrl && project.type !== "whitelabel" && (
-              <Button asChild size="sm" className="flex-1">
-                <a href={project.landingPageUrl}>
-                  <Globe className="size-4" /> Landing Page
-                </a>
+              <Button
+                render={<a href={project.landingPageUrl} />}
+                
+                className="flex-1"
+              >
+                <Globe className="size-4" /> Landing Page
               </Button>
             )}
             <Button
               variant="outline"
-              size="sm"
+              
               className="flex-1"
               onClick={handleOpen}
               aria-label={`Ver detalhes de ${project.title}`}
