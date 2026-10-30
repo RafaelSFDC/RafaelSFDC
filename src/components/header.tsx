@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 
 const menuItems = [
   { name: "Produtos", href: "#projetos" },
+  { name: "Open-Source", href: "#opensource" },
   { name: "Trabalhos", href: "#trabalhos" },
   { name: "Habilidades", href: "#habilidades" },
   { name: "Sobre", href: "#sobre" },

@@ -54,6 +54,7 @@ import {
 } from "react-icons/si"
 import { FaGithub, FaLinkedinIn } from "react-icons/fa"
 import { ProjectLandingModal } from "@/components/project-landing-modal"
+import { OpenSourceSection } from "@/components/home/OpenSourceSection"
 import type { ProjectDetails } from "@/types/project"
 
 const skillCategories = [
@@ -154,8 +155,8 @@ export default function Home() {
     children: string
   }) => (
     <div className="flex items-center gap-4 mb-12">
-      <div className="text-surface-tint">
-        <Icon size={32} aria-hidden="true" />
+      <div className="size-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-surface-tint shrink-0">
+        <Icon size={24} aria-hidden="true" />
       </div>
       <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg">
         {children}
@@ -240,6 +241,9 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        {/* Open-Source */}
+        <OpenSourceSection />
 
         {/* Trabalhos */}
         <section
