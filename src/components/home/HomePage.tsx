@@ -1,3 +1,6 @@
+import { Button } from "@/components/ui/button"
+import { Section } from "@/components/Section"
+import { SectionHeader } from "@/components/SectionHeader"
 "use client"
 
 import { useEffect, useRef, useState } from "react"
@@ -147,23 +150,6 @@ export default function Home() {
     }
   }
 
-  const SectionHeading = ({
-    icon: Icon,
-    children,
-  }: {
-    icon: React.ElementType
-    children: string
-  }) => (
-    <div className="flex items-center gap-4 mb-12">
-      <div className="size-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-surface-tint shrink-0">
-        <Icon size={24} aria-hidden="true" />
-      </div>
-      <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg">
-        {children}
-      </h2>
-    </div>
-  )
-
   const FeaturedCard = ({ project }: { project: ProjectDetails }) => (
     <div className="glass-card rounded-2xl overflow-hidden group">
       <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -196,22 +182,20 @@ export default function Home() {
           </p>
           <div className="flex gap-3 sm:gap-4 mt-auto">
             {project.demoUrl && (
-              <a
-                href={project.demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 sm:flex-initial px-4 sm:px-6 py-3 bg-primary-container text-on-primary-container font-bold rounded-xl flex items-center justify-center gap-2 hover:brightness-110 transition-all text-xs sm:text-sm whitespace-nowrap"
-              >
-                <ExternalLink className="size-4" /> Visitar Site
-              </a>
+              <Button asChild className="flex-1 sm:flex-initial">
+                <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="size-4" /> Visitar Site
+                </a>
+              </Button>
             )}
-            <button
+            <Button
+              variant="outline"
+              className="flex-1 sm:flex-initial"
               onClick={() => handleOpenDetails(project)}
               aria-label={`Ver detalhes de ${project.title}`}
-              className="flex-1 sm:flex-initial px-4 sm:px-6 py-3 border border-white/20 hover:border-surface-tint/50 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all text-xs sm:text-sm whitespace-nowrap"
             >
               <Eye className="size-4" /> Detalhes
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -222,35 +206,29 @@ export default function Home() {
     <div className="min-h-screen bg-background text-on-surface overflow-x-hidden selection:bg-surface-tint/30">
       <HeroHeader />
 
-      <main className="relative">
+      <main className="relative flex flex-col gap-20 md:gap-section-gap pb-20 md:pb-section-gap">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1024px] glow-bg -z-10 pointer-events-none" />
         <div className="absolute top-[1536px] right-0 w-full h-[1024px] glow-bg -z-10 pointer-events-none opacity-50" />
 
         <Hero5 />
 
         {/* Projetos */}
-        <section
-          id="projetos"
-          className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap"
-        >
-          <SectionHeading icon={FolderKanban}>Produtos SaaS</SectionHeading>
+        <Section id="projetos">
+          <SectionHeader icon={FolderKanban} title="Produtos SaaS" description="Produtos digitais e plataformas SaaS de alta performance desenvolvidos do MVP à escala." />
 
           <div className="grid grid-cols-1 gap-stack-lg" ref={addToRefs}>
             {projects.map((project) => (
               <FeaturedCard key={project.id} project={project} />
             ))}
           </div>
-        </section>
+        </Section>
 
         {/* Open-Source */}
         <OpenSourceSection />
 
         {/* Trabalhos */}
-        <section
-          id="trabalhos"
-          className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap"
-        >
-          <SectionHeading icon={Briefcase}>Trabalhos</SectionHeading>
+        <Section id="trabalhos">
+          <SectionHeader icon={Briefcase} title="Trabalhos" description="Aplicações web completas, landing pages de alta conversão e sistemas sob medida para empresas e clientes." />
 
           <div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter"
@@ -273,15 +251,11 @@ export default function Home() {
               />
             ))}
           </div>
-        </section>
+        </Section>
 
         {/* Habilidades */}
-        <section
-          id="habilidades"
-          className="py-section-gap bg-surface-container-lowest/50"
-        >
-          <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-            <SectionHeading icon={Code2}>Habilidades Técnicas</SectionHeading>
+        <Section id="habilidades" className="bg-surface-container-lowest/50 py-16 md:py-20">
+            <SectionHeader icon={Code2} title="Habilidades Técnicas" description="Stack completa de ferramentas modernas, frameworks e infraestrutura que utilizo no dia a dia." />
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter">
               {skillCategories.map((category) => {
@@ -321,15 +295,11 @@ export default function Home() {
                 )
               })}
             </div>
-          </div>
-        </section>
+        </Section>
 
         {/* Sobre */}
-        <section
-          id="sobre"
-          className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap"
-        >
-          <SectionHeading icon={Search}>Sobre</SectionHeading>
+        <Section id="sobre">
+          <SectionHeader icon={Search} title="Sobre Mim" description="Conheça mais sobre minha trajetória de 6+ anos desenvolvendo aplicações e soluções sob medida." />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg">
             <div className="glass-card p-10 rounded-2xl">
@@ -381,13 +351,10 @@ export default function Home() {
               </ul>
             </div>
           </div>
-        </section>
+        </Section>
 
         {/* Contato */}
-        <section
-          id="contato"
-          className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap mb-section-gap"
-        >
+        <Section id="contato">
           <div className="glass-card p-6 sm:p-12 md:p-20 rounded-2xl text-center relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full glow-bg opacity-30 pointer-events-none" />
             <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-6 sm:mb-8">
@@ -434,28 +401,30 @@ export default function Home() {
             </div>
 
             <div className="mt-16 flex flex-wrap justify-center items-center gap-4">
-              <a
-                href="https://github.com/RafaelSFDC"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub de Rafael SFDC"
-                className="size-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 hover:border-surface-tint/50 hover:scale-105 transition-all"
-              >
-                <FaGithub className="size-5" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/rafael-silva-ferreira-de-carvalho"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn de Rafael SFDC"
-                className="size-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 hover:border-surface-tint/50 hover:scale-105 transition-all"
-              >
-                <FaLinkedinIn className="size-5" />
-              </a>
+              <Button asChild variant="outline" size="icon">
+                <a
+                  href="https://github.com/RafaelSFDC"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub de Rafael SFDC"
+                >
+                  <FaGithub className="size-5" />
+                </a>
+              </Button>
+              <Button asChild variant="outline" size="icon">
+                <a
+                  href="https://www.linkedin.com/in/rafael-silva-ferreira-de-carvalho"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn de Rafael SFDC"
+                >
+                  <FaLinkedinIn className="size-5" />
+                </a>
+              </Button>
               <DownloadResume />
             </div>
           </div>
-        </section>
+        </Section>
       </main>
 
       {detailsProject && (

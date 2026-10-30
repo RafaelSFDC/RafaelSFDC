@@ -1,3 +1,6 @@
+import { Button } from "@/components/ui/button"
+import { Section } from "@/components/Section"
+import { SectionHeader } from "@/components/SectionHeader"
 "use client"
 
 import { useState } from "react"
@@ -96,26 +99,20 @@ export function OpenSourceSection() {
   const activeColor = EDGEKIT_MODULE_COLORS[activeModuleId]
 
   return (
-    <section
-      id="opensource"
-      className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap"
-    >
-      <div className="flex items-center gap-4 mb-4">
-        <div className="size-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-          <EdgekitLogo size={26} module="platform" />
-        </div>
-        <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg">
-          Open-Source &amp; Developer Tools
-        </h2>
-      </div>
-
-      <p className="text-on-surface-variant max-w-3xl mb-10 text-base md:text-lg leading-relaxed">
-        Além de construir produtos comerciais, criei o{" "}
-        <strong className="text-white font-semibold">Edgekit</strong> — uma
-        suíte open-source modular de Backend-as-a-Service (BaaS) e infraestrutura
-        serverless executada na borda global da Cloudflare com custo zero em
-        idle.
-      </p>
+    <Section id="opensource">
+      <SectionHeader
+        icon={<EdgekitLogo size={26} module="platform" />}
+        title="Open-Source & Developer Tools"
+        description={
+          <>
+            Além de construir produtos comerciais, criei o{" "}
+            <strong className="text-white font-semibold">Edgekit</strong> — uma
+            suíte open-source modular de Backend-as-a-Service (BaaS) e infraestrutura
+            serverless executada na borda global da Cloudflare com custo zero em
+            idle.
+          </>
+        }
+      />
 
       {/* Banner de Ecossistema */}
       <div className="glass-card rounded-2xl p-6 md:p-10 mb-8 border border-white/10">
@@ -136,14 +133,15 @@ export function OpenSourceSection() {
           </div>
 
           <div className="flex flex-wrap gap-3 shrink-0">
-            <a
-              href="https://github.com/RafaelSFDC/Edgekit---LP"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-3 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/40 text-white font-bold rounded-xl flex items-center gap-2 transition-all text-xs sm:text-sm"
-            >
-              <FaGithub className="size-4" /> Ver no GitHub
-            </a>
+            <Button asChild variant="outline">
+              <a
+                href="https://github.com/RafaelSFDC/Edgekit---LP"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub className="size-4" /> Ver no GitHub
+              </a>
+            </Button>
           </div>
         </div>
 
@@ -238,18 +236,16 @@ export function OpenSourceSection() {
               </p>
             </div>
 
-            <a
-              href={activeModule.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-3 text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:brightness-110 transition-all text-xs sm:text-sm whitespace-nowrap shrink-0"
-              style={{
-                backgroundColor: activeColor,
-              }}
-            >
-              <FaGithub className="size-4" /> Código Aberto
-              <ArrowRight className="size-4" />
-            </a>
+            <Button asChild className="shrink-0">
+              <a
+                href={activeModule.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub className="size-4" /> Código Aberto
+                <ArrowRight className="size-4" />
+              </a>
+            </Button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-white/10 items-start">
@@ -350,6 +346,6 @@ export function OpenSourceSection() {
           )
         })}
       </div>
-    </section>
+    </Section>
   )
 }

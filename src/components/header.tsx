@@ -1,187 +1,138 @@
 "use client";
 
-import React from "react";
-import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { X, ArrowRight } from "lucide-react";
 
-const menuItems = [
+const NAV_ITEMS = [
   { name: "Produtos", href: "#projetos" },
   { name: "Open-Source", href: "#opensource" },
   { name: "Trabalhos", href: "#trabalhos" },
   { name: "Habilidades", href: "#habilidades" },
   { name: "Sobre", href: "#sobre" },
-  { name: "Contato", href: "#contato" },
 ];
 
-const HeroHeader = () => {
-  const [menuState, setMenuState] = React.useState(false);
-  const [isScrolled, setIsScrolled] = React.useState(false);
-  const [hidden, setHidden] = React.useState(false);
-  const lastScroll = React.useRef(0);
+export const HeroHeader = () => {
+  const [menuState, setMenuState] = useState(false);
 
-  const handleScroll = React.useCallback(() => {
-    if (menuState) return;
-    const currentScroll = window.pageYOffset;
-    setIsScrolled(currentScroll > 50);
-    if (currentScroll > lastScroll.current && currentScroll > 100) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
-    lastScroll.current = currentScroll;
+  useEffect(() => {
+    if (!menuState) return;
+
+    const mediaQuery = window.matchMedia("(max-width: 1023px)");
+    const updateOverflow = () => {
+      document.documentElement.classList.toggle("overflow-hidden", mediaQuery.matches);
+    };
+
+    updateOverflow();
+    mediaQuery.addEventListener("change", updateOverflow);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateOverflow);
+      document.documentElement.classList.remove("overflow-hidden");
+    };
   }, [menuState]);
 
-  React.useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
-
-  // Lock body scroll, handle Escape key and window resize when mobile menu is open
-  React.useEffect(() => {
+  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setMenuState(false);
     };
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setMenuState(false);
-      }
-    };
-
-    if (menuState) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleKeyDown);
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [menuState]);
-
-  const handleNavClick = () => {
-    setMenuState(false);
-  };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md transition-transform duration-300",
-        !menuState && "border-b border-white/10",
-        hidden && !menuState && "-translate-y-full"
-      )}
-    >
-      <div className="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-20">
-        <a
-          href="/"
-          className="flex items-center gap-3"
-          aria-label="Rafael SFDC - Início"
-        >
-          <img src="/logo.svg" alt="Rafael SFDC" className="h-9 w-auto" />
-          <span className="font-headline-md text-headline-md font-bold text-surface-tint tracking-tighter">
-            RAFAEL.
-          </span>
-        </a>
-
-        <nav className="hidden md:flex items-center gap-stack-lg">
-          {menuItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-on-surface-variant font-medium hover:text-surface-tint transition-colors font-label-sm text-label-sm uppercase tracking-widest"
-            >
-              {item.name}
-            </a>
-          ))}
-        </nav>
-
-        {/* Hamburger / Close Button with smooth icon rotation and scale */}
-        <button
-          type="button"
-          onClick={() => setMenuState((prev) => !prev)}
-          aria-label={menuState ? "Fechar Menu" : "Abrir Menu"}
-          aria-expanded={menuState}
-          className="relative z-50 block cursor-pointer p-2 md:hidden text-on-surface hover:text-surface-tint transition-colors focus:outline-none"
-        >
-          <div className="relative size-6">
-            <span
-              className={cn(
-                "absolute inset-0 flex items-center justify-center transition-all duration-300 transform",
-                menuState
-                  ? "opacity-100 rotate-0 scale-100"
-                  : "opacity-0 -rotate-90 scale-50 pointer-events-none"
-              )}
-            >
-              <X className="size-6" />
-            </span>
-            <span
-              className={cn(
-                "absolute inset-0 flex items-center justify-center transition-all duration-300 transform",
-                !menuState
-                  ? "opacity-100 rotate-0 scale-100"
-                  : "opacity-0 rotate-90 scale-50 pointer-events-none"
-              )}
-            >
-              <Menu className="size-6" />
-            </span>
-          </div>
-        </button>
-      </div>
-
-      {/* Backdrop overlay */}
-      <div
-        onClick={() => setMenuState(false)}
-        className={cn(
-          "fixed inset-0 top-20 bg-black/60 backdrop-blur-sm md:hidden transition-opacity duration-300 -z-10",
-          menuState
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        )}
-        aria-hidden="true"
-      />
-
-      {/* Animated Mobile Menu Dropdown */}
-      <div
-        className={cn(
-          "grid transition-all duration-300 ease-in-out md:hidden overflow-hidden bg-surface/95 backdrop-blur-xl border-white/10",
-          menuState
-            ? "grid-rows-[1fr] max-h-[500px] opacity-100 border-b shadow-2xl"
-            : "grid-rows-[0fr] max-h-0 opacity-0 border-b-0 pointer-events-none"
-        )}
+    <header className="relative z-30 font-sans">
+      <nav
+        data-state={menuState ? "active" : undefined}
+        className="bg-background/90 backdrop-blur-md border-b border-border/40 fixed top-0 z-30 w-full max-lg:data-[state=active]:bottom-0 transition-colors"
       >
-        <div className="overflow-hidden">
-          <div className="px-margin-mobile py-6">
-            <ul className="space-y-4">
-              {menuItems.map((item, index) => (
-                <li
-                  key={item.name}
-                  className={cn(
-                    "transition-all duration-300 transform",
-                    menuState
-                      ? "opacity-100 translate-x-0"
-                      : "opacity-0 -translate-x-4"
-                  )}
-                  style={{
-                    transitionDelay: menuState ? `${index * 40}ms` : "0ms",
-                  }}
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+          <div className="relative flex flex-wrap items-center justify-between gap-4 py-3.5 lg:gap-0">
+            {/* Left: Brand Identity */}
+            <div className="flex w-full items-center justify-between gap-6 lg:w-auto">
+              <a
+                href="/"
+                aria-label="Rafael SFDC - Início"
+                className="flex items-center space-x-2.5 focus:outline-none group"
+              >
+                <img
+                  src="/logo.svg"
+                  alt="Rafael SFDC"
+                  className="h-6 w-auto shrink-0 group-hover:scale-105 transition-transform"
+                />
+                <span className="font-semibold text-base sm:text-lg tracking-tight text-foreground">
+                  Rafael SFDC
+                </span>
+              </a>
+
+              {/* Mobile menu trigger */}
+              <button
+                type="button"
+                onClick={() => setMenuState(!menuState)}
+                aria-label={menuState ? "Fechar Menu" : "Abrir Menu"}
+                className="relative z-20 block cursor-pointer p-1 lg:hidden focus:outline-none"
+              >
+                <div
+                  aria-hidden
+                  className={`${menuState ? "scale-0 opacity-0 rotate-180" : "scale-100 opacity-100"} size-5 m-auto flex flex-col items-center justify-center gap-[6px] duration-200`}
                 >
+                  <span className="bg-foreground h-0.5 w-5 rounded-full" />
+                  <span className="bg-foreground h-0.5 w-5 rounded-full" />
+                </div>
+
+                <X
+                  className={`${menuState ? "scale-100 opacity-100 rotate-0" : "scale-0 opacity-0 -rotate-180"} absolute inset-0 m-auto size-6 duration-200 text-foreground`}
+                />
+              </button>
+
+              {/* Desktop Nav Items */}
+              <div className="max-lg:hidden flex items-center gap-7 ml-6">
+                {NAV_ITEMS.map((item) => (
                   <a
+                    key={item.name}
                     href={item.href}
-                    className="block py-2 text-on-surface-variant font-medium hover:text-surface-tint active:text-surface-tint hover:translate-x-1.5 transition-all font-label-sm text-label-sm uppercase tracking-widest"
-                    onClick={handleNavClick}
+                    className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {item.name}
                   </a>
-                </li>
-              ))}
-            </ul>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: Actions */}
+            <div
+              className={`${menuState ? "block" : "hidden"} lg:flex mb-4 w-full flex-wrap items-center justify-end max-lg:space-y-6 md:flex-nowrap lg:m-0 lg:w-fit lg:gap-3`}
+            >
+              {/* Mobile menu content */}
+              <div className="lg:hidden mt-4 w-full space-y-1 mb-6">
+                <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-2 px-2">
+                  Navegação
+                </div>
+                {NAV_ITEMS.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setMenuState(false)}
+                    className="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 text-foreground text-sm font-medium transition-colors"
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+
+              {/* Action CTA Button */}
+              <div className="flex w-full flex-col sm:flex-row sm:gap-2 sm:space-y-0 md:w-fit">
+                <Button asChild size="sm" className="w-full sm:w-auto">
+                  <a href="#contato" onClick={() => setMenuState(false)}>
+                    <span>Contato</span>
+                    <ArrowRight className="size-4" />
+                  </a>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
     </header>
   );
 };

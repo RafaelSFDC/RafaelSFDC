@@ -90,9 +90,10 @@ const config = {
         },
       },
       fontFamily: {
-        display: ["Syne", "sans-serif"],
-        body: ["Plus Jakarta Sans", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        sans: ["'Geist Variable'", "Inter", "system-ui", "sans-serif"],
+        display: ["'Geist Variable'", "Inter", "system-ui", "sans-serif"],
+        body: ["'Geist Variable'", "Inter", "system-ui", "sans-serif"],
+        mono: ["'JetBrains Mono'", "monospace"],
       },
       fontSize: {
         "display-xl": ["84px", { lineHeight: "92px", letterSpacing: "-0.04em", fontWeight: "800" }],

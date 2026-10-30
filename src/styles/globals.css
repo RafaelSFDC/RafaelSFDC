@@ -1,3 +1,4 @@
+@import "./fonts.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -23,7 +24,10 @@
     --border: 0 0% 15%;
     --input: 0 0% 15%;
     --ring: 16 98% 57%;
-    --radius: 0.75rem;
+    --radius: 0.25rem;
+    --font-sans: 'Geist Variable', 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --tracking-normal: -0.01em;
   }
 }
 
@@ -38,12 +42,19 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
+    letter-spacing: var(--tracking-normal);
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: "Syne", sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-sans);
+    letter-spacing: -0.02em;
   }
 }
 
@@ -66,13 +77,27 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 .animate-blink {
@@ -84,18 +109,22 @@ html {
   scrollbar-width: thin;
   scrollbar-color: rgba(253, 78, 39, 0.4) #0e0e0e;
 }
+
 html::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
+
 html::-webkit-scrollbar-track {
   background: #0e0e0e;
 }
+
 html::-webkit-scrollbar-thumb {
   background: #2a2a2a;
   border-radius: 8px;
   border: 2px solid #0e0e0e;
 }
+
 html::-webkit-scrollbar-thumb:hover {
   background: rgba(253, 78, 39, 0.55);
 }
@@ -105,17 +134,21 @@ html::-webkit-scrollbar-thumb:hover {
   scrollbar-width: thin;
   scrollbar-color: rgba(253, 78, 39, 0.45) transparent;
 }
+
 .dialog-scroll::-webkit-scrollbar {
   width: 8px;
 }
+
 .dialog-scroll::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .dialog-scroll::-webkit-scrollbar-thumb {
   background: rgba(253, 78, 39, 0.35);
   border-radius: 8px;
   border: 2px solid #050505;
 }
+
 .dialog-scroll::-webkit-scrollbar-thumb:hover {
   background: rgba(253, 78, 39, 0.6);
 }
@@ -132,24 +165,22 @@ html::-webkit-scrollbar-thumb:hover {
    same stop count so the mask interpolates smoothly. */
 @supports (animation-timeline: scroll()) {
   @keyframes scroll-fade-y {
+
     0%,
     100% {
-      mask-image: linear-gradient(
-        to bottom,
-        #000 0,
-        #000 calc(100% - var(--scroll-fade-size, 48px)),
-        #000 calc(100% - var(--scroll-fade-size, 48px)),
-        transparent 100%
-      );
+      mask-image: linear-gradient(to bottom,
+          #000 0,
+          #000 calc(100% - var(--scroll-fade-size, 48px)),
+          #000 calc(100% - var(--scroll-fade-size, 48px)),
+          transparent 100%);
     }
+
     50% {
-      mask-image: linear-gradient(
-        to bottom,
-        transparent 0,
-        #000 var(--scroll-fade-size, 48px),
-        #000 calc(100% - var(--scroll-fade-size, 48px)),
-        transparent 100%
-      );
+      mask-image: linear-gradient(to bottom,
+          transparent 0,
+          #000 var(--scroll-fade-size, 48px),
+          #000 calc(100% - var(--scroll-fade-size, 48px)),
+          transparent 100%);
     }
   }
 

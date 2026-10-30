@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button"
 "use client"
 
 import { useState, useCallback } from "react"
@@ -164,35 +165,31 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 // ─── CTA Button ───────────────────────────────────────────────────────────────
 function CTAPrimary({ href, children, icon: Icon, className }: { href: string; children: React.ReactNode; icon?: React.ElementType; className?: string }) {
   return (
-    <a
-      href={href}
-      target={href.startsWith("http") ? "_blank" : "_self"}
-      rel="noopener noreferrer"
-      className={cn(
-        "inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-[#FD4E27] text-black font-bold text-sm rounded-xl hover:bg-[#FD4E27] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg",
-        className
-      )}
-    >
-      {Icon && <Icon className="w-4 h-4" />}
-      {children}
-    </a>
+    <Button asChild className={className}>
+      <a
+        href={href}
+        target={href.startsWith("http") ? "_blank" : "_self"}
+        rel="noopener noreferrer"
+      >
+        {Icon && <Icon className="w-4 h-4" />}
+        {children}
+      </a>
+    </Button>
   )
 }
 
 function CTASecondary({ href, children, icon: Icon, className }: { href: string; children: React.ReactNode; icon?: React.ElementType; className?: string }) {
   return (
-    <a
-      href={href}
-      target={href.startsWith("http") ? "_blank" : "_self"}
-      rel="noopener noreferrer"
-      className={cn(
-        "inline-flex items-center justify-center gap-2.5 px-6 py-3.5 border border-white/15 text-white font-medium text-sm rounded-xl hover:border-[#FD4E27]/40 hover:bg-[#FD4E27]/5 transition-all",
-        className
-      )}
-    >
-      {Icon && <Icon className="w-4 h-4" />}
-      {children}
-    </a>
+    <Button asChild variant="outline" className={className}>
+      <a
+        href={href}
+        target={href.startsWith("http") ? "_blank" : "_self"}
+        rel="noopener noreferrer"
+      >
+        {Icon && <Icon className="w-4 h-4" />}
+        {children}
+      </a>
+    </Button>
   )
 }
 
@@ -509,12 +506,12 @@ export function ProjectLandingModal({ project, open, onOpenChange }: ProjectLand
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent hideCloseButton className="flex flex-col gap-0 overflow-hidden bg-[#050505] border border-white/8 text-white w-full max-w-[calc(100vw-1.5rem)] sm:max-w-4xl dialog-max-h p-0 rounded-2xl shadow-2xl shadow-black/80">
+      <DialogContent hideCloseButton className="flex flex-col gap-0 overflow-hidden text-white w-full max-w-[calc(100vw-1.5rem)] sm:max-w-4xl dialog-max-h p-0 rounded-2xl shadow-2xl ">
         {/* Hidden accessible title */}
         <DialogTitle className="sr-only">{project.title}</DialogTitle>
 
         {/* Header */}
-        <div className="shrink-0 px-6 py-4 border-b border-white/6 bg-[#050505] flex items-start justify-between gap-4">
+        <div className="shrink-0 px-6 py-4 border-b border-white/6 flex items-start justify-between gap-4">
 
           <div className="flex-1 min-w-0">
             {/* Type + Status badges */}
@@ -537,13 +534,13 @@ export function ProjectLandingModal({ project, open, onOpenChange }: ProjectLand
 
           {/* Close button */}
           <DialogClose asChild>
-            <button
-              type="button"
+            <Button
+              variant="ghost"
+              size="icon"
               aria-label="Fechar modal"
-              className="flex-shrink-0 w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/8 hover:border-white/20 transition-all"
             >
-              <X className="w-4 h-4 text-white/60" />
-            </button>
+              <X className="w-4 h-4" />
+            </Button>
           </DialogClose>
         </div>
 
