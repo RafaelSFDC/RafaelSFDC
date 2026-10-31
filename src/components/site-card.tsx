@@ -1,19 +1,20 @@
 import { Button } from "@/components/ui/button"
-
-
 import { ExternalLink, Info, Globe } from "lucide-react"
 import type { ProjectDetails } from "@/types/project"
 import { useState } from "react"
 import { ProjectLandingModal } from "@/components/project-landing-modal"
+import { translations, type Locale } from "@/i18n/translations"
 
 interface SiteCardProps {
   project: ProjectDetails
-  badge?: "Cliente" | "White Label"
+  badge?: string
+  lang?: Locale
   onOpenDetails?: () => void
 }
 
-export function SiteCard({ project, badge, onOpenDetails }: SiteCardProps) {
+export function SiteCard({ project, badge, lang = "pt", onOpenDetails }: SiteCardProps) {
   const [showDetails, setShowDetails] = useState(false)
+  const t = translations[lang].cards
 
   const handleOpen = () => {
     if (onOpenDetails) {
@@ -71,29 +72,26 @@ export function SiteCard({ project, badge, onOpenDetails }: SiteCardProps) {
             {project.demoUrl && (
               <Button
                 render={<a href={project.demoUrl} target="_blank" rel="noopener noreferrer" />}
-                
                 className="flex-1"
               >
-                <ExternalLink className="size-4" /> Visitar Site
+                <ExternalLink className="size-4" /> {t.visitSite}
               </Button>
             )}
             {project.landingPageUrl && project.type !== "whitelabel" && (
               <Button
                 render={<a href={project.landingPageUrl} />}
-                
                 className="flex-1"
               >
-                <Globe className="size-4" /> Landing Page
+                <Globe className="size-4" /> {t.landingPage}
               </Button>
             )}
             <Button
               variant="outline"
-              
               className="flex-1"
               onClick={handleOpen}
-              aria-label={`Ver detalhes de ${project.title}`}
+              aria-label={`${t.details} - ${project.title}`}
             >
-              <Info className="size-4" /> Detalhes
+              <Info className="size-4" /> {t.details}
             </Button>
           </div>
         </div>

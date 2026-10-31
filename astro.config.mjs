@@ -11,6 +11,13 @@ const srcDir = fileURLToPath(new URL('./src', import.meta.url));
 export default defineConfig({
   site: process.env.PUBLIC_APP_URL || 'https://rafaelsfcarvalho.com',
   output: 'static',
+  i18n: {
+    defaultLocale: 'pt',
+    locales: ['pt', 'en'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   integrations: [
     react(),
     sitemap(),

@@ -1,10 +1,8 @@
 import { Button } from "@/components/ui/button"
 import { Section } from "@/components/Section"
 import { SectionHeader } from "@/components/SectionHeader"
-
-
 import { useState } from "react"
-import { edgekitModules } from "@/data/opensource"
+import { getEdgekitModules } from "@/data/opensource"
 import {
   EdgekitLogo,
   type EdgekitModuleId,
@@ -23,6 +21,7 @@ import {
   SiUpstash,
   SiPusher,
 } from "react-icons/si"
+import { translations, type Locale } from "@/i18n/translations"
 
 interface TechInfo {
   icon: React.ElementType
@@ -92,24 +91,28 @@ const techDetails: Record<string, TechInfo> = {
   },
 }
 
-export function OpenSourceSection() {
+interface OpenSourceSectionProps {
+  lang?: Locale
+}
+
+export function OpenSourceSection({ lang = "pt" }: OpenSourceSectionProps) {
   const [activeModuleId, setActiveModuleId] = useState<EdgekitModuleId>("platform")
+  const modules = getEdgekitModules(lang)
   const activeModule =
-    edgekitModules.find((m) => m.id === activeModuleId) || edgekitModules[0]
+    modules.find((m) => m.id === activeModuleId) || modules[0]
   const activeColor = EDGEKIT_MODULE_COLORS[activeModuleId]
+  const t = translations[lang].sections.opensource
 
   return (
     <Section id="opensource">
       <SectionHeader
         icon={<EdgekitLogo size={26} module="platform" />}
-        title="Open-Source & Developer Tools"
+        title={t.title}
         description={
           <>
-            Além de construir produtos comerciais, criei o{" "}
-            <strong className="text-white font-semibold">Edgekit</strong> — uma
-            suíte open-source modular de Backend-as-a-Service (BaaS) e infraestrutura
-            serverless executada na borda global da Cloudflare com custo zero em
-            idle.
+            {t.descriptionIntro}
+            <strong className="text-white font-semibold">{t.descriptionEdgekit}</strong>
+            {t.descriptionSuffix}
           </>
         }
       />
@@ -120,20 +123,18 @@ export function OpenSourceSection() {
           <div className="flex items-center gap-4">
             <div>
               <h3 className="font-headline-md text-2xl md:text-3xl font-bold text-white mb-2">
-                Edgekit — A Nuvem Serverless na Borda
+                {t.bannerTitle}
               </h3>
               <p className="text-on-surface-variant max-w-2xl text-sm md:text-base">
-                5 módulos desacoplados para substituir Firebase, Supabase, Auth0,
-                S3, QStash e Pusher sem servidores dedicados ou custos fixos.
+                {t.bannerSubtitle}
               </p>
             </div>
           </div>
-
         </div>
 
-        {/* Seletor de Módulos (Tabs com ícones oficiais do Edgekit) */}
+        {/* Seletor de Módulos */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 pt-6 mb-8">
-          {edgekitModules.map((module) => {
+          {modules.map((module) => {
             const modId = module.id as EdgekitModuleId
             const isSelected = modId === activeModuleId
             const modColor = EDGEKIT_MODULE_COLORS[modId]
@@ -141,8 +142,9 @@ export function OpenSourceSection() {
             return (
               <button
                 key={module.id}
+                type="button"
                 onClick={() => setActiveModuleId(modId)}
-                className={`p-3.5 rounded-lg text-left transition-all border flex items-center gap-3 ${
+                className={`p-3.5 rounded-lg text-left transition-all border flex items-center gap-3 cursor-pointer ${
                   isSelected
                     ? "bg-white/10 text-white"
                     : "bg-white/[0.02] border-white/10 text-on-surface-variant hover:bg-white/[0.05] hover:text-white"
@@ -220,7 +222,7 @@ export function OpenSourceSection() {
                 />
               }
             >
-              <FaGithub className="size-4" /> Código Aberto
+              <FaGithub className="size-4" /> {lang === "en" ? "Open Source" : "Código Aberto"}
               <ArrowRight className="size-4" />
             </Button>
           </div>
@@ -228,7 +230,7 @@ export function OpenSourceSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-white/10 items-start">
             <div>
               <h5 className="font-label-sm text-xs uppercase tracking-wider text-on-surface-variant mb-3 font-semibold">
-                Destaques Técnicos
+                {t.highlightsTitle}
               </h5>
               <ul className="space-y-2">
                 {activeModule.highlights.map((h, i) => (
@@ -245,7 +247,7 @@ export function OpenSourceSection() {
 
             <div>
               <h5 className="font-label-sm text-xs uppercase tracking-wider text-on-surface-variant mb-3 font-semibold">
-                Tecnologias Utilizadas
+                {t.techTitle}
               </h5>
               <div className="flex flex-wrap gap-2.5">
                 {activeModule.technologies.map((tech) => {
@@ -281,7 +283,7 @@ export function OpenSourceSection() {
 
       {/* Grid Rápido com ícones oficiais do Edgekit */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        {edgekitModules.map((module) => {
+        {modules.map((module) => {
           const modId = module.id as EdgekitModuleId
           const modColor = EDGEKIT_MODULE_COLORS[modId]
 
@@ -317,7 +319,7 @@ export function OpenSourceSection() {
                 className="flex items-center gap-1.5 text-[11px] font-medium transition-colors"
                 style={{ color: modColor }}
               >
-                <FaGithub className="size-3" /> Ver Repositório
+                <FaGithub className="size-3" /> {lang === "en" ? "View Repository" : "Ver Repositório"}
               </div>
             </a>
           )

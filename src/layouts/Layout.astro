@@ -1,5 +1,6 @@
 ---
 import '../styles/globals.css';
+import { translations, type Locale } from '../i18n/translations';
 
 export interface Props {
   title?: string;
@@ -8,12 +9,16 @@ export interface Props {
   ogImage?: string;
   ogType?: string;
   noindex?: boolean;
+  lang?: Locale;
 }
 
+const currentLocale = (Astro.currentLocale as Locale) || 'pt';
+
 const {
-  title = 'Rafael SFDC | Desenvolvedor Full-Stack, Next.js & SEO Técnico',
-  description = 'Portfólio de Rafael SFDC, desenvolvedor full-stack especializado em Next.js, React, performance web, SEO técnico e aplicações sob medida.',
-  canonical = '/',
+  lang = currentLocale,
+  title = translations[lang]?.meta.title || translations.pt.meta.title,
+  description = translations[lang]?.meta.description || translations.pt.meta.description,
+  canonical = lang === 'en' ? '/en' : '/',
   ogImage = '/optimized-app.webp',
   ogType = 'website',
   noindex = false,
@@ -23,21 +28,30 @@ const SITE_URL = import.meta.env.PUBLIC_APP_URL || 'https://rafaelsfcarvalho.com
 const SITE_NAME = 'Rafael SFDC';
 const canonicalURL = new URL(canonical, SITE_URL).toString();
 const ogImageURL = ogImage.startsWith('http') ? ogImage : new URL(ogImage, SITE_URL).toString();
+
+const ptURL = new URL('/', SITE_URL).toString();
+const enURL = new URL('/en', SITE_URL).toString();
+const jobTitle = translations[lang]?.meta.jobTitle || 'Full-Stack Developer';
+const htmlLang = lang === 'pt' ? 'pt-BR' : 'en';
+const ogLocale = lang === 'pt' ? 'pt_BR' : 'en_US';
 ---
 
 <!doctype html>
-<html lang="pt-BR" class="dark">
+<html lang={htmlLang} class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="pt-BR" href={ptURL} />
+    <link rel="alternate" hreflang="en" href={enURL} />
+    <link rel="alternate" hreflang="x-default" href={ptURL} />
     {noindex ? <meta name="robots" content="noindex, nofollow" /> : <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />}
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:site_name" content={SITE_NAME} />
-    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
@@ -59,14 +73,14 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : new URL(ogImage, SITE_
       "@type": "WebSite",
       name: SITE_NAME,
       url: SITE_URL,
-      inLanguage: "pt-BR",
+      inLanguage: htmlLang,
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
       "@id": `${SITE_URL}/#person`,
       name: "Rafael SFDC",
-      jobTitle: "Desenvolvedor Full-Stack",
+      jobTitle: jobTitle,
       url: SITE_URL,
     })} />
     <script is:inline>

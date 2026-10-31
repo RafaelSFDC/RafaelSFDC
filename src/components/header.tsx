@@ -1,19 +1,24 @@
-;
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { X, ArrowRight } from "lucide-react";
+import { X, ArrowRight, Globe } from "lucide-react";
+import { translations, type Locale } from "@/i18n/translations";
+import { cn } from "@/lib/utils";
 
-const NAV_ITEMS = [
-  { name: "Produtos", href: "#projetos" },
-  { name: "Open-Source", href: "#opensource" },
-  { name: "Trabalhos", href: "#trabalhos" },
-  { name: "Habilidades", href: "#habilidades" },
-  { name: "Sobre", href: "#sobre" },
-];
+interface HeaderProps {
+  lang?: Locale;
+}
 
-export const HeroHeader = () => {
+export const HeroHeader = ({ lang = "pt" }: HeaderProps) => {
   const [menuState, setMenuState] = useState(false);
+  const t = translations[lang];
+
+  const NAV_ITEMS = [
+    { name: t.nav.products, href: "#projetos" },
+    { name: t.nav.opensource, href: "#opensource" },
+    { name: t.nav.works, href: "#trabalhos" },
+    { name: t.nav.skills, href: "#habilidades" },
+    { name: t.nav.about, href: "#sobre" },
+  ];
 
   useEffect(() => {
     if (!menuState) return;
@@ -40,6 +45,56 @@ export const HeroHeader = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  const handleSwitchLanguage = (targetLang: Locale) => {
+    if (targetLang === lang) return;
+    const currentHash = window.location.hash || "";
+    if (targetLang === "en") {
+      window.location.href = `/en${currentHash}`;
+    } else {
+      window.location.href = `/${currentHash}`;
+    }
+  };
+
+  const LanguageSwitcher = ({ className }: { className?: string }) => (
+    <div
+      role="group"
+      aria-label="Language selector"
+      className={cn(
+        "inline-flex items-center gap-0.5 rounded-full border border-white/10 bg-white/5 p-1 text-xs font-semibold backdrop-blur-sm",
+        className
+      )}
+    >
+      <button
+        type="button"
+        onClick={() => handleSwitchLanguage("pt")}
+        className={cn(
+          "px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer",
+          lang === "pt"
+            ? "bg-surface-tint text-background font-bold shadow-sm"
+            : "text-muted-foreground hover:text-foreground"
+        )}
+        aria-pressed={lang === "pt"}
+      >
+        PT
+      </button>
+      <button
+        type="button"
+        onClick={() => handleSwitchLanguage("en")}
+        className={cn(
+          "px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer",
+          lang === "en"
+            ? "bg-surface-tint text-background font-bold shadow-sm"
+            : "text-muted-foreground hover:text-foreground"
+        )}
+        aria-pressed={lang === "en"}
+      >
+        EN
+      </button>
+    </div>
+  );
+
+  const homeHref = lang === "en" ? "/en" : "/";
+
   return (
     <header className="relative z-30 font-sans">
       <nav
@@ -51,8 +106,8 @@ export const HeroHeader = () => {
             {/* Left: Brand Identity */}
             <div className="flex w-full items-center justify-between gap-6 lg:w-auto">
               <a
-                href="/"
-                aria-label="Rafael SFDC - Início"
+                href={homeHref}
+                aria-label={`Rafael SFDC - ${lang === "pt" ? "Início" : "Home"}`}
                 className="flex items-center space-x-2.5 focus:outline-none group"
               >
                 <img
@@ -65,25 +120,29 @@ export const HeroHeader = () => {
                 </span>
               </a>
 
-              {/* Mobile menu trigger */}
-              <button
-                type="button"
-                onClick={() => setMenuState(!menuState)}
-                aria-label={menuState ? "Fechar Menu" : "Abrir Menu"}
-                className="relative z-20 block cursor-pointer p-1 lg:hidden focus:outline-none"
-              >
-                <div
-                  aria-hidden
-                  className={`${menuState ? "scale-0 opacity-0 rotate-180" : "scale-100 opacity-100"} size-5 m-auto flex flex-col items-center justify-center gap-[6px] duration-200`}
-                >
-                  <span className="bg-foreground h-0.5 w-5 rounded-full" />
-                  <span className="bg-foreground h-0.5 w-5 rounded-full" />
-                </div>
+              {/* Mobile right items (Language Switcher + Menu Trigger) */}
+              <div className="flex items-center gap-2 lg:hidden">
+                <LanguageSwitcher />
 
-                <X
-                  className={`${menuState ? "scale-100 opacity-100 rotate-0" : "scale-0 opacity-0 -rotate-180"} absolute inset-0 m-auto size-6 duration-200 text-foreground`}
-                />
-              </button>
+                <button
+                  type="button"
+                  onClick={() => setMenuState(!menuState)}
+                  aria-label={menuState ? t.nav.menuClose : t.nav.menuOpen}
+                  className="relative z-20 block cursor-pointer p-1 focus:outline-none"
+                >
+                  <div
+                    aria-hidden
+                    className={`${menuState ? "scale-0 opacity-0 rotate-180" : "scale-100 opacity-100"} size-5 m-auto flex flex-col items-center justify-center gap-[6px] duration-200`}
+                  >
+                    <span className="bg-foreground h-0.5 w-5 rounded-full" />
+                    <span className="bg-foreground h-0.5 w-5 rounded-full" />
+                  </div>
+
+                  <X
+                    className={`${menuState ? "scale-100 opacity-100 rotate-0" : "scale-0 opacity-0 -rotate-180"} absolute inset-0 m-auto size-6 duration-200 text-foreground`}
+                  />
+                </button>
+              </div>
 
               {/* Desktop Nav Items */}
               <div className="max-lg:hidden flex items-center gap-7 ml-6">
@@ -106,7 +165,7 @@ export const HeroHeader = () => {
               {/* Mobile menu content */}
               <div className="lg:hidden mt-4 w-full space-y-1 mb-6">
                 <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-2 px-2">
-                  Navegação
+                  {t.nav.navigation}
                 </div>
                 {NAV_ITEMS.map((item) => (
                   <a
@@ -120,14 +179,18 @@ export const HeroHeader = () => {
                 ))}
               </div>
 
+              {/* Desktop Language Switcher */}
+              <div className="max-lg:hidden">
+                <LanguageSwitcher />
+              </div>
+
               {/* Action CTA Button */}
               <div className="flex w-full flex-col sm:flex-row sm:gap-2 sm:space-y-0 md:w-fit">
                 <Button
                   render={<a href="#contato" onClick={() => setMenuState(false)} />}
-                  
                   className="w-full sm:w-auto"
                 >
-                  <span>Contato</span>
+                  <span>{t.nav.contact}</span>
                   <ArrowRight className="size-4" />
                 </Button>
               </div>

@@ -1,15 +1,14 @@
 import { Button } from "@/components/ui/button"
 import { Section } from "@/components/Section"
 import { SectionHeader } from "@/components/SectionHeader"
-
-
 import { useEffect, useRef, useState } from "react"
 import { SiteCard } from "@/components/site-card"
-import { projects } from "@/data/projects"
-import { sites } from "@/data/sites"
+import { getProjects } from "@/data/projects"
+import { getSites } from "@/data/sites"
 import Hero5 from "@/components/hero"
 import HeroHeader from "@/components/header"
 import DownloadResume from "@/components/download-resume"
+import { translations, type Locale } from "@/i18n/translations"
 import {
   FolderKanban,
   Briefcase,
@@ -32,7 +31,6 @@ import {
   SiTailwindcss,
   SiAstro,
   SiNodedotjs,
-  SiPhp,
   SiLaravel,
   SiCloudflare,
   SiPostgresql,
@@ -55,9 +53,9 @@ import { ProjectLandingModal } from "@/components/project-landing-modal"
 import { OpenSourceSection } from "@/components/home/OpenSourceSection"
 import type { ProjectDetails } from "@/types/project"
 
-const skillCategories = [
+const getSkillCategories = (lang: Locale) => [
   {
-    title: "Frontend & Web",
+    title: lang === "en" ? "Frontend & Web" : "Frontend & Web",
     skills: [
       { name: "React & React 19", icon: SiReact },
       { name: "Next.js", icon: SiNextdotjs },
@@ -69,7 +67,7 @@ const skillCategories = [
     ],
   },
   {
-    title: "Backend & Edge",
+    title: lang === "en" ? "Backend & Edge" : "Backend & Edge",
     skills: [
       { name: "Node.js & Express", icon: SiNodedotjs },
       { name: "PHP & Laravel", icon: SiLaravel },
@@ -77,11 +75,11 @@ const skillCategories = [
       { name: "Durable Objects & WebSockets", icon: Zap },
       { name: "WebRTC (P2P Audio & Mesh)", icon: SiWebrtc },
       { name: "Better Auth (OAuth & JWT)", icon: ShieldCheck },
-      { name: "Integração IA (Gemini & AI SDK)", icon: SiGooglegemini },
+      { name: lang === "en" ? "AI Integration (Gemini & AI SDK)" : "Integração IA (Gemini & AI SDK)", icon: SiGooglegemini },
     ],
   },
   {
-    title: "Bancos & Storage",
+    title: lang === "en" ? "Databases & Storage" : "Bancos & Storage",
     skills: [
       { name: "PostgreSQL", icon: SiPostgresql },
       { name: "MySQL", icon: SiMysql },
@@ -89,27 +87,36 @@ const skillCategories = [
       { name: "Cloudflare D1 (Serverless SQL)", icon: SiCloudflare },
       { name: "Drizzle ORM & Kit", icon: SiDrizzle },
       { name: "Prisma ORM", icon: SiPrisma },
-      { name: "Redis & Cache Estruturado", icon: SiRedis },
+      { name: lang === "en" ? "Redis & Structured Cache" : "Redis & Cache Estruturado", icon: SiRedis },
     ],
   },
   {
-    title: "Desktop & DevOps",
+    title: lang === "en" ? "Desktop & DevOps" : "Desktop & DevOps",
     skills: [
       { name: "Tauri (Desktop Apps)", icon: SiTauri },
       { name: "Rust (Performance & Core)", icon: SiRust },
       { name: "Cloudflare R2 (Object Storage)", icon: SiCloudflare },
-      { name: "Docker & Conteinerização", icon: SiDocker },
+      { name: lang === "en" ? "Docker & Containerization" : "Docker & Conteinerização", icon: SiDocker },
       { name: "Git, GitHub & CI/CD", icon: SiGit },
       { name: "UI/UX Design (Figma)", icon: SiFigma },
-      { name: "Metodologias Ágeis (Scrum)", icon: Kanban },
+      { name: lang === "en" ? "Agile Methodologies (Scrum)" : "Metodologias Ágeis (Scrum)", icon: Kanban },
     ],
   },
 ]
 
-export default function Home() {
+interface HomePageProps {
+  lang?: Locale
+}
+
+export default function Home({ lang = "pt" }: HomePageProps) {
   const revealRefs = useRef<(HTMLElement | null)[]>([])
   const [detailsProject, setDetailsProject] = useState<ProjectDetails | null>(null)
   const [isDetailsOpen, setIsDetailsOpen] = useState(false)
+
+  const t = translations[lang]
+  const projects = getProjects(lang)
+  const sites = getSites(lang)
+  const skillCategories = getSkillCategories(lang)
 
   const handleOpenDetails = (project: ProjectDetails) => {
     setDetailsProject(project)
@@ -177,16 +184,16 @@ export default function Home() {
                 render={<a href={project.demoUrl} target="_blank" rel="noopener noreferrer" />}
                 className="flex-1 sm:flex-initial"
               >
-                <ExternalLink className="size-4" /> Visitar Site
+                <ExternalLink className="size-4" /> {t.cards.visitSite}
               </Button>
             )}
             <Button
               variant="outline"
               className="flex-1 sm:flex-initial"
               onClick={() => handleOpenDetails(project)}
-              aria-label={`Ver detalhes de ${project.title}`}
+              aria-label={`${t.cards.details} - ${project.title}`}
             >
-              <Eye className="size-4" /> Detalhes
+              <Eye className="size-4" /> {t.cards.details}
             </Button>
           </div>
         </div>
@@ -196,17 +203,21 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-on-surface overflow-x-hidden selection:bg-surface-tint/30">
-      <HeroHeader />
+      <HeroHeader lang={lang} />
 
       <main className="relative flex flex-col gap-20 md:gap-section-gap pb-20 md:pb-section-gap">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1024px] glow-bg -z-10 pointer-events-none" />
         <div className="absolute top-[1536px] right-0 w-full h-[1024px] glow-bg -z-10 pointer-events-none opacity-50" />
 
-        <Hero5 />
+        <Hero5 lang={lang} />
 
         {/* Projetos */}
         <Section id="projetos">
-          <SectionHeader icon={FolderKanban} title="Produtos SaaS" description="Produtos digitais e plataformas SaaS de alta performance desenvolvidos do MVP à escala." />
+          <SectionHeader
+            icon={FolderKanban}
+            title={t.sections.products.title}
+            description={t.sections.products.description}
+          />
 
           <div className="grid grid-cols-1 gap-stack-lg" ref={addToRefs}>
             {projects.map((project) => (
@@ -216,11 +227,15 @@ export default function Home() {
         </Section>
 
         {/* Open-Source */}
-        <OpenSourceSection />
+        <OpenSourceSection lang={lang} />
 
         {/* Trabalhos */}
         <Section id="trabalhos">
-          <SectionHeader icon={Briefcase} title="Trabalhos" description="Aplicações web completas, landing pages de alta conversão e sistemas sob medida para empresas e clientes." />
+          <SectionHeader
+            icon={Briefcase}
+            title={t.sections.works.title}
+            description={t.sections.works.description}
+          />
 
           <div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter"
@@ -230,7 +245,8 @@ export default function Home() {
               <SiteCard
                 key={site.id}
                 project={site}
-                badge="Cliente"
+                badge={t.sections.works.badgeClient}
+                lang={lang}
                 onOpenDetails={() => handleOpenDetails(site)}
               />
             ))}
@@ -239,91 +255,81 @@ export default function Home() {
 
         {/* Habilidades */}
         <Section id="habilidades" className="bg-surface-container-lowest/50 py-16 md:py-20">
-            <SectionHeader icon={Code2} title="Habilidades Técnicas" description="Stack completa de ferramentas modernas, frameworks e infraestrutura que utilizo no dia a dia." />
+          <SectionHeader
+            icon={Code2}
+            title={t.sections.skills.title}
+            description={t.sections.skills.description}
+          />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter">
-              {skillCategories.map((category) => (
-                <div
-                    key={category.title}
-                    className="glass-card p-6 md:p-8 rounded-lg border-l-4 border-l-surface-tint flex flex-col justify-between hover:border-l-primary transition-all duration-300"
-                  >
-                    <div>
-                      <h3 className="font-headline-md text-xl font-bold text-white tracking-tight mb-6">
-                        {category.title}
-                      </h3>
-                      <ul className="space-y-3.5 font-label-sm text-label-sm">
-                        {category.skills.map((skill) => {
-                          const Icon = skill.icon
-                          return (
-                            <li
-                              key={skill.name}
-                              className="flex items-center gap-3 text-on-surface hover:text-white transition-colors group"
-                            >
-                              <span className="size-5 flex items-center justify-center text-surface-tint shrink-0 group-hover:scale-110 transition-transform">
-                                <Icon className="size-4" aria-hidden="true" />
-                              </span>
-                              <span className="text-xs md:text-sm font-medium">{skill.name}</span>
-                            </li>
-                          )
-                        })}
-                      </ul>
-                    </div>
-                  </div>
-                ))}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter">
+            {skillCategories.map((category) => (
+              <div
+                key={category.title}
+                className="glass-card p-6 md:p-8 rounded-lg border-l-4 border-l-surface-tint flex flex-col justify-between hover:border-l-primary transition-all duration-300"
+              >
+                <div>
+                  <h3 className="font-headline-md text-xl font-bold text-white tracking-tight mb-6">
+                    {category.title}
+                  </h3>
+                  <ul className="space-y-3.5 font-label-sm text-label-sm">
+                    {category.skills.map((skill) => {
+                      const Icon = skill.icon
+                      return (
+                        <li
+                          key={skill.name}
+                          className="flex items-center gap-3 text-on-surface hover:text-white transition-colors group"
+                        >
+                          <span className="size-5 flex items-center justify-center text-surface-tint shrink-0 group-hover:scale-110 transition-transform">
+                            <Icon className="size-4" aria-hidden="true" />
+                          </span>
+                          <span className="text-xs md:text-sm font-medium">{skill.name}</span>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
         </Section>
 
         {/* Sobre */}
         <Section id="sobre">
-          <SectionHeader icon={Search} title="Sobre Mim" description="Conheça mais sobre minha trajetória de 6+ anos desenvolvendo aplicações e soluções sob medida." />
+          <SectionHeader
+            icon={Search}
+            title={t.sections.about.title}
+            description={t.sections.about.description}
+          />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg">
             <div className="glass-card p-10 rounded-lg">
-              <h3 className="font-headline-md text-headline-md mb-6">Quem sou eu</h3>
+              <h3 className="font-headline-md text-headline-md mb-6">
+                {t.sections.about.whoIAmTitle}
+              </h3>
               <p className="text-on-surface-variant leading-relaxed mb-6">
-                Meu nome é{" "}
-                <span className="text-white font-bold">Rafael</span> e sou
-                Desenvolvedor Full-Stack com 6 anos de experiência como freelancer.
-                Minha jornada começou pelo Front-End, onde descobri minha paixão por
-                criar interfaces intuitivas e responsivas.
+                {t.sections.about.whoIAmP1}
               </p>
               <p className="text-on-surface-variant leading-relaxed">
-                Com o tempo, expandi para o Back-End, tornando-me capaz de construir
-                aplicações completas e soluções robustas que realmente resolvem
-                problemas de negócio e escalam conforme a necessidade.
+                {t.sections.about.whoIAmP2}
               </p>
             </div>
 
             <div className="glass-card p-10 rounded-lg">
-              <h3 className="font-headline-md text-headline-md mb-6">Expertise &amp; Foco</h3>
+              <h3 className="font-headline-md text-headline-md mb-6">
+                {t.sections.about.expertiseTitle}
+              </h3>
               <ul className="space-y-6">
-                <li className="flex gap-4">
-                  <CheckCircle className="size-6 text-surface-tint shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-bold mb-1">Dashboards &amp; SaaS</h4>
-                    <p className="text-on-surface-variant text-sm">
-                      Criação de ecossistemas complexos com foco em UX e performance de dados.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <CheckCircle className="size-6 text-surface-tint shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-bold mb-1">E-commerce de Alta Conversão</h4>
-                    <p className="text-on-surface-variant text-sm">
-                      Lojas online otimizadas para carregamento rápido e máxima conversão.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <CheckCircle className="size-6 text-surface-tint shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-bold mb-1">Performance Web &amp; SEO</h4>
-                    <p className="text-on-surface-variant text-sm">
-                      Garanto que sua aplicação não seja apenas bonita, mas rápida e visível.
-                    </p>
-                  </div>
-                </li>
+                {t.sections.about.items.map((item, idx) => (
+                  <li key={idx} className="flex gap-4">
+                    <CheckCircle className="size-6 text-surface-tint shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-bold mb-1">{item.title}</h4>
+                      <p className="text-on-surface-variant text-sm">
+                        {item.description}
+                      </p>
+                    </div>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -333,11 +339,10 @@ export default function Home() {
         <Section id="contato">
           <div className="glass-card p-6 sm:p-12 md:p-20 rounded-lg text-center relative overflow-hidden">
             <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-6 sm:mb-8">
-              Vamos Conversar?
+              {t.sections.contact.title}
             </h2>
             <p className="text-on-surface-variant max-w-xl mx-auto mb-12">
-              Conte com quem já entregou 30+ projetos: SaaS, sistemas e sites
-              que performam. Chama no email, no WhatsApp ou no LinkedIn.
+              {t.sections.contact.subtitle}
             </p>
 
             <div className="flex flex-col md:flex-row justify-center items-center gap-12">
@@ -349,7 +354,7 @@ export default function Home() {
                   <Mail className="size-8 text-surface-tint" />
                 </div>
                 <span className="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">
-                  Email
+                  {t.sections.contact.emailLabel}
                 </span>
                 <span className="font-headline-md text-2xl md:text-headline-md break-all group-hover:text-surface-tint transition-colors">
                   rafaelsfcarvalho@outlook.com
@@ -361,13 +366,13 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex flex-col items-center group"
-                aria-label="Conversar com Rafael pelo WhatsApp"
+                aria-label={t.sections.contact.whatsappAria}
               >
                 <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-4 group-hover:border-surface-tint/50 transition-colors">
                   <SiWhatsapp className="size-8 text-surface-tint" />
                 </div>
                 <span className="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">
-                  WhatsApp
+                  {t.sections.contact.whatsappLabel}
                 </span>
                 <span className="font-headline-md text-headline-md group-hover:text-surface-tint transition-colors">
                   +55 (21) 97967-4045
@@ -404,7 +409,7 @@ export default function Home() {
               >
                 <FaLinkedinIn className="size-5" />
               </Button>
-              <DownloadResume />
+              <DownloadResume lang={lang} />
             </div>
           </div>
         </Section>
@@ -420,4 +425,3 @@ export default function Home() {
     </div>
   )
 }
-

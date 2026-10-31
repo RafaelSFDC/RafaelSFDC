@@ -1,6 +1,7 @@
 import type { ProjectDetails } from "@/types/project";
+import type { Locale } from "@/i18n/translations";
 
-export const sites: ProjectDetails[] = [
+export const sitesPt: ProjectDetails[] = [
   {
     id: "escola-criativa",
     type: "client",
@@ -104,3 +105,114 @@ export const sites: ProjectDetails[] = [
     category: "Site Institucional",
   },
 ];
+
+export const sitesEn: ProjectDetails[] = [
+  {
+    id: "escola-criativa",
+    type: "client",
+    title: "Escola Criativa",
+    tagline: "Institutional website converting visitors into enrolled students",
+    description:
+      "Educational web portal featuring course syllabi, teaching methodology, and integrated online admissions.",
+    longDescription:
+      "Escola Criativa needed a high-conversion digital presence to communicate its innovative pedagogy and convert interested visitors into registered students. Delivered structured course directories, student testimonials, and seamless admissions workflows.",
+    image: "/escola-criativa.webp",
+    images: ["/escola-criativa.webp"],
+    status: "private",
+    technologies: [
+      { name: "WordPress" },
+      { name: "PHP" },
+      { name: "MySQL" },
+    ],
+    demoUrl: "https://escolacriativa.com/",
+    contactUrl: "#contato",
+    client: "Escola Criativa",
+    features: [
+      "Course catalog with detailed syllabus cards",
+      "Integrated online admission application system",
+      "Verified student testimonial carousels",
+      "Technical SEO for targeted local positioning",
+      "Mobile-first responsive design",
+      "Instant WhatsApp & contact lead forms",
+    ],
+    testimonial: {
+      author: "Leadership Team, Escola Criativa",
+      role: "Operations",
+      text: "The website provided a distinct digital identity reflecting our pedagogical vision. Online enrollments dramatically streamlined our intake.",
+    },
+    year: 2023,
+    category: "Institutional Website",
+  },
+  {
+    id: "promind-consultoria",
+    type: "client",
+    title: "Promind Consultoria",
+    tagline: "High-authority corporate presence for management consulting",
+    description:
+      "Corporate web platform positioning Promind as a consulting leader, equipped with modern branding and automated lead capture.",
+    longDescription:
+      "Promind required an authoritative digital portal to build credibility with executive-level corporate clients. The project delivered tailored service landing pages, a thought-leadership insights blog, and integrated CRM lead inquiry funnels.",
+    image: "/promind-consultoria.webp",
+    images: ["/promind-consultoria.webp"],
+    status: "private",
+    technologies: [
+      { name: "WordPress" },
+      { name: "PHP" },
+      { name: "MySQL" },
+    ],
+    demoUrl: "https://promindconsultoria.com.br/",
+    contactUrl: "#contato",
+    client: "Promind Consultoria",
+    features: [
+      "Authoritative corporate service landing pages",
+      "Insights & blog hub for content marketing",
+      "Lead qualification and inquiry capture funnels",
+      "Comprehensive technical & on-page SEO optimization",
+      "Responsive high-trust aesthetic",
+    ],
+    testimonial: {
+      author: "Executive Board, Promind",
+      role: "Commercial Management",
+      text: "Total professionalism. The site projected the exact credibility required to close high-value enterprise accounts. Highly recommended.",
+    },
+    year: 2023,
+    category: "Corporate Website",
+  },
+  {
+    id: "alucamp-maquinas",
+    type: "client",
+    title: "Alucamp Máquinas",
+    tagline: "Digital catalog generating equipment rental quotes 24/7",
+    description:
+      "Heavy equipment rental catalog with real-time digital quote requests — generating commercial leads around the clock.",
+    longDescription:
+      "Alucamp sought to digitize industrial equipment rentals for construction contractors. Engineered a searchable technical catalog with specification sheets and instant quote forms that notify sales reps in real time.",
+    image: "/alucamp-maquinas.webp",
+    images: ["/alucamp-maquinas.webp"],
+    status: "private",
+    technologies: [
+      { name: "WordPress" },
+      { name: "PHP" },
+      { name: "MySQL" },
+    ],
+    demoUrl: "https://www.alucampmaquinas.com.br/",
+    contactUrl: "#contato",
+    client: "Alucamp Máquinas",
+    features: [
+      "Industrial machinery catalog with technical specs",
+      "24/7 online rental quote submission system",
+      "Instant lead dispatch to commercial sales reps",
+      "High-resolution machinery inspection gallery",
+      "Targeted local SEO for commercial construction",
+      "Fluid, responsive mobile navigation",
+    ],
+    year: 2023,
+    category: "Equipment Catalog",
+  },
+];
+
+export function getSites(lang: Locale = "pt"): ProjectDetails[] {
+  return lang === "en" ? sitesEn : sitesPt;
+}
+
+export const sites: ProjectDetails[] = sitesPt;

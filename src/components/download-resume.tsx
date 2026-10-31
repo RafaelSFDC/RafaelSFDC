@@ -1,21 +1,29 @@
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
+import { translations, type Locale } from "@/i18n/translations";
 
-export default function DownloadResume() {
+interface DownloadResumeProps {
+  lang?: Locale;
+}
+
+export default function DownloadResume({ lang = "pt" }: DownloadResumeProps) {
+  const t = translations[lang].resume;
+
   return (
     <Button
       render={
         <a
-          href="/Curriculo_Rafael_Carvalho.pdf"
-          download="Curriculo_Rafael_Carvalho.pdf"
+          href={t.downloadPath}
+          download={t.fileName}
           target="_blank"
           rel="noopener noreferrer"
         />
       }
       size="lg"
+      variant="outline"
     >
       <Download className="size-5" />
-      Currículo
+      {t.label}
     </Button>
   );
 }
