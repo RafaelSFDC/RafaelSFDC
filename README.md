@@ -108,6 +108,26 @@ Não apenas escrevo código: **projeto arquiteturas**, **tomo decisões de produ
 
 ---
 
+### ⏱️ [Cadence](https://cadence.rafaelsfcarvalho.workers.dev/) — Plataforma Ágil & Colaboração em Tempo Real
+
+> Sistema operacional ágil e multi-tenant para times de alta performance. Gestão de demandas, formulários dinâmicos de intake, colaboração ao vivo e automações com IA.
+
+| Feature | Detalhe |
+|---|---|
+| 🏢 **Isolamento Multi-Tenant** | Workspaces estritamente isolados com RBAC, convites de equipe e faturamento independente |
+| 📋 **Gestão Ágil Completa** | Quadros Kanban, listas, sprints e metas estratégicas (OKRs) com navegação 0ms sem bloqueios |
+| 📝 **Formulários Dinâmicos** | Construtor visual de formulários para intake público com conversão automática em tarefas |
+| ⚡ **Presença & Tempo Real** | Colaboração ao vivo e sincronização persistente via Cloudflare Durable Objects |
+| 🤖 **Triagem Inteligente com IA** | Classificação automatizada de demandas, sugestão de responsáveis e resumos de contexto |
+| 💳 **Billing por Workspace** | Planos e assinaturas Stripe Checkout configurados de forma autônoma por organização |
+
+**Stack:** TanStack Start · React 19 · Cloudflare Workers (D1, R2, Durable Objects) · Drizzle ORM · Better Auth · Stripe Billing · Tailwind CSS v4
+
+[![Demo](https://img.shields.io/badge/Demo-Live-success?style=flat-square)](https://cadence.rafaelsfcarvalho.workers.dev/)
+[![Status](https://img.shields.io/badge/Status-Comercial_/_Closed--Source-blueviolet?style=flat-square)](https://cadence.rafaelsfcarvalho.workers.dev/)
+
+---
+
 ### 🎮 [Reroll](https://reroll.rafaelsfcarvalho.workers.dev/) — Estante Pessoal de Mídias & Plataforma de Comunidade
 
 > Plataforma completa de catálogo e comunidade estilo Discord e MyAnimeList com estante pessoal, controle dinâmico de progresso, feed colaborativo e comunicação em tempo real via Edge.
@@ -124,21 +144,6 @@ Não apenas escrevo código: **projeto arquiteturas**, **tomo decisões de produ
 
 [![Demo](https://img.shields.io/badge/Demo-Live-success?style=flat-square)](https://reroll.rafaelsfcarvalho.workers.dev/)
 [![Status](https://img.shields.io/badge/Status-Comercial_/_Closed--Source-blueviolet?style=flat-square)](https://reroll.rafaelsfcarvalho.workers.dev/)
-
----
-
-### 🔗 UniLink — Plataforma de Link na Bio, Captura de Leads & Apoio via PIX
-
-> Plataforma SaaS de link na bio de alta conversão voltada para criadores e marcas, com monetização direta e captura de leads.
-
-- 💸 **PIX Nativo Padrão BACEN:** Geração instantânea de QR Code e Copia e Cola EMV QRCPS / CRC-16 sem intermediários nem taxas.
-- 📱 **Editor Visual Live:** Simulador mobile em tempo real com reordenação drag-and-drop reativa (`@dnd-kit`).
-- 🎯 **Captura de Leads & Blocos Ricos:** Formulários com exportação para CRM, players de áudio/vídeo e FAQ Accordion.
-- 📈 **Pixels de Rastreamento:** Métricas em tempo real e integração oficial com Meta Pixel, Google Analytics 4 e TikTok Pixel.
-
-**Stack:** TanStack Start · React 19 · Cloudflare D1 & R2 · Durable Objects · Drizzle ORM · Better Auth · Tailwind CSS v4 · Stripe & PIX
-
-[![Status](https://img.shields.io/badge/Status-Comercial_/_Closed--Source-blueviolet?style=flat-square)](https://rafaelsfcarvalho.com)
 
 ---
 

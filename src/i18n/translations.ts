@@ -107,7 +107,7 @@ export const translations: Record<Locale, Translations> = {
     },
     sections: {
       products: {
-        title: "Produtos SaaS",
+        title: "Produtos",
         description: "Produtos digitais e plataformas SaaS de alta performance desenvolvidos do MVP à escala.",
       },
       opensource: {
@@ -201,7 +201,7 @@ export const translations: Record<Locale, Translations> = {
     },
     sections: {
       products: {
-        title: "SaaS Products",
+        title: "Products",
         description: "High-performance digital products and full-featured SaaS platforms built from zero to scale.",
       },
       opensource: {

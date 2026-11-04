@@ -20,14 +20,15 @@
 - DevOps, Qualidade & SEO: Core Web Vitals, SEO Técnico, Otimização de Performance, Docker, Git / GitHub CI/CD, Metodologias Ágeis (Scrum), UI/UX Design (Figma).
 
 ## Principais Produtos SaaS & Projetos
-- [Reroll](https://reroll.rafaelsfcarvalho.workers.dev/): Plataforma completa de catálogo e comunidade social para animes, mangás, games, séries e livros com chat em tempo real via Cloudflare Durable Objects e WebRTC. [Código](https://github.com/RafaelSFDC/Reroll)
 - [Kataly](https://kataly.com.br): Plataforma SaaS all-in-one multi-workspace para negócios digitais com 4 verticais, WhatsApp Cloud API oficial com IA, workflows em nós e Cloudflare Edge. [Código](https://github.com/RafaelSFDC/kataly)
-- [UniLink](https://github.com/RafaelSFDC/Unilink): Plataforma SaaS moderna de Link na Bio, captura de leads e apoio via PIX nativo construída com TanStack Start, React 19, Drizzle ORM e Cloudflare Edge.
+- [Cadence](https://cadence.rafaelsfcarvalho.workers.dev/): Plataforma SaaS ágil e multi-tenant para times modernos com projetos, tarefas, formulários dinâmicos de intake, presença em tempo real e automações com IA.
+- [Reroll](https://reroll.rafaelsfcarvalho.workers.dev/): Plataforma completa de catálogo e comunidade social para animes, mangás, games, séries e livros com chat em tempo real via Cloudflare Durable Objects e WebRTC. [Código](https://github.com/RafaelSFDC/Reroll)
 
 ## Links do Site & Documentação
 - [Início](https://rafaelsfcarvalho.com/): Página inicial do portfólio com visão geral de projetos e habilidades
-- [Produtos SaaS](https://rafaelsfcarvalho.com/#projetos): Seção com os principais sistemas SaaS em produção
+- [Produtos](https://rafaelsfcarvalho.com/#projetos): Seção com os principais sistemas e plataformas em produção
 - [Trabalhos & Clientes](https://rafaelsfcarvalho.com/#trabalhos): Projetos corporativos e sites desenvolvidos para clientes
+- [Edgekit & Open-Source](https://rafaelsfcarvalho.com/#opensource): Suíte modular de Backend-as-a-Service serverless na Cloudflare
 - [Habilidades Técnicas](https://rafaelsfcarvalho.com/#habilidades): Stack detalhada, tecnologias frontend, backend, bancos e edge
 - [Sobre Mim](https://rafaelsfcarvalho.com/#sobre): Trajetória profissional, metodologia de trabalho e experiência
 - [Contato](https://rafaelsfcarvalho.com/#contato): Formulário de contato direto e canais de atendimento

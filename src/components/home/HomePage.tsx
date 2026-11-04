@@ -164,16 +164,6 @@ export default function Home({ lang = "pt" }: HomePageProps) {
           <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500" />
         </div>
         <div className="p-8 md:p-12 flex flex-col justify-center">
-          <div className="flex flex-wrap gap-2 mb-6">
-            {project.technologies.slice(0, 4).map((tech) => (
-              <span
-                key={tech.name}
-                className="px-3 py-1 bg-white/5 border border-white/10 rounded-full font-label-sm text-label-sm"
-              >
-                {tech.name}
-              </span>
-            ))}
-          </div>
           <h3 className="font-headline-md text-headline-md mb-4">{project.title}</h3>
           <p className="text-on-surface-variant mb-8 leading-relaxed">
             {project.description}
@@ -211,7 +201,7 @@ export default function Home({ lang = "pt" }: HomePageProps) {
 
         <Hero5 lang={lang} />
 
-        {/* Projetos */}
+        {/* Projetos / Produtos */}
         <Section id="projetos">
           <SectionHeader
             icon={FolderKanban}
@@ -225,9 +215,6 @@ export default function Home({ lang = "pt" }: HomePageProps) {
             ))}
           </div>
         </Section>
-
-        {/* Open-Source */}
-        <OpenSourceSection lang={lang} />
 
         {/* Trabalhos */}
         <Section id="trabalhos">
@@ -252,6 +239,9 @@ export default function Home({ lang = "pt" }: HomePageProps) {
             ))}
           </div>
         </Section>
+
+        {/* Open-Source */}
+        <OpenSourceSection lang={lang} />
 
         {/* Habilidades */}
         <Section id="habilidades" className="bg-surface-container-lowest/50 py-16 md:py-20">

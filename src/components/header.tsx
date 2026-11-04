@@ -14,8 +14,8 @@ export const HeroHeader = ({ lang = "pt" }: HeaderProps) => {
 
   const NAV_ITEMS = [
     { name: t.nav.products, href: "#projetos" },
-    { name: t.nav.opensource, href: "#opensource" },
     { name: t.nav.works, href: "#trabalhos" },
+    { name: t.nav.opensource, href: "#opensource" },
     { name: t.nav.skills, href: "#habilidades" },
     { name: t.nav.about, href: "#sobre" },
   ];
